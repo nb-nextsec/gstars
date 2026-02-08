@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.geelongstars.com.au)",
+      "WebSearch",
+      "WebFetch(domain:www.geelongcats.com.au)",
+      "Bash(git --version:*)",
+      "Bash(npm run build)",
+      "Bash(npx wrangler pages deploy:*)",
+      "Bash(npx wrangler:*)",
+      "Bash(node -e:*)",
+      "Bash(git status:*)",
+      "Bash(git init:*)",
+      "Bash(git remote add:*)",
+      "Bash(git add:*)"
+    ]
+  }
+}

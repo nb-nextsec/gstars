@@ -1,0 +1,16 @@
+name = "geelong-stars"
+compatibility_date = "2024-01-01"
+pages_build_output_dir = "dist"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "geelong-stars-db"
+database_id = "43dc6db9-0692-4eef-bec1-47f14ea01dce"
+
+[[r2_buckets]]
+binding = "IMAGES"
+bucket_name = "geelong-stars-images"
+
+[vars]
+JWT_SECRET = "change-this-in-production-to-a-secure-secret"
+SITE_URL = "https://geelong-stars.pages.dev"
