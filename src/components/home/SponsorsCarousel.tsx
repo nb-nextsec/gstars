@@ -22,13 +22,13 @@ export function SponsorsCarousel() {
   const allSponsors = [...sponsors, ...sponsors];
 
   return (
-    <section className="py-12 bg-gray-bg overflow-hidden">
+    <section className="py-12 bg-navy overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
         <div className="text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-navy mb-2">
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
             Our Amazing Sponsors
           </h2>
-          <p className="text-gray-600 max-w-xl mx-auto text-sm">
+          <p className="text-white/80 max-w-xl mx-auto text-sm">
             A huge thank you to the local businesses and organizations that make our programs possible!
           </p>
         </div>
@@ -37,8 +37,8 @@ export function SponsorsCarousel() {
       {/* Scrolling banner */}
       <div className="relative py-4">
         {/* Gradient overlays for smooth fade effect */}
-        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-gray-bg to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-gray-bg to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-navy to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-navy to-transparent z-10 pointer-events-none" />
 
         {/* Scrolling container */}
         <div className="flex animate-scroll-left">
@@ -61,7 +61,7 @@ export function SponsorsCarousel() {
 
       <div className="text-center mt-6">
         <Link to="/sponsors">
-          <Button variant="outline" size="sm" rightIcon={<ArrowRight size={16} />}>
+          <Button variant="outline" size="sm" className="border-white text-white hover:bg-white hover:text-navy" rightIcon={<ArrowRight size={16} />}>
             Meet All Our Sponsors
           </Button>
         </Link>

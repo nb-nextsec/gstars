@@ -11,7 +11,7 @@ interface HeroSectionProps {
 
 export function HeroSection({
   title = 'Welcome to Geelong Stars!',
-  subtitle = 'Where Everyone Plays, Everyone Belongs!',
+  subtitle = "Geelong's All-Abilities Sports Club, where everyone is welcome!",
 }: HeroSectionProps) {
   return (
     <section className="relative min-h-[600px] lg:min-h-[700px] flex items-center">
@@ -33,12 +33,6 @@ export function HeroSection({
       {/* Content */}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="max-w-2xl">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
-            <Heart className="w-4 h-4 text-red-400" fill="currentColor" />
-            <span className="text-white/90 text-sm font-medium">Geelong's All-Abilities Sports Club</span>
-          </div>
-
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
             {title}
           </h1>

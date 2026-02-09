@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Heart, Users, Star, Accessibility } from 'lucide-react';
+import { ArrowRight, Users, Star, Accessibility, Heart } from 'lucide-react';
 import { Button } from '../common';
 
 const TEAM_IMAGE = 'https://static.wixstatic.com/media/c23ea9_1071a90c20b044f4bb98e30faed73a2c~mv2.jpg/v1/fill/w_800,h_500,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/c23ea9_1071a90c20b044f4bb98e30faed73a2c~mv2.jpg';
@@ -42,20 +42,10 @@ export function WelcomeSection() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent" />
             </div>
-            {/* Floating badge */}
-            <div className="absolute -bottom-6 -right-6 bg-yellow-400 rounded-2xl p-6 shadow-lg hidden md:block">
-              <p className="text-navy font-bold text-3xl">10+</p>
-              <p className="text-navy/80 text-sm font-medium">Years of<br/>Community</p>
-            </div>
           </div>
 
           {/* Content Side */}
           <div>
-            <div className="inline-flex items-center gap-2 bg-navy/10 rounded-full px-4 py-2 mb-6">
-              <Heart className="w-4 h-4 text-red-500" fill="currentColor" />
-              <span className="text-navy text-sm font-semibold">About Geelong Stars</span>
-            </div>
-
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
               Where Everyone Gets to Play! 🌟
             </h2>

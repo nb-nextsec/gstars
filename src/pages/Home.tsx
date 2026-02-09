@@ -3,11 +3,11 @@ import { HeroSection, WelcomeSection, FeaturedPrograms, UpcomingEvents, Sponsors
 export function Home() {
   return (
     <>
+      <SponsorsCarousel />
       <HeroSection />
       <WelcomeSection />
       <FeaturedPrograms />
       <UpcomingEvents />
-      <SponsorsCarousel />
     </>
   );
 }

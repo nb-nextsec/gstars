@@ -1,14 +1,26 @@
-import { Users, Trophy, Accessibility, Heart, Calendar, Clock, ArrowRight, Sparkles } from 'lucide-react';
+import { Users, Trophy, Heart, Calendar, Clock, ArrowRight, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Card, Button } from '../components/common';
+
+// Custom AFL Football icon
+function AFLFootballIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <ellipse cx="12" cy="12" rx="10" ry="6" />
+      <path d="M12 6v12" />
+      <path d="M7 8.5c1.5 1 3.5 1.5 5 1.5s3.5-.5 5-1.5" />
+      <path d="M7 15.5c1.5-1 3.5-1.5 5-1.5s3.5.5 5 1.5" />
+    </svg>
+  );
+}
 
 const HERO_IMAGE = 'https://static.wixstatic.com/media/c23ea9_6f77b1dc166242098bc394d398c3deb2~mv2.jpg/v1/fill/w_1200,h_600,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Youth%20Basketball_edited.jpg';
 const BASKETBALL_IMAGE = 'https://static.wixstatic.com/media/c23ea9_1071a90c20b044f4bb98e30faed73a2c~mv2.jpg/v1/fill/w_800,h_500,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/c23ea9_1071a90c20b044f4bb98e30faed73a2c~mv2.jpg';
 
 const programs = [
   {
-    id: 'junior-basketball',
-    title: 'Junior Basketball 🏀',
+    id: 'minis-basketball',
+    title: "Mini's Basketball 🏀",
     subtitle: 'Ages 5-12',
     description: 'A fun, supportive environment where kids learn basketball fundamentals, teamwork, and sportsmanship. Every child is encouraged to participate and have a blast!',
     icon: Users,
@@ -24,11 +36,11 @@ const programs = [
     schedule: 'Saturdays, 9:00 AM - 10:30 AM',
   },
   {
-    id: 'all-abilities',
-    title: 'All Abilities Sports 💪',
+    id: 'youth-football',
+    title: 'Youth Football 🏈',
     subtitle: 'All Ages Welcome',
-    description: 'Our flagship program! Inclusive sports designed for participants of all abilities. Get active, have fun, and be part of our welcoming community where everyone belongs!',
-    icon: Accessibility,
+    description: 'Our flagship program! Inclusive football designed for participants of all abilities. Get active, have fun, and be part of our welcoming community where everyone belongs!',
+    icon: AFLFootballIcon,
     color: 'bg-blue-500',
     image: BASKETBALL_IMAGE,
     features: [
@@ -41,10 +53,10 @@ const programs = [
     schedule: 'Thursdays, 5:00 PM - 6:30 PM',
   },
   {
-    id: 'senior-basketball',
-    title: 'Senior Basketball 🏆',
+    id: 'minis-golf',
+    title: "Mini's Golf ⛳",
     subtitle: 'Ages 13+',
-    description: 'Take your game to the next level! Develop advanced skills, compete in local leagues, and be part of a passionate basketball community.',
+    description: 'Take your game to the next level! Develop advanced skills, compete in local leagues, and be part of a passionate golf community.',
     icon: Trophy,
     color: 'bg-green-500',
     image: BASKETBALL_IMAGE,
@@ -58,17 +70,17 @@ const programs = [
     schedule: 'Wednesdays & Fridays, 6:00 PM - 8:00 PM',
   },
   {
-    id: 'social-sports',
-    title: 'Social Sports 🎉',
+    id: 'running-walking-group',
+    title: 'Running/Walking Group 🏃',
     subtitle: 'All Ages',
-    description: 'Relaxed, fun-focused activities perfect for those who want to play without pressure. Great for beginners, families, or anyone who just wants to have a good time!',
+    description: 'Relaxed, fun-focused activities perfect for those who want to get active without pressure. Great for beginners, families, or anyone who just wants to have a good time!',
     icon: Heart,
     color: 'bg-pink-500',
     image: BASKETBALL_IMAGE,
     features: [
       'No experience needed!',
       'Relaxed, friendly atmosphere',
-      'All skill levels welcome',
+      'All fitness levels welcome',
       'Great for families',
       'Social events and BBQs',
     ],

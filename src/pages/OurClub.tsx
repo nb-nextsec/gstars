@@ -135,11 +135,6 @@ export function OurClub() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy/30 to-transparent" />
               </div>
-              {/* Floating badge */}
-              <div className="absolute -bottom-6 -right-6 bg-yellow-400 rounded-2xl p-6 shadow-lg hidden md:block">
-                <p className="text-navy font-bold text-3xl">10+</p>
-                <p className="text-navy/80 text-sm font-medium">Years of<br/>Community</p>
-              </div>
             </div>
           </div>
         </div>
@@ -244,10 +239,6 @@ export function OurClub() {
             <div className="bg-white rounded-2xl p-8 shadow-sm">
               <p className="text-4xl font-bold text-navy mb-2">4</p>
               <p className="text-gray-600">Programs</p>
-            </div>
-            <div className="bg-white rounded-2xl p-8 shadow-sm">
-              <p className="text-4xl font-bold text-navy mb-2">10+</p>
-              <p className="text-gray-600">Years Running</p>
             </div>
             <div className="bg-white rounded-2xl p-8 shadow-sm">
               <p className="text-4xl font-bold text-navy mb-2">1000s</p>
