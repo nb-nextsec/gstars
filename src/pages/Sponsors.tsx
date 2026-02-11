@@ -1,119 +1,115 @@
-import { Heart, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { Button, Loading } from '../components/common';
-import { SponsorGrid } from '../components/sponsors';
-import { useSponsors } from '../hooks';
-import type { Sponsor } from '../types';
+import { Button } from '../components/common';
 
-// Sample sponsors for when API is not available
-const sampleSponsors: Sponsor[] = [
+const HERO_IMAGE = 'https://static.wixstatic.com/media/c23ea9_1071a90c20b044f4bb98e30faed73a2c~mv2.jpg/v1/fill/w_1200,h_600,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/c23ea9_1071a90c20b044f4bb98e30faed73a2c~mv2.jpg';
+
+const sponsors = [
+  {
+    id: 11,
+    name: 'Sipcam',
+    description: 'A leading crop protection and specialty chemicals company. Proud to invest in community wellbeing and all-abilities sport.',
+    logo_url: 'https://cdn.prod.website-files.com/68a52a259620521f4aec8c70/68a6f3dbea4151d7018b48e2_Sipcam-Logo-Full-Clr-removebg-preview.png',
+    website_url: 'https://sipcam.com.au/',
+  },
   {
     id: 1,
-    name: 'Geelong Business Co',
-    logo_url: null,
-    website_url: 'https://example.com',
-    tier: 'gold',
-    display_order: 1,
-    is_active: true,
-    created_at: new Date().toISOString(),
+    name: 'Breakwater Hotel',
+    description: 'A proud Geelong hospitality venue supporting local sport and community. The Breakwater Hotel is a valued partner of Geelong Stars.',
+    logo_url: '/images/breakwater.avif',
+    website_url: 'https://www.facebook.com/breakwaterhotelgeelong/',
   },
   {
     id: 2,
-    name: 'Local Sports Store',
-    logo_url: null,
-    website_url: 'https://example.com',
-    tier: 'gold',
-    display_order: 2,
-    is_active: true,
-    created_at: new Date().toISOString(),
+    name: 'Meys Meats',
+    description: 'Quality local butcher providing the finest meats in Geelong. Proud supporters of community sport and all-abilities inclusion.',
+    logo_url: '/images/Meys-Logo-web_png.avif',
+    website_url: 'https://meysmeats.com.au/',
   },
   {
     id: 3,
-    name: 'Community Bank',
-    logo_url: null,
-    website_url: 'https://example.com',
-    tier: 'silver',
-    display_order: 1,
-    is_active: true,
-    created_at: new Date().toISOString(),
+    name: 'Bunnings',
+    description: 'Australia\'s leading home improvement and outdoor living retailer. Bunnings is proud to support local community clubs and organisations.',
+    logo_url: '/images/Bunnings-logo_edited.avif',
+    website_url: 'https://www.bunnings.com.au/',
   },
   {
     id: 4,
-    name: 'Fitness Plus',
-    logo_url: null,
-    website_url: 'https://example.com',
-    tier: 'silver',
-    display_order: 2,
-    is_active: true,
-    created_at: new Date().toISOString(),
+    name: 'Bellarine Village',
+    description: 'A welcoming shopping destination on the Bellarine Peninsula. Supporting local sport and the Geelong Stars community.',
+    logo_url: '/images/ballarine-village-footer-logo_edited_edi.avif',
+    website_url: 'https://bellarinevillage.com.au/',
   },
   {
     id: 5,
-    name: 'Health & Physio',
-    logo_url: null,
-    website_url: 'https://example.com',
-    tier: 'silver',
-    display_order: 3,
-    is_active: true,
-    created_at: new Date().toISOString(),
+    name: 'Fruit Biz',
+    description: 'Fresh fruit and produce supplier in the Geelong region. Keeping our athletes fuelled with healthy, quality produce.',
+    logo_url: '/images/fruit biz.avif',
+    website_url: null,
   },
   {
     id: 6,
-    name: 'The Local Cafe',
-    logo_url: null,
-    website_url: 'https://example.com',
-    tier: 'bronze',
-    display_order: 1,
-    is_active: true,
-    created_at: new Date().toISOString(),
+    name: 'Geelong Plaster Cartage',
+    description: 'Reliable plaster and building materials cartage across the Geelong region. Proud to support all-abilities sport in the community.',
+    logo_url: '/images/Geelong Plaster Cartage_edited_edited_ed.avif',
+    website_url: null,
   },
   {
     id: 7,
-    name: 'Pizza Palace',
-    logo_url: null,
-    website_url: 'https://example.com',
-    tier: 'bronze',
-    display_order: 2,
-    is_active: true,
-    created_at: new Date().toISOString(),
+    name: 'Lektrix',
+    description: 'Professional electrical services for homes and businesses in Geelong. Powering our community on and off the field.',
+    logo_url: '/images/Lektrix_edited_edited.avif',
+    website_url: 'https://lektrix.com.au/',
   },
   {
     id: 8,
-    name: 'Garden Supplies',
-    logo_url: null,
-    website_url: 'https://example.com',
-    tier: 'bronze',
-    display_order: 3,
-    is_active: true,
-    created_at: new Date().toISOString(),
+    name: "McHarry's Bus Lines",
+    description: 'Geelong\'s trusted public transport provider. Helping our community get where they need to go, including to training and game days!',
+    logo_url: "/images/McHarry's Bus Lines logo_edited_edited_p.avif",
+    website_url: 'https://mcharrys.com.au/',
   },
   {
     id: 9,
-    name: 'Auto Service',
-    logo_url: null,
-    website_url: 'https://example.com',
-    tier: 'bronze',
-    display_order: 4,
-    is_active: true,
-    created_at: new Date().toISOString(),
+    name: 'Repco',
+    description: 'Australia\'s leading auto parts and accessories retailer. Supporting the Geelong Stars community and keeping everyone on the road.',
+    logo_url: '/images/repco.avif',
+    website_url: 'https://www.repco.com.au/',
+  },
+  {
+    id: 10,
+    name: 'Rotary Club',
+    description: 'A global network of community leaders dedicated to service above self. The Rotary Club proudly supports inclusive sport in Geelong.',
+    logo_url: '/images/rotary club_edited.avif',
+    website_url: 'https://geelongrotary.org.au/',
+  },
+  {
+    id: 12,
+    name: 'Winston',
+    description: 'Quality products and services for the Geelong community. Winston is a valued supporter of Geelong Stars and inclusive sport.',
+    logo_url: '/images/WINSTON.avif',
+    website_url: null,
   },
 ];
 
 export function Sponsors() {
-  const { data: sponsors, isLoading } = useSponsors(true);
-
-  const displaySponsors = sponsors && sponsors.length > 0 ? sponsors : sampleSponsors;
-
   return (
     <>
       {/* Hero Section */}
-      <section className="bg-navy py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative min-h-[400px] flex items-center">
+        <div className="absolute inset-0">
+          <img
+            src={HERO_IMAGE}
+            alt="Geelong Stars Sponsors"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-navy/95 via-navy/80 to-navy/50" />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
               Our Sponsors
             </h1>
-            <p className="text-xl text-white/80">
+            <p className="text-xl text-white/90">
               Thank you to our amazing sponsors and partners whose generous support
               makes our programs and community activities possible.
             </p>
@@ -124,90 +120,128 @@ export function Sponsors() {
       {/* Sponsors Grid */}
       <section className="py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {isLoading ? (
-            <Loading text="Loading sponsors..." />
-          ) : (
-            <SponsorGrid sponsors={displaySponsors} showTierHeaders={true} />
-          )}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {sponsors.map((sponsor) => {
+              const cardContent = (
+                <>
+                  <div className="h-48 bg-gray-50 flex items-center justify-center p-8">
+                    {sponsor.logo_url ? (
+                      <img
+                        src={sponsor.logo_url}
+                        alt={sponsor.name}
+                        className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
+                      />
+                    ) : (
+                      <span className="text-2xl font-bold text-navy/70 text-center">
+                        {sponsor.name}
+                      </span>
+                    )}
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-navy mb-2 group-hover:text-accent transition-colors">
+                      {sponsor.name}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      {sponsor.description}
+                    </p>
+                  </div>
+                </>
+              );
+
+              return sponsor.website_url ? (
+                <a
+                  key={sponsor.id}
+                  href={sponsor.website_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group"
+                >
+                  {cardContent}
+                </a>
+              ) : (
+                <div
+                  key={sponsor.id}
+                  className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group"
+                >
+                  {cardContent}
+                </div>
+              );
+            })}
+          </div>
         </div>
       </section>
 
       {/* Become a Sponsor CTA */}
-      <section className="py-16 lg:py-24 bg-gray-bg">
+      <section className="py-16 lg:py-24 bg-gradient-to-r from-navy to-navy-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-2xl shadow-sm p-8 md:p-12">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <div className="w-14 h-14 bg-accent/10 rounded-lg flex items-center justify-center mb-6">
-                  <Heart className="w-7 h-7 text-accent" />
-                </div>
-                <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-                  Become a Sponsor
-                </h2>
-                <p className="text-gray-600 mb-6">
-                  Partner with Geelong Stars and support the development of athletes
-                  in our community. We offer various sponsorship packages to suit
-                  businesses of all sizes.
-                </p>
-                <p className="text-gray-600 mb-8">
-                  As a sponsor, you'll receive brand exposure, community recognition,
-                  and the satisfaction of knowing you're making a real difference in
-                  the lives of local athletes.
-                </p>
-                <Link to="/contact">
-                  <Button rightIcon={<ArrowRight size={18} />}>
-                    Enquire About Sponsorship
-                  </Button>
-                </Link>
-              </div>
-              <div>
-                <div className="bg-gray-bg rounded-xl p-8">
-                  <h3 className="text-xl font-semibold text-navy mb-6">
-                    Sponsorship Benefits
-                  </h3>
-                  <ul className="space-y-4">
-                    <li className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <svg className="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                      </div>
-                      <span className="text-gray-600">Logo placement on club website and social media</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <svg className="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                      </div>
-                      <span className="text-gray-600">Recognition at club events and functions</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <svg className="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                      </div>
-                      <span className="text-gray-600">Signage opportunities at training and game days</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <svg className="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                      </div>
-                      <span className="text-gray-600">Networking opportunities with other sponsors</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <svg className="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                      </div>
-                      <span className="text-gray-600">Community goodwill and brand association</span>
-                    </li>
-                  </ul>
-                </div>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Become a Sponsor
+              </h2>
+              <p className="text-white/90 mb-6">
+                Partner with Geelong Stars and support the development of athletes
+                in our community. We offer various sponsorship packages to suit
+                businesses of all sizes.
+              </p>
+              <p className="text-white/90 mb-8">
+                As a sponsor, you'll receive brand exposure, community recognition,
+                and the satisfaction of knowing you're making a real difference in
+                the lives of local athletes.
+              </p>
+              <Link to="/contact">
+                <Button className="bg-yellow-400 text-navy hover:bg-yellow-300 font-bold" rightIcon={<ArrowRight size={18} />}>
+                  Enquire About Sponsorship
+                </Button>
+              </Link>
+            </div>
+            <div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-8">
+                <h3 className="text-xl font-semibold text-white mb-6">
+                  Sponsorship Benefits
+                </h3>
+                <ul className="space-y-4">
+                  <li className="flex items-start gap-3">
+                    <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <span className="text-white/90">Logo placement on club website and social media</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <span className="text-white/90">Recognition at club events and functions</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <span className="text-white/90">Signage opportunities at training and game days</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <span className="text-white/90">Networking opportunities with other sponsors</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <span className="text-white/90">Community goodwill and brand association</span>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>

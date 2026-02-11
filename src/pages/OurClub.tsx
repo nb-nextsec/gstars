@@ -46,7 +46,7 @@ const whyJoin = [
   {
     icon: Target,
     title: 'Skill Development',
-    description: 'Learn and grow at your own pace with age-appropriate programs.',
+    description: 'Develop skills at your own pace with highly adaptive programs.',
   },
   {
     icon: Award,
@@ -70,10 +70,6 @@ export function OurClub() {
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
-              <Heart className="w-4 h-4 text-red-400" fill="currentColor" />
-              <span className="text-white/90 text-sm font-medium">Welcome to Our Family!</span>
-            </div>
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
               About Geelong Stars
             </h1>
@@ -90,13 +86,8 @@ export function OurClub() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="inline-flex items-center gap-2 bg-navy/10 rounded-full px-4 py-2 mb-6">
-                <Sparkles className="w-4 h-4 text-yellow-500" />
-                <span className="text-navy text-sm font-semibold">Our Story</span>
-              </div>
-
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
-                Where Everyone Gets to Play! 🌟
+                Where Everyone Gets to Play!
               </h2>
 
               <div className="space-y-4 text-gray-600 text-lg leading-relaxed">
@@ -141,20 +132,28 @@ export function OurClub() {
       </section>
 
       {/* Values Section */}
-      <section className="py-16 lg:py-24 bg-gray-bg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 lg:py-24 relative">
+        <div className="absolute inset-0">
+          <img
+            src={TEAM_IMAGE}
+            alt="Geelong Stars values"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-navy/95 via-navy/85 to-navy/75" />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-              What Makes Us Special
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              What Makes Us Unique
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-white/90 max-w-2xl mx-auto">
               Our core values guide everything we do - creating a welcoming space for all!
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((value) => (
-              <Card key={value.title} hover className="text-center">
+              <Card key={value.title} className="text-center">
                 <div className={`w-14 h-14 ${value.color} rounded-xl flex items-center justify-center mx-auto mb-4`}>
                   <value.icon className="w-7 h-7 text-white" />
                 </div>
@@ -175,7 +174,7 @@ export function OurClub() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-              Why Join Geelong Stars? 🤔
+              Why Join Geelong Stars?
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Here's why our members love being part of our community!
@@ -210,10 +209,10 @@ export function OurClub() {
               Creating Opportunities for Everyone
             </h2>
             <p className="text-xl text-white/90 leading-relaxed">
-              Our mission is to provide inclusive, fun, and supportive sporting programs
-              for people of all ages and abilities in the Geelong community. We believe
-              that everyone deserves the chance to participate in sport, make friends,
-              and feel like they belong.
+              Our mission is to promote physical activity, social inclusion, and personal
+              development through a diverse range of sports and recreational activities.
+              We believe that everyone deserves the opportunity to participate in sports,
+              regardless of their physical or cognitive abilities.
             </p>
           </div>
         </div>
@@ -231,13 +230,13 @@ export function OurClub() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-4 gap-6 text-center">
+          <div className="grid md:grid-cols-3 gap-6 text-center max-w-3xl mx-auto">
             <div className="bg-white rounded-2xl p-8 shadow-sm">
               <p className="text-4xl font-bold text-navy mb-2">100+</p>
-              <p className="text-gray-600">Active Members</p>
+              <p className="text-gray-600">Members</p>
             </div>
             <div className="bg-white rounded-2xl p-8 shadow-sm">
-              <p className="text-4xl font-bold text-navy mb-2">4</p>
+              <p className="text-4xl font-bold text-navy mb-2">8+</p>
               <p className="text-gray-600">Programs</p>
             </div>
             <div className="bg-white rounded-2xl p-8 shadow-sm">

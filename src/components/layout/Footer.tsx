@@ -121,14 +121,6 @@ export function Footer() {
                 </a>
               </li>
             </ul>
-            <div className="mt-4">
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-2 bg-yellow-400 text-navy px-4 py-2 rounded-lg font-semibold text-sm hover:bg-yellow-300 transition-colors"
-              >
-                Say Hello!
-              </Link>
-            </div>
           </div>
         </div>
 
@@ -137,9 +129,17 @@ export function Footer() {
           <p className="text-white/50 text-sm flex items-center gap-1">
             &copy; {currentYear} Geelong Stars. Made with <Heart size={14} className="text-red-400" fill="currentColor" /> in Geelong
           </p>
-          <Link to="/admin/login" className="text-white/50 text-sm hover:text-white">
-            Admin Login
-          </Link>
+          <div className="flex items-center gap-4">
+            <Link to="/terms-of-service" className="text-white/50 text-sm hover:text-white transition-colors">
+              Terms of Service
+            </Link>
+            <Link to="/cookie-policy" className="text-white/50 text-sm hover:text-white transition-colors">
+              Cookie Policy
+            </Link>
+            <Link to="/privacy-policy" className="text-white/50 text-sm hover:text-white transition-colors">
+              Privacy Policy
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

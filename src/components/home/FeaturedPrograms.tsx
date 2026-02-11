@@ -1,50 +1,53 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Button } from '../common';
+
+const BACKGROUND_IMAGE = 'https://static.wixstatic.com/media/c23ea9_1071a90c20b044f4bb98e30faed73a2c~mv2.jpg/v1/fill/w_1200,h_600,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/c23ea9_1071a90c20b044f4bb98e30faed73a2c~mv2.jpg';
 
 const programs = [
   {
     id: 'junior-basketball',
-    title: 'Junior Basketball 🏀',
+    title: "Mini's Basketball 🏀",
     ageGroup: 'Ages 5-12',
     description: 'A fun, supportive environment where kids learn basketball fundamentals, teamwork, and sportsmanship. Every child is encouraged to participate and grow!',
-    image: 'https://static.wixstatic.com/media/c23ea9_6f77b1dc166242098bc394d398c3deb2~mv2.jpg/v1/fill/w_600,h_684,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Youth%20Basketball_edited.jpg',
+    image: '/images/basketball minis 1.jpg',
     color: 'from-orange-400 to-pink-500',
-    emoji: '🌟',
   },
   {
-    id: 'all-abilities',
-    title: 'All Abilities Sports 💪',
-    ageGroup: 'All Ages',
-    description: 'Inclusive programs designed for participants of all abilities. Get active, have fun, and be part of our welcoming community where everyone belongs!',
-    image: 'https://static.wixstatic.com/media/c23ea9_1071a90c20b044f4bb98e30faed73a2c~mv2.jpg/v1/fill/w_600,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/c23ea9_1071a90c20b044f4bb98e30faed73a2c~mv2.jpg',
-    color: 'from-blue-400 to-purple-500',
-    emoji: '⭐',
-  },
-  {
-    id: 'senior-basketball',
-    title: 'Senior Basketball 🏆',
-    ageGroup: 'Ages 13+',
-    description: 'Take your game to the next level! Develop advanced skills, compete in local leagues, and be part of a passionate basketball community.',
-    image: 'https://static.wixstatic.com/media/c23ea9_1071a90c20b044f4bb98e30faed73a2c~mv2.jpg/v1/fill/w_600,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/c23ea9_1071a90c20b044f4bb98e30faed73a2c~mv2.jpg',
+    id: 'youth-football',
+    title: 'Youth Football 🏈',
+    ageGroup: 'Ages 12+',
+    description: 'Our flagship program! Inclusive football designed for participants of all abilities. Get active, have fun, and be part of our welcoming community where everyone belongs!',
+    image: '/images/Football 1.jpg',
     color: 'from-green-400 to-teal-500',
-    emoji: '🚀',
+  },
+  {
+    id: 'minis-golf',
+    title: "Mini's Golf ⛳",
+    ageGroup: 'Ages 13+',
+    description: 'Take your game to the next level! Develop advanced skills, compete in local leagues, and be part of a passionate golf community.',
+    image: '/images/Golf 1.jpg',
+    color: 'from-yellow-400 to-amber-500',
   },
 ];
 
 export function FeaturedPrograms() {
   return (
-    <section className="py-16 lg:py-24 bg-gradient-to-b from-white to-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-16 lg:py-24 relative">
+      <div className="absolute inset-0">
+        <img
+          src={BACKGROUND_IMAGE}
+          alt="Geelong Stars programs"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-navy/95 via-navy/85 to-navy/75" />
+      </div>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 bg-yellow-100 rounded-full px-4 py-2 mb-4">
-            <Sparkles className="w-4 h-4 text-yellow-600" />
-            <span className="text-yellow-700 text-sm font-semibold">Something For Everyone!</span>
-          </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-            Our Programs 🎉
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            Our Programs
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-white/90 max-w-2xl mx-auto">
             Geelong All-Abilities Sports Club offers programs to meet the needs of all members,
             no matter your age or ability. Get active, have fun, and build community through sports!
           </p>
@@ -66,12 +69,6 @@ export function FeaturedPrograms() {
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className={`absolute inset-0 bg-gradient-to-t ${program.color} opacity-60`} />
-                  <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1">
-                    <span className="text-sm font-bold text-navy">{program.ageGroup}</span>
-                  </div>
-                  <div className="absolute bottom-4 right-4 text-4xl">
-                    {program.emoji}
-                  </div>
                 </div>
 
                 {/* Content */}
@@ -93,8 +90,8 @@ export function FeaturedPrograms() {
 
         <div className="text-center">
           <Link to="/programs">
-            <Button size="lg" className="bg-navy hover:bg-navy-600 font-bold" rightIcon={<ArrowRight size={18} />}>
-              Explore All Programs
+            <Button size="lg" className="bg-yellow-400 text-navy hover:bg-yellow-300 font-bold" rightIcon={<ArrowRight size={18} />}>
+              View All Programs
             </Button>
           </Link>
         </div>

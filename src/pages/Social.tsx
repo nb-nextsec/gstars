@@ -1,63 +1,11 @@
-import { Calendar, Image as ImageIcon, Camera, PartyPopper, ArrowRight, Sparkles } from 'lucide-react';
+import { Calendar, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Card, Loading, Button } from '../components/common';
 import { EventCard } from '../components/events';
-import { useEvents, useImages } from '../hooks';
+import { useEvents } from '../hooks';
 import type { Event } from '../types';
 
 const HERO_IMAGE = 'https://static.wixstatic.com/media/c23ea9_1071a90c20b044f4bb98e30faed73a2c~mv2.jpg/v1/fill/w_1200,h_600,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/c23ea9_1071a90c20b044f4bb98e30faed73a2c~mv2.jpg';
-
-// Gallery images from geelongstars.com.au
-const GALLERY_IMAGES = [
-  {
-    id: 1,
-    url: 'https://static.wixstatic.com/media/c23ea9_1071a90c20b044f4bb98e30faed73a2c~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/c23ea9_1071a90c20b044f4bb98e30faed73a2c~mv2.jpg',
-    name: 'Team Training',
-    description: 'Basketball training session',
-  },
-  {
-    id: 2,
-    url: 'https://static.wixstatic.com/media/c23ea9_6f77b1dc166242098bc394d398c3deb2~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Youth%20Basketball_edited.jpg',
-    name: 'Youth Basketball',
-    description: 'Junior players in action',
-  },
-  {
-    id: 3,
-    url: 'https://static.wixstatic.com/media/c23ea9_1071a90c20b044f4bb98e30faed73a2c~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/c23ea9_1071a90c20b044f4bb98e30faed73a2c~mv2.jpg',
-    name: 'Community Fun',
-    description: 'Having fun together',
-  },
-  {
-    id: 4,
-    url: 'https://static.wixstatic.com/media/c23ea9_6f77b1dc166242098bc394d398c3deb2~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Youth%20Basketball_edited.jpg',
-    name: 'Game Day',
-    description: 'Competition day',
-  },
-  {
-    id: 5,
-    url: 'https://static.wixstatic.com/media/c23ea9_1071a90c20b044f4bb98e30faed73a2c~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/c23ea9_1071a90c20b044f4bb98e30faed73a2c~mv2.jpg',
-    name: 'Team Spirit',
-    description: 'Our amazing community',
-  },
-  {
-    id: 6,
-    url: 'https://static.wixstatic.com/media/c23ea9_6f77b1dc166242098bc394d398c3deb2~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Youth%20Basketball_edited.jpg',
-    name: 'All Abilities Sports',
-    description: 'Everyone plays together',
-  },
-  {
-    id: 7,
-    url: 'https://static.wixstatic.com/media/c23ea9_1071a90c20b044f4bb98e30faed73a2c~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/c23ea9_1071a90c20b044f4bb98e30faed73a2c~mv2.jpg',
-    name: 'Skills Development',
-    description: 'Learning and growing',
-  },
-  {
-    id: 8,
-    url: 'https://static.wixstatic.com/media/c23ea9_6f77b1dc166242098bc394d398c3deb2~mv2.jpg/v1/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Youth%20Basketball_edited.jpg',
-    name: 'Celebration',
-    description: 'Celebrating success',
-  },
-];
 
 // Sample events for when API is not available
 const sampleEvents: Event[] = [
@@ -109,12 +57,8 @@ const sampleEvents: Event[] = [
 
 export function Social() {
   const { data: events, isLoading: eventsLoading } = useEvents(true);
-  const { data: galleryImages, isLoading: imagesLoading } = useImages('gallery');
 
   const displayEvents = events && events.length > 0 ? events : sampleEvents;
-  const displayGallery = galleryImages && galleryImages.length > 0
-    ? galleryImages
-    : GALLERY_IMAGES.map(img => ({ ...img, category: 'gallery', created_at: '' }));
 
   return (
     <>
@@ -123,19 +67,15 @@ export function Social() {
         <div className="absolute inset-0">
           <img
             src={HERO_IMAGE}
-            alt="Geelong Stars Social Events"
+            alt="Geelong Stars News and Events"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-navy/95 via-navy/80 to-navy/50" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
-              <PartyPopper className="w-4 h-4 text-yellow-400" />
-              <span className="text-white/90 text-sm font-medium">Fun Times Ahead!</span>
-            </div>
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Social & Events 🎉
+              News and Events
             </h1>
             <p className="text-xl text-white/90">
               Stay connected with the Geelong Stars community! Check out our upcoming
@@ -145,22 +85,320 @@ export function Social() {
         </div>
       </section>
 
+      {/* Stars News */}
+      <section className="py-16 lg:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
+              Stars News
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              The latest updates and news from Geelong Stars!
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <a
+              href="https://timesnewsgroup.com.au/geelongtimes/news/stars-launch-an-innovative-bmx-program/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 group"
+            >
+              <div className="h-48 overflow-hidden">
+                <img
+                  src="https://static.timesnewsgroup.com.au/prod/uploads/sites/21/2025/10/Untitled-design-30-2.jpg"
+                  alt="Stars launch an innovative BMX program"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="p-6">
+                <div className="text-sm text-cyan-600 font-semibold mb-2">In The News!</div>
+                <h3 className="text-lg font-bold text-navy mb-2">
+                  Stars Launch an Innovative BMX Program
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  Geelong Stars is launching an all-abilities BMX program with adaptive bikes
+                  and inclusive riding opportunities. More than 20 participants have already
+                  engaged with our Learn to Ride programs. Read more in the Geelong Times!
+                </p>
+              </div>
+            </a>
+
+            <a
+              href="https://timesnewsgroup.com.au/geelongtimes/news/supporting-active-initiatives/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 group"
+            >
+              <div className="h-48 overflow-hidden">
+                <img
+                  src="https://static.timesnewsgroup.com.au/prod/uploads/sites/21/2025/09/Cr-Melissa-Cadwell.jpg"
+                  alt="Supporting active initiatives"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="p-6">
+                <div className="text-sm text-cyan-600 font-semibold mb-2">In The News!</div>
+                <h3 className="text-lg font-bold text-navy mb-2">
+                  Supporting Active Initiatives
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  Geelong's community sports initiatives including all-abilities sporting
+                  activities and inclusive programs encouraging broader participation in
+                  local sports and recreation. Read more in the Geelong Times!
+                </p>
+              </div>
+            </a>
+
+            <a
+              href="https://timesnewsgroup.com.au/geelongtimes/news/new-all-abilities-sports-club-to-launch-in-geelong/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 group"
+            >
+              <div className="h-48 overflow-hidden">
+                <img
+                  src="https://static.timesnewsgroup.com.au/prod/uploads/sites/21/2024/10/Your-paragraph-text-2024-10-03T102342.640.png"
+                  alt="New all-abilities sports club to launch in Geelong"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="p-6">
+                <div className="text-sm text-cyan-600 font-semibold mb-2">In The News!</div>
+                <h3 className="text-lg font-bold text-navy mb-2">
+                  New All-Abilities Sports Club to Launch in Geelong
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  Geelong Stars is launching an inclusive sports program for children with
+                  diverse abilities, providing accessible athletic activities and community
+                  engagement. Read more in the Geelong Times!
+                </p>
+              </div>
+            </a>
+
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 group">
+              <div className="h-48 overflow-hidden">
+                <img
+                  src="/images/Cadel Family Ride 2.jpg"
+                  alt="Geelong Stars Represented at the Cadel Evans Family Ride"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="p-6">
+                <div className="text-sm text-cyan-600 font-semibold mb-2">Community</div>
+                <h3 className="text-lg font-bold text-navy mb-2">
+                  Geelong Stars Represented at the Cadel Evans Family Ride
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  Geelong Stars proudly participated in the Cadel Evans Great Ocean Road Race
+                  Family Ride, showcasing our commitment to inclusive cycling and community
+                  engagement in one of Geelong's biggest sporting events!
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 group">
+              <div className="h-48 overflow-hidden">
+                <img
+                  src="/images/Football 1.jpg"
+                  alt="New Season Registration"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="p-6">
+                <div className="text-sm text-green-600 font-semibold mb-2">Exciting News!</div>
+                <h3 className="text-lg font-bold text-navy mb-2">
+                  New Season Registration Open!
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  Registration for the new season is now open! Head to our programs
+                  page to learn more about our offerings and join the fun. All ages and
+                  abilities welcome.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 group">
+              <div className="h-48 overflow-hidden">
+                <img
+                  src="/images/Basketball 1.jpg"
+                  alt="New Members Welcome"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="p-6">
+                <div className="text-sm text-blue-600 font-semibold mb-2">Welcome!</div>
+                <h3 className="text-lg font-bold text-navy mb-2">
+                  New Members Welcome
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  We're always welcoming new members to our Geelong Stars family!
+                  Come along to a session and see what we're all about. No experience
+                  needed - just bring yourself and a smile.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 group">
+              <div className="h-48 overflow-hidden">
+                <img
+                  src="/images/Golf 1.jpg"
+                  alt="Our Amazing Volunteers"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="p-6">
+                <div className="text-sm text-pink-600 font-semibold mb-2">Thank You!</div>
+                <h3 className="text-lg font-bold text-navy mb-2">
+                  Our Amazing Volunteers
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  A big shoutout to all our incredible volunteers who make Geelong Stars
+                  possible. Your time and dedication helps our athletes thrive every
+                  single week. You're all superstars!
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 group">
+              <div className="h-48 overflow-hidden">
+                <img
+                  src="/images/Adaptive bike 1.jpg"
+                  alt="Learn to Ride Program Launch"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="p-6">
+                <div className="text-sm text-teal-600 font-semibold mb-2">New Program!</div>
+                <h3 className="text-lg font-bold text-navy mb-2">
+                  Learn to Ride Program Launch
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  Our brand new Learn to Ride program is up and running! Participants of
+                  all ages and abilities are building confidence on two wheels with our
+                  supportive coaches. Bikes and helmets provided.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 group">
+              <div className="h-48 overflow-hidden">
+                <img
+                  src="/images/Run & walk club 1.jpg"
+                  alt="Running & Walking Group Growing"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="p-6">
+                <div className="text-sm text-orange-600 font-semibold mb-2">Community</div>
+                <h3 className="text-lg font-bold text-navy mb-2">
+                  Running & Walking Group Growing
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  Our Sunday morning Running & Walking Group continues to grow! Whether
+                  you prefer a brisk walk or a jog, everyone is welcome. It's a great
+                  way to stay active and meet new friends.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 group">
+              <div className="h-48 overflow-hidden">
+                <img
+                  src="/images/Golf 2.jpg"
+                  alt="Golf Program Highlights"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="p-6">
+                <div className="text-sm text-emerald-600 font-semibold mb-2">Highlights</div>
+                <h3 className="text-lg font-bold text-navy mb-2">
+                  Golf Stars Shine on the Course
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  Our golfers have been putting in the work and it shows! Check out
+                  what our Mini's Golf crew have been up to on the course. Skills are
+                  improving every week.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 group">
+              <div className="h-48 overflow-hidden">
+                <img
+                  src="/images/boxing 1.jpg"
+                  alt="Stars Boxing in Action"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="p-6">
+                <div className="text-sm text-red-600 font-semibold mb-2">Program Update</div>
+                <h3 className="text-lg font-bold text-navy mb-2">
+                  Stars Boxing in Action
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  Our Stars Boxing program is a hit! Participants are building strength,
+                  confidence, and fitness while having a blast. Come along and see what
+                  all the excitement is about.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 group">
+              <div className="h-48 overflow-hidden">
+                <img
+                  src="/images/Football 2.jpg"
+                  alt="Thursday Night Meals"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="p-6">
+                <div className="text-sm text-purple-600 font-semibold mb-2">Social</div>
+                <h3 className="text-lg font-bold text-navy mb-2">
+                  Thursday Night Meals a Hit
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  Our Thursday Night Meals are bringing the community together every week!
+                  Great food, great company, and great vibes. Everyone is welcome to join
+                  us for dinner at the clubrooms.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 group">
+              <div className="h-48 overflow-hidden">
+                <img
+                  src="/images/basketball minis 1.jpg"
+                  alt="Sponsor Spotlight"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="p-6">
+                <div className="text-sm text-amber-600 font-semibold mb-2">Sponsors</div>
+                <h3 className="text-lg font-bold text-navy mb-2">
+                  Thank You to Our Sponsors
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  A huge thank you to all our amazing sponsors who make our programs
+                  possible. Your generous support helps us provide inclusive sport for
+                  everyone in the Geelong community.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Upcoming Events */}
       <section className="py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-12">
-            <div>
-              <div className="inline-flex items-center gap-2 bg-navy/10 rounded-full px-4 py-2 mb-4">
-                <Calendar className="w-4 h-4 text-navy" />
-                <span className="text-navy text-sm font-semibold">Mark Your Calendar!</span>
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-2">
-                Upcoming Events
-              </h2>
-              <p className="text-lg text-gray-600">
-                Don't miss out on the fun - here's what's coming up!
-              </p>
-            </div>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
+              Upcoming Events
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Don't miss out on the fun - here's what's coming up!
+            </p>
           </div>
 
           {eventsLoading ? (
@@ -187,115 +425,11 @@ export function Social() {
         </div>
       </section>
 
-      {/* Photo Gallery */}
-      <section className="py-16 lg:py-24 bg-gray-bg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-white rounded-full px-4 py-2 mb-4 shadow-sm">
-              <Camera className="w-4 h-4 text-pink-500" />
-              <span className="text-navy text-sm font-semibold">Snapshots!</span>
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-              Photo Gallery 📸
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Memories from our games, events, and good times together. Everyone's a star here!
-            </p>
-          </div>
-
-          {imagesLoading ? (
-            <Loading text="Loading gallery..." />
-          ) : (
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {displayGallery.map((image) => (
-                <div
-                  key={image.id}
-                  className="group aspect-square bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer"
-                >
-                  {image.url ? (
-                    <div className="relative w-full h-full">
-                      <img
-                        src={image.url}
-                        alt={image.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-navy/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                        <span className="text-white font-medium text-sm">{image.name}</span>
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="w-full h-full flex flex-col items-center justify-center bg-navy-50">
-                      <ImageIcon className="w-8 h-8 text-navy-200 mb-2" />
-                      <span className="text-sm text-navy-400 text-center px-2">
-                        {image.name}
-                      </span>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* Community News */}
-      <section className="py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-navy/10 rounded-full px-4 py-2 mb-4">
-              <Sparkles className="w-4 h-4 text-yellow-500" />
-              <span className="text-navy text-sm font-semibold">What's New?</span>
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-              Community News
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              The latest updates and news from Geelong Stars!
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            <Card hover className="border-l-4 border-l-green-500">
-              <div className="text-sm text-green-600 font-semibold mb-2">Exciting News!</div>
-              <h3 className="text-lg font-semibold text-navy mb-2">
-                New Season Registration Open! 🎉
-              </h3>
-              <p className="text-gray-600 text-sm">
-                Registration for the new season is now open! Head to our programs
-                page to learn more about our offerings and join the fun.
-              </p>
-            </Card>
-
-            <Card hover className="border-l-4 border-l-blue-500">
-              <div className="text-sm text-blue-600 font-semibold mb-2">Welcome!</div>
-              <h3 className="text-lg font-semibold text-navy mb-2">
-                New Members Welcome 💪
-              </h3>
-              <p className="text-gray-600 text-sm">
-                We're always welcoming new members to our Geelong Stars family!
-                Come along to a session and see what we're all about.
-              </p>
-            </Card>
-
-            <Card hover className="border-l-4 border-l-pink-500">
-              <div className="text-sm text-pink-600 font-semibold mb-2">Thank You!</div>
-              <h3 className="text-lg font-semibold text-navy mb-2">
-                Our Amazing Volunteers ❤️
-              </h3>
-              <p className="text-gray-600 text-sm">
-                A big shoutout to all our incredible volunteers who make Geelong Stars
-                possible. You're all superstars!
-              </p>
-            </Card>
-          </div>
-        </div>
-      </section>
-
       {/* Social Media */}
       <section className="py-16 lg:py-24 bg-gradient-to-r from-navy to-navy-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Follow Us! 📱
+            Follow Us!
           </h2>
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
             Stay connected with us on social media for the latest updates,

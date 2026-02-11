@@ -1,4 +1,4 @@
-import { MapPin, Mail, Clock, Heart, MessageCircle, ArrowRight, Sparkles } from 'lucide-react';
+import { MapPin, Mail, Heart, ArrowRight, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Card, Button } from '../components/common';
 import { ContactForm } from '../components/contact';
@@ -23,12 +23,8 @@ export function Contact() {
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
-              <MessageCircle className="w-4 h-4 text-yellow-400" />
-              <span className="text-white/90 text-sm font-medium">We'd Love to Hear From You!</span>
-            </div>
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Get In Touch 👋
+              Get In Touch
             </h1>
             <p className="text-xl text-white/90">
               Have a question about our programs? Want to come for a visit? Or just want
@@ -100,36 +96,6 @@ export function Contact() {
 
               <Card hover>
                 <h3 className="text-lg font-semibold text-navy mb-4 flex items-center gap-2">
-                  <Clock className="w-5 h-5 text-navy" />
-                  Program Times
-                </h3>
-                <div className="space-y-2 text-sm">
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Junior Basketball</span>
-                    <span className="font-medium text-navy">Saturdays</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">All Abilities Sports</span>
-                    <span className="font-medium text-navy">Thursdays</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Senior Basketball</span>
-                    <span className="font-medium text-navy">Wed & Fri</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Social Sports</span>
-                    <span className="font-medium text-navy">Sundays</span>
-                  </div>
-                  <div className="pt-2 mt-2 border-t border-gray-100">
-                    <Link to="/programs" className="text-navy font-medium hover:text-navy-600 flex items-center gap-1">
-                      View full schedule <ArrowRight size={14} />
-                    </Link>
-                  </div>
-                </div>
-              </Card>
-
-              <Card hover>
-                <h3 className="text-lg font-semibold text-navy mb-4 flex items-center gap-2">
                   <Heart className="w-5 h-5 text-pink-500" fill="currentColor" />
                   Follow Us
                 </h3>
@@ -167,17 +133,13 @@ export function Contact() {
       </section>
 
       {/* Map Section */}
-      <section className="py-16 lg:py-24 bg-gray-bg">
+      <section className="py-16 lg:py-24 bg-gradient-to-r from-navy to-navy-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-white rounded-full px-4 py-2 mb-4 shadow-sm">
-              <MapPin className="w-4 h-4 text-blue-500" />
-              <span className="text-navy text-sm font-semibold">Come Visit Us!</span>
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Find Us
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-white/90 max-w-2xl mx-auto">
               We're located at 203 St Albans Road, Thomson. Pop in during one of our
               program times or get in touch to arrange a visit!
             </p>

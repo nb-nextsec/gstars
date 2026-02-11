@@ -55,10 +55,10 @@ function EventCard({ event }: { event: Event }) {
 const sampleEvents: Event[] = [
   {
     id: 1,
-    title: 'Come & Try Day! 🌟',
-    description: 'New to Geelong Stars? Come along and try our programs for free!',
-    date: '2024-03-15',
-    time: '10:00 AM - 2:00 PM',
+    title: 'Thursday Night Meals 🍽️',
+    description: 'Join us for a delicious Thursday night meal with the Geelong Stars community!',
+    date: '2025-02-12',
+    time: '6:00 PM',
     location: 'Geelong Stars Clubrooms',
     image_url: null,
     is_active: true,
@@ -99,12 +99,8 @@ export function UpcomingEvents() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-10">
           <div>
-            <div className="inline-flex items-center gap-2 bg-navy/10 rounded-full px-4 py-2 mb-4">
-              <PartyPopper className="w-4 h-4 text-navy" />
-              <span className="text-navy text-sm font-semibold">Join The Fun!</span>
-            </div>
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-2">
-              What's Happening 📅
+              What's Happening
             </h2>
             <p className="text-gray-600">
               Exciting events and activities for our Stars community. Don't miss out!

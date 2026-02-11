@@ -47,7 +47,7 @@ export function WelcomeSection() {
           {/* Content Side */}
           <div>
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
-              Where Everyone Gets to Play! 🌟
+              Where Everyone Gets to Play!
             </h2>
 
             <p className="text-lg text-gray-600 mb-6 leading-relaxed">

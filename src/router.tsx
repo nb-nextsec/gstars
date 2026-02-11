@@ -3,7 +3,7 @@ import { MainLayout } from './components/layout';
 import { AdminLayout } from './components/admin';
 
 // Public Pages
-import { Home, OurClub, Programs, Social, Sponsors, Contact } from './pages';
+import { Home, OurClub, Programs, Social, PhotoGallery, Sponsors, Contact, TermsOfService, CookiePolicy, PrivacyPolicy } from './pages';
 
 // Admin Pages
 import {
@@ -24,8 +24,12 @@ export const router = createBrowserRouter([
       { path: 'our-club', element: <OurClub /> },
       { path: 'programs', element: <Programs /> },
       { path: 'social', element: <Social /> },
+      { path: 'photo-gallery', element: <PhotoGallery /> },
       { path: 'sponsors', element: <Sponsors /> },
       { path: 'contact', element: <Contact /> },
+      { path: 'terms-of-service', element: <TermsOfService /> },
+      { path: 'cookie-policy', element: <CookiePolicy /> },
+      { path: 'privacy-policy', element: <PrivacyPolicy /> },
     ],
   },
   {
