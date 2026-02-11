@@ -236,7 +236,7 @@ export function OurClub() {
               <p className="text-gray-600">Members</p>
             </div>
             <div className="bg-white rounded-2xl p-8 shadow-sm">
-              <p className="text-4xl font-bold text-navy mb-2">8+</p>
+              <p className="text-4xl font-bold text-navy mb-2">12+</p>
               <p className="text-gray-600">Programs</p>
             </div>
             <div className="bg-white rounded-2xl p-8 shadow-sm">

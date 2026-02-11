@@ -1,139 +1,121 @@
-import { Link } from 'react-router-dom';
-import { Calendar, MapPin, Clock, ArrowRight, PartyPopper } from 'lucide-react';
-import { Card, Button, Loading } from '../common';
-import { useUpcomingEvents } from '../../hooks';
-import type { Event } from '../../types';
+const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-function formatDate(dateStr: string): string {
-  const date = new Date(dateStr);
-  return date.toLocaleDateString('en-AU', {
-    weekday: 'short',
-    day: 'numeric',
-    month: 'short',
-  });
+interface CalendarEvent {
+  day: number;
+  label: string;
+  color: string;
+  time?: string;
+  location?: string;
 }
 
-function EventCard({ event }: { event: Event }) {
-  return (
-    <Card hover padding="none" className="overflow-hidden group">
-      <div className="flex">
-        <div className="w-20 bg-gradient-to-b from-navy to-navy-600 flex flex-col items-center justify-center py-4 text-white">
-          <span className="text-2xl font-bold">
-            {new Date(event.date).getDate()}
-          </span>
-          <span className="text-sm uppercase">
-            {new Date(event.date).toLocaleDateString('en-AU', { month: 'short' })}
-          </span>
-        </div>
-        <div className="flex-1 p-4">
-          <h3 className="font-semibold text-navy mb-2 group-hover:text-accent transition-colors">{event.title}</h3>
-          <div className="space-y-1 text-sm text-gray-600">
-            <div className="flex items-center gap-2">
-              <Calendar size={14} className="text-accent" />
-              <span>{formatDate(event.date)}</span>
-            </div>
-            {event.time && (
-              <div className="flex items-center gap-2">
-                <Clock size={14} className="text-accent" />
-                <span>{event.time}</span>
-              </div>
-            )}
-            {event.location && (
-              <div className="flex items-center gap-2">
-                <MapPin size={14} className="text-accent" />
-                <span>{event.location}</span>
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-    </Card>
-  );
-}
-
-// Sample events for when API is not available
-const sampleEvents: Event[] = [
-  {
-    id: 1,
-    title: 'Thursday Night Meals 🍽️',
-    description: 'Join us for a delicious Thursday night meal with the Geelong Stars community!',
-    date: '2025-02-12',
-    time: '6:00 PM',
-    location: 'Geelong Stars Clubrooms',
-    image_url: null,
-    is_active: true,
-    created_at: new Date().toISOString(),
-  },
-  {
-    id: 2,
-    title: 'Family Fun Night 🎉',
-    description: 'Games, prizes, and fun for the whole family!',
-    date: '2024-03-22',
-    time: '5:30 PM - 8:00 PM',
-    location: 'Main Hall',
-    image_url: null,
-    is_active: true,
-    created_at: new Date().toISOString(),
-  },
-  {
-    id: 3,
-    title: 'All-Abilities Sports Day 💪',
-    description: 'Celebrate inclusive sports with activities for everyone!',
-    date: '2024-03-29',
-    time: '9:00 AM - 3:00 PM',
-    location: 'Geelong Stars Grounds',
-    image_url: null,
-    is_active: true,
-    created_at: new Date().toISOString(),
-  },
+// February 2026 — Victorian / Australian public holidays & special events
+const events: CalendarEvent[] = [
+  { day: 1, label: 'Running/Walking Group', color: 'bg-pink-500', time: '9:00 AM - 10:00 AM', location: 'Stars HQ, St Albans Reserve' },
+  { day: 3, label: 'Youth Football', color: 'bg-blue-500', time: '5:00 PM - 6:30 PM', location: "Stars HQ, St Alban's Reserve" },
+  { day: 4, label: 'Minis Golf', color: 'bg-emerald-500', time: '5:15 PM - 6:00 PM', location: 'Curlewis Golf Club' },
+  { day: 5, label: 'Stars Meals', color: 'bg-yellow-500', time: '5:00 PM doors open, 6:00 PM meals served', location: 'Stars HQ, St Albans Reserve' },
+  { day: 8, label: 'Running/Walking Group', color: 'bg-pink-500', time: '9:00 AM - 10:00 AM', location: 'Stars HQ, St Albans Reserve' },
+  { day: 9, label: 'Minis Basketball', color: 'bg-orange-500', time: '5:15 PM - 6:00 PM', location: 'Geelong Stars HQ, St Albans Reserve' },
+  { day: 10, label: 'Youth Football', color: 'bg-blue-500', time: '5:00 PM - 6:30 PM', location: "Stars HQ, St Alban's Reserve" },
+  { day: 11, label: 'Minis Golf', color: 'bg-emerald-500', time: '5:15 PM - 6:00 PM', location: 'Curlewis Golf Club' },
+  { day: 12, label: 'Stars Meals', color: 'bg-yellow-500', time: '5:00 PM doors open, 6:00 PM meals served', location: 'Stars HQ, St Albans Reserve' },
+  { day: 15, label: 'Running/Walking Group', color: 'bg-pink-500', time: '9:00 AM - 10:00 AM', location: 'Stars HQ, St Albans Reserve' },
+  { day: 16, label: 'Minis Basketball', color: 'bg-orange-500', time: '5:15 PM - 6:00 PM', location: 'Geelong Stars HQ, St Albans Reserve' },
+  { day: 17, label: 'Youth Football', color: 'bg-blue-500', time: '5:00 PM - 6:30 PM', location: "Stars HQ, St Alban's Reserve" },
+  { day: 18, label: 'Minis Golf', color: 'bg-emerald-500', time: '5:15 PM - 6:00 PM', location: 'Curlewis Golf Club' },
+  { day: 19, label: 'Stars Meals', color: 'bg-yellow-500', time: '5:00 PM doors open, 6:00 PM meals served', location: 'Stars HQ, St Albans Reserve' },
+  { day: 22, label: 'Running/Walking Group', color: 'bg-pink-500', time: '9:00 AM - 10:00 AM', location: 'Stars HQ, St Albans Reserve' },
+  { day: 23, label: 'Minis Basketball', color: 'bg-orange-500', time: '5:15 PM - 6:00 PM', location: 'Geelong Stars HQ, St Albans Reserve' },
+  { day: 26, label: 'Stars Meals', color: 'bg-yellow-500', time: '5:00 PM doors open, 6:00 PM meals served', location: 'Stars HQ, St Albans Reserve' },
 ];
 
-export function UpcomingEvents() {
-  const { data: events, isLoading, error } = useUpcomingEvents(3);
+// February 2026 starts on a Sunday, 28 days
+const FIRST_DAY = 0; // Sunday = 0
+const TOTAL_DAYS = 28;
 
-  // Use sample events if no data or error
-  const displayEvents = events && events.length > 0 ? events : sampleEvents;
+export function UpcomingEvents() {
+  const blanks = Array.from({ length: FIRST_DAY });
+  const days = Array.from({ length: TOTAL_DAYS }, (_, i) => i + 1);
+
+  const getEvents = (day: number) => events.filter((e) => e.day === day);
 
   return (
     <section className="py-16 lg:py-24 bg-warm-gray">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-10">
-          <div>
-            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-2">
-              What's Happening
-            </h2>
-            <p className="text-gray-600">
-              Exciting events and activities for our Stars community. Don't miss out!
-            </p>
-          </div>
-          <Link to="/social" className="mt-4 md:mt-0">
-            <Button variant="outline" rightIcon={<ArrowRight size={18} />}>
-              See All Events
-            </Button>
-          </Link>
+        <div className="mb-10 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-navy mb-2">
+            What's Happening
+          </h2>
+          <p className="text-gray-600">
+            February 2026 — Public holidays & special events (VIC)
+          </p>
         </div>
 
-        {isLoading ? (
-          <Loading text="Loading events..." />
-        ) : error ? (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {sampleEvents.map((event) => (
-              <EventCard key={event.id} event={event} />
-            ))}
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+          {/* Header */}
+          <div className="bg-gradient-to-r from-navy to-navy-600 px-4 py-4">
+            <h3 className="text-xl font-bold text-white text-center">February 2026</h3>
           </div>
-        ) : (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {displayEvents.map((event) => (
-              <EventCard key={event.id} event={event} />
-            ))}
-          </div>
-        )}
 
-        {displayEvents.length === 0 && (
-          <p className="text-center text-gray-500 py-8">
-            No upcoming events at the moment. Check back soon!
-          </p>
-        )}
+          {/* Day names */}
+          <div className="grid grid-cols-7 border-b border-gray-100">
+            {DAYS.map((d) => (
+              <div key={d} className="py-3 text-center text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                {d}
+              </div>
+            ))}
+          </div>
+
+          {/* Calendar grid */}
+          <div className="grid grid-cols-7">
+            {blanks.map((_, i) => (
+              <div key={`blank-${i}`} className="min-h-[80px] md:min-h-[100px] border-b border-r border-gray-50" />
+            ))}
+            {days.map((day) => {
+              const dayEvents = getEvents(day);
+              const isWeekend = (FIRST_DAY + day - 1) % 7 === 0 || (FIRST_DAY + day - 1) % 7 === 6;
+              return (
+                <div
+                  key={day}
+                  className={`min-h-[80px] md:min-h-[100px] border-b border-r border-gray-50 p-1.5 md:p-2 ${isWeekend ? 'bg-gray-50/50' : ''}`}
+                >
+                  <span className={`text-sm font-medium ${isWeekend ? 'text-gray-400' : 'text-navy'}`}>
+                    {day}
+                  </span>
+                  {dayEvents.map((event) => (
+                    <div key={event.label} className={`mt-1 ${event.color} text-white text-[10px] md:text-xs font-medium rounded px-1.5 py-0.5 leading-tight`}>
+                      {event.label}
+                    </div>
+                  ))}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Legend */}
+        <div className="mt-6 flex flex-wrap gap-4 justify-center">
+          <div className="flex items-center gap-2 text-sm text-gray-600">
+            <span className="w-3 h-3 rounded-full bg-blue-500" />
+            <span>Feb 3, 10, 17 — Youth Football · 5:00 PM - 6:30 PM · Stars HQ, St Alban's Reserve</span>
+          </div>
+          <div className="flex items-center gap-2 text-sm text-gray-600">
+            <span className="w-3 h-3 rounded-full bg-emerald-500" />
+            <span>Feb 4, 11, 18 — Minis Golf · 5:15 PM - 6:00 PM · Curlewis Golf Club</span>
+          </div>
+          <div className="flex items-center gap-2 text-sm text-gray-600">
+            <span className="w-3 h-3 rounded-full bg-orange-500" />
+            <span>Feb 9, 16, 23 — Minis Basketball · 5:15 PM - 6:00 PM · Geelong Stars HQ, St Albans Reserve</span>
+          </div>
+          <div className="flex items-center gap-2 text-sm text-gray-600">
+            <span className="w-3 h-3 rounded-full bg-yellow-500" />
+            <span>Every Thursday — Stars Meals · 5:00 PM doors open, 6:00 PM meals served · Stars HQ, St Albans Reserve</span>
+          </div>
+          <div className="flex items-center gap-2 text-sm text-gray-600">
+            <span className="w-3 h-3 rounded-full bg-pink-500" />
+            <span>Every Sunday — Running/Walking Group · 9:00 AM - 10:00 AM · Stars HQ, St Albans Reserve</span>
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Star, Heart, Users } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Button } from '../common';
 
-const HERO_IMAGE = 'https://static.wixstatic.com/media/c23ea9_1071a90c20b044f4bb98e30faed73a2c~mv2.jpg/v1/fill/w_1920,h_780,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/c23ea9_1071a90c20b044f4bb98e30faed73a2c~mv2.jpg';
+const HERO_IMAGE = '/images/Cadel Evans Family ride 1.jpg';
 
 interface HeroSectionProps {
   title?: string;
@@ -43,22 +43,6 @@ export function HeroSection({
               <span className="text-yellow-400 font-semibold"> have fun</span>, and
               <span className="text-yellow-400 font-semibold"> build community</span> through sports!
             </p>
-
-            {/* Stats */}
-            <div className="flex flex-wrap gap-5 mb-8">
-              <div className="flex items-center gap-2">
-                <Users className="w-4 h-4 text-yellow-400" />
-                <span className="text-white text-sm font-semibold">All Abilities</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Star className="w-4 h-4 text-yellow-400" fill="currentColor" />
-                <span className="text-white text-sm font-semibold">All Ages Welcome</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Heart className="w-4 h-4 text-red-400" fill="currentColor" />
-                <span className="text-white text-sm font-semibold">Inclusive & Fun</span>
-              </div>
-            </div>
 
             <div className="flex flex-wrap gap-4">
               <Link to="/programs">

@@ -1,64 +1,11 @@
-import { Calendar, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { Card, Loading, Button } from '../components/common';
-import { EventCard } from '../components/events';
-import { useEvents } from '../hooks';
-import type { Event } from '../types';
+import { Button } from '../components/common';
+import { UpcomingEvents } from '../components/home/UpcomingEvents';
 
 const HERO_IMAGE = 'https://static.wixstatic.com/media/c23ea9_1071a90c20b044f4bb98e30faed73a2c~mv2.jpg/v1/fill/w_1200,h_600,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/c23ea9_1071a90c20b044f4bb98e30faed73a2c~mv2.jpg';
 
-// Sample events for when API is not available
-const sampleEvents: Event[] = [
-  {
-    id: 1,
-    title: 'Family Fun Day! 🎉',
-    description: 'Join us for a day of fun, games, BBQ, and activities for the whole family! Everyone is welcome - bring your friends and family for a great day out.',
-    date: '2024-03-15',
-    time: '10:00 AM - 3:00 PM',
-    location: 'Geelong Stars Clubrooms',
-    image_url: null,
-    is_active: true,
-    created_at: new Date().toISOString(),
-  },
-  {
-    id: 2,
-    title: 'Come & Try Day',
-    description: 'New to Geelong Stars? Come along and try any of our programs for free! Meet our coaches and fellow players. No experience needed!',
-    date: '2024-03-20',
-    time: '9:00 AM - 12:00 PM',
-    location: 'Main Court',
-    image_url: null,
-    is_active: true,
-    created_at: new Date().toISOString(),
-  },
-  {
-    id: 3,
-    title: 'End of Season Celebration',
-    description: 'Let\'s celebrate an amazing season together! Awards, food, music, and lots of fun. All members and families welcome.',
-    date: '2024-04-25',
-    time: '5:00 PM - 8:00 PM',
-    location: 'Function Room',
-    image_url: null,
-    is_active: true,
-    created_at: new Date().toISOString(),
-  },
-  {
-    id: 4,
-    title: 'Community BBQ',
-    description: 'Monthly community BBQ - a great chance to catch up with friends, meet new people, and enjoy some delicious food together!',
-    date: '2024-04-05',
-    time: '12:00 PM - 2:00 PM',
-    location: 'Outdoor Area',
-    image_url: null,
-    is_active: true,
-    created_at: new Date().toISOString(),
-  },
-];
-
 export function Social() {
-  const { data: events, isLoading: eventsLoading } = useEvents(true);
-
-  const displayEvents = events && events.length > 0 ? events : sampleEvents;
 
   return (
     <>
@@ -150,6 +97,27 @@ export function Social() {
               </div>
             </a>
 
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 group">
+              <div className="h-48 overflow-hidden">
+                <img
+                  src="/images/Cadel Family Ride 2.jpg"
+                  alt="Geelong Stars Represented at the Cadel Evans Family Ride"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="p-6">
+                <div className="text-sm text-cyan-600 font-semibold mb-2">Community</div>
+                <h3 className="text-lg font-bold text-navy mb-2">
+                  Geelong Stars Represented at the Cadel Evans Family Ride
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  Geelong Stars proudly participated in the Cadel Evans Great Ocean Road Race
+                  Family Ride, showcasing our commitment to inclusive cycling and community
+                  engagement in one of Geelong's biggest sporting events!
+                </p>
+              </div>
+            </div>
+
             <a
               href="https://timesnewsgroup.com.au/geelongtimes/news/new-all-abilities-sports-club-to-launch-in-geelong/"
               target="_blank"
@@ -175,27 +143,6 @@ export function Social() {
                 </p>
               </div>
             </a>
-
-            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 group">
-              <div className="h-48 overflow-hidden">
-                <img
-                  src="/images/Cadel Family Ride 2.jpg"
-                  alt="Geelong Stars Represented at the Cadel Evans Family Ride"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <div className="p-6">
-                <div className="text-sm text-cyan-600 font-semibold mb-2">Community</div>
-                <h3 className="text-lg font-bold text-navy mb-2">
-                  Geelong Stars Represented at the Cadel Evans Family Ride
-                </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  Geelong Stars proudly participated in the Cadel Evans Great Ocean Road Race
-                  Family Ride, showcasing our commitment to inclusive cycling and community
-                  engagement in one of Geelong's biggest sporting events!
-                </p>
-              </div>
-            </div>
 
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 group">
               <div className="h-48 overflow-hidden">
@@ -389,41 +336,8 @@ export function Social() {
         </div>
       </section>
 
-      {/* Upcoming Events */}
-      <section className="py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-              Upcoming Events
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Don't miss out on the fun - here's what's coming up!
-            </p>
-          </div>
-
-          {eventsLoading ? (
-            <Loading text="Loading events..." />
-          ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {displayEvents.slice(0, 4).map((event) => (
-                <EventCard key={event.id} event={event} />
-              ))}
-            </div>
-          )}
-
-          {displayEvents.length === 0 && !eventsLoading && (
-            <div className="text-center py-12 bg-gray-bg rounded-xl">
-              <Calendar className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-              <h3 className="text-lg font-semibold text-gray-700 mb-2">
-                No Upcoming Events
-              </h3>
-              <p className="text-gray-500">
-                Check back soon for new events!
-              </p>
-            </div>
-          )}
-        </div>
-      </section>
+      {/* What's Happening — shared with Home page */}
+      <UpcomingEvents />
 
       {/* Social Media */}
       <section className="py-16 lg:py-24 bg-gradient-to-r from-navy to-navy-600">

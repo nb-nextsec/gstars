@@ -39,7 +39,7 @@ export function SponsorsCarousel() {
                   href={sponsor.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block h-[100px] px-5 bg-white rounded-xl shadow-sm flex items-center justify-center border border-gray-100 hover:border-navy/20 hover:shadow-md transition-all duration-300"
+                  className="block h-[100px] px-5 bg-white rounded-none shadow-sm flex items-center justify-center border border-gray-100 hover:border-navy/20 hover:shadow-md transition-all duration-300"
                 >
                   <img
                     src={sponsor.logo}
@@ -48,7 +48,7 @@ export function SponsorsCarousel() {
                   />
                 </a>
               ) : (
-                <div className="h-[100px] px-5 bg-white rounded-xl shadow-sm flex items-center justify-center border border-gray-100 hover:border-navy/20 hover:shadow-md transition-all duration-300">
+                <div className="h-[100px] px-5 bg-white rounded-none shadow-sm flex items-center justify-center border border-gray-100 hover:border-navy/20 hover:shadow-md transition-all duration-300">
                   <img
                     src={sponsor.logo}
                     alt={sponsor.name}

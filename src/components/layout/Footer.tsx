@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Facebook, Instagram, Mail, MapPin, Heart } from 'lucide-react';
+import { Facebook, Instagram, Mail, MapPin, Phone, Heart } from 'lucide-react';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -7,9 +7,9 @@ export function Footer() {
   return (
     <footer className="bg-navy-700 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Brand */}
-          <div className="space-y-4">
+        {/* Top: Brand + tagline with socials */}
+        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6 mb-10">
+          <div className="space-y-3">
             <Link to="/" className="flex items-center gap-2">
               <img
                 src="/images/logo.avif"
@@ -18,7 +18,7 @@ export function Footer() {
               />
               <span className="text-xl font-bold">Geelong Stars</span>
             </Link>
-            <p className="text-white/70 text-sm">
+            <p className="text-white/70 text-sm max-w-sm leading-relaxed">
               Where everyone plays, everyone belongs! An all-abilities sports club
               building community through fun, friendship, and sport.
             </p>
@@ -44,88 +44,77 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/our-club" className="text-white/70 hover:text-white transition-colors text-sm">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link to="/programs" className="text-white/70 hover:text-white transition-colors text-sm">
-                  Our Programs
-                </Link>
-              </li>
-              <li>
-                <Link to="/social" className="text-white/70 hover:text-white transition-colors text-sm">
-                  Social & Events
-                </Link>
-              </li>
-              <li>
-                <Link to="/sponsors" className="text-white/70 hover:text-white transition-colors text-sm">
-                  Our Sponsors
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="text-white/70 hover:text-white transition-colors text-sm">
-                  Contact Us
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Programs */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Programs</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/programs#junior-basketball" className="text-white/70 hover:text-white transition-colors text-sm">
-                  Junior Basketball
-                </Link>
-              </li>
-              <li>
-                <Link to="/programs#all-abilities" className="text-white/70 hover:text-white transition-colors text-sm">
-                  All Abilities Sports
-                </Link>
-              </li>
-              <li>
-                <Link to="/programs#senior-basketball" className="text-white/70 hover:text-white transition-colors text-sm">
-                  Senior Basketball
-                </Link>
-              </li>
-              <li>
-                <Link to="/programs#social-sports" className="text-white/70 hover:text-white transition-colors text-sm">
-                  Social Sports
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Get In Touch</h3>
-            <ul className="space-y-3">
-              <li className="flex items-start gap-3 text-sm">
-                <MapPin size={18} className="text-white/70 mt-0.5 flex-shrink-0" />
-                <span className="text-white/70">
-                  203 St Albans Road<br />
-                  Thomson VIC 3219
-                </span>
-              </li>
-              <li className="flex items-center gap-3 text-sm">
-                <Mail size={18} className="text-white/70 flex-shrink-0" />
-                <a href="mailto:info@geelongstars.com.au" className="text-white/70 hover:text-white transition-colors">
-                  info@geelongstars.com.au
-                </a>
-              </li>
-            </ul>
+          {/* Quick Links & Contact side by side */}
+          <div className="grid grid-cols-2 gap-12">
+            <div>
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-white/50 mb-3">Quick Links</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link to="/" className="text-white/70 hover:text-white transition-colors text-sm">
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/our-club" className="text-white/70 hover:text-white transition-colors text-sm">
+                    Our Club
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/programs" className="text-white/70 hover:text-white transition-colors text-sm">
+                    Our Programs
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/social" className="text-white/70 hover:text-white transition-colors text-sm">
+                    News and Events
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/photo-gallery" className="text-white/70 hover:text-white transition-colors text-sm">
+                    Photo Gallery
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/sponsors" className="text-white/70 hover:text-white transition-colors text-sm">
+                    Sponsors
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/contact" className="text-white/70 hover:text-white transition-colors text-sm">
+                    Contact
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-white/50 mb-3">Get In Touch</h3>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3 text-sm">
+                  <MapPin size={18} className="text-white/70 mt-0.5 flex-shrink-0" />
+                  <span className="text-white/70">
+                    203 St Albans Road<br />
+                    Thomson VIC 3219
+                  </span>
+                </li>
+                <li className="flex items-center gap-3 text-sm">
+                  <Phone size={18} className="text-white/70 flex-shrink-0" />
+                  <a href="tel:0403017977" className="text-white/70 hover:text-white transition-colors">
+                    0403 017 977
+                  </a>
+                </li>
+                <li className="flex items-center gap-3 text-sm">
+                  <Mail size={18} className="text-white/70 flex-shrink-0" />
+                  <a href="mailto:info@geelongstars.com.au" className="text-white/70 hover:text-white transition-colors">
+                    info@geelongstars.com.au
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/10 mt-8 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-white/50 text-sm flex items-center gap-1">
             &copy; {currentYear} Geelong Stars. Made with <Heart size={14} className="text-red-400" fill="currentColor" /> in Geelong
           </p>

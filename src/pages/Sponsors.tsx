@@ -187,7 +187,8 @@ export function Sponsors() {
               <p className="text-white/90 mb-8">
                 As a sponsor, you'll receive brand exposure, community recognition,
                 and the satisfaction of knowing you're making a real difference in
-                the lives of local athletes.
+                the lives of many local children and teenagers, by helping to make
+                sport and recreation activities accessible for them.
               </p>
               <Link to="/contact">
                 <Button className="bg-yellow-400 text-navy hover:bg-yellow-300 font-bold" rightIcon={<ArrowRight size={18} />}>
@@ -223,7 +224,7 @@ export function Sponsors() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    <span className="text-white/90">Signage opportunities at training and game days</span>
+                    <span className="text-white/90">Signage opportunities at Stars HQ</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">

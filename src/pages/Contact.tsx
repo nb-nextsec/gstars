@@ -1,4 +1,4 @@
-import { MapPin, Mail, Heart, ArrowRight, Sparkles } from 'lucide-react';
+import { MapPin, Mail, Phone, Heart, ArrowRight, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Card, Button } from '../components/common';
 import { ContactForm } from '../components/contact';
@@ -74,6 +74,21 @@ export function Contact() {
                         203 St Albans Road<br />
                         Thomson VIC 3219
                       </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Phone className="w-5 h-5 text-purple-600" />
+                    </div>
+                    <div>
+                      <p className="font-medium text-navy">Call Us</p>
+                      <a
+                        href="tel:0403017977"
+                        className="text-gray-600 text-sm hover:text-navy transition-colors"
+                      >
+                        0403 017 977
+                      </a>
                     </div>
                   </div>
 
