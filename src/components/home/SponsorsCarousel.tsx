@@ -5,7 +5,7 @@ const sponsors = [
   { name: 'Breakwater Hotel', logo: '/images/breakwater.avif', url: 'https://www.facebook.com/breakwaterhotelgeelong/' },
   { name: 'Meys Meats', logo: '/images/Meys-Logo-web_png.avif', url: 'https://meysmeats.com.au/' },
   { name: 'Bunnings', logo: '/images/Bunnings-logo_edited.avif', url: 'https://www.bunnings.com.au/' },
-  { name: 'Bellarine Village', logo: '/images/ballarine-village-footer-logo_edited_edi.avif', url: 'https://bellarinevillage.com.au/' },
+  { name: 'Bellarine Village', logo: '/images/Ballarine Village.jpg', url: 'https://bellarinevillage.com.au/' },
   { name: 'Fruit Biz', logo: '/images/fruit biz.avif', url: null },
   { name: 'Geelong Plaster Cartage', logo: '/images/Geelong Plaster Cartage_edited_edited_ed.avif', url: null },
   { name: 'Lektrix', logo: '/images/Lektrix_edited_edited.avif', url: 'https://lektrix.com.au/' },

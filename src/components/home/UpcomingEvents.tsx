@@ -47,7 +47,7 @@ export function UpcomingEvents() {
             What's Happening
           </h2>
           <p className="text-gray-600">
-            February 2026 — Public holidays & special events (VIC)
+            February 2026 — Stars Programs and Special Events
           </p>
         </div>
 
@@ -69,7 +69,7 @@ export function UpcomingEvents() {
           {/* Calendar grid */}
           <div className="grid grid-cols-7">
             {blanks.map((_, i) => (
-              <div key={`blank-${i}`} className="min-h-[80px] md:min-h-[100px] border-b border-r border-gray-50" />
+              <div key={`blank-${i}`} className="min-h-[90px] md:min-h-[130px] border-b border-r border-gray-50" />
             ))}
             {days.map((day) => {
               const dayEvents = getEvents(day);
@@ -77,14 +77,20 @@ export function UpcomingEvents() {
               return (
                 <div
                   key={day}
-                  className={`min-h-[80px] md:min-h-[100px] border-b border-r border-gray-50 p-1.5 md:p-2 ${isWeekend ? 'bg-gray-50/50' : ''}`}
+                  className={`min-h-[90px] md:min-h-[130px] border-b border-r border-gray-50 p-1.5 md:p-2 ${isWeekend ? 'bg-gray-50/50' : ''}`}
                 >
                   <span className={`text-sm font-medium ${isWeekend ? 'text-gray-400' : 'text-navy'}`}>
                     {day}
                   </span>
                   {dayEvents.map((event) => (
                     <div key={event.label} className={`mt-1 ${event.color} text-white text-[10px] md:text-xs font-medium rounded px-1.5 py-0.5 leading-tight`}>
-                      {event.label}
+                      <span>{event.label}</span>
+                      {event.time && (
+                        <div className="font-normal opacity-90">{event.time}</div>
+                      )}
+                      {event.location && (
+                        <div className="font-normal opacity-80 hidden md:block">{event.location}</div>
+                      )}
                     </div>
                   ))}
                 </div>
@@ -93,29 +99,6 @@ export function UpcomingEvents() {
           </div>
         </div>
 
-        {/* Legend */}
-        <div className="mt-6 flex flex-wrap gap-4 justify-center">
-          <div className="flex items-center gap-2 text-sm text-gray-600">
-            <span className="w-3 h-3 rounded-full bg-blue-500" />
-            <span>Feb 3, 10, 17 — Youth Football · 5:00 PM - 6:30 PM · Stars HQ, St Alban's Reserve</span>
-          </div>
-          <div className="flex items-center gap-2 text-sm text-gray-600">
-            <span className="w-3 h-3 rounded-full bg-emerald-500" />
-            <span>Feb 4, 11, 18 — Minis Golf · 5:15 PM - 6:00 PM · Curlewis Golf Club</span>
-          </div>
-          <div className="flex items-center gap-2 text-sm text-gray-600">
-            <span className="w-3 h-3 rounded-full bg-orange-500" />
-            <span>Feb 9, 16, 23 — Minis Basketball · 5:15 PM - 6:00 PM · Geelong Stars HQ, St Albans Reserve</span>
-          </div>
-          <div className="flex items-center gap-2 text-sm text-gray-600">
-            <span className="w-3 h-3 rounded-full bg-yellow-500" />
-            <span>Every Thursday — Stars Meals · 5:00 PM doors open, 6:00 PM meals served · Stars HQ, St Albans Reserve</span>
-          </div>
-          <div className="flex items-center gap-2 text-sm text-gray-600">
-            <span className="w-3 h-3 rounded-full bg-pink-500" />
-            <span>Every Sunday — Running/Walking Group · 9:00 AM - 10:00 AM · Stars HQ, St Albans Reserve</span>
-          </div>
-        </div>
       </div>
     </section>
   );

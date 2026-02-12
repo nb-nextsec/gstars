@@ -24,8 +24,8 @@ const programs = [
   {
     id: 'minis-golf',
     title: "Mini's Golf ⛳",
-    ageGroup: 'Ages 13+',
-    description: 'Take your game to the next level! Develop advanced skills, compete in local leagues, and be part of a passionate golf community.',
+    ageGroup: 'Ages 5-12',
+    description: 'A fun introduction to golf for young children of all abilities. Learn the basics in a supportive, low-pressure environment where every swing is celebrated!',
     image: '/images/Golf 1.jpg',
     color: 'from-yellow-400 to-amber-500',
   },
@@ -45,46 +45,40 @@ export function FeaturedPrograms() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Our Programs
+            Just a sample of our programs...
           </h2>
           <p className="text-lg text-white/90 max-w-2xl mx-auto">
-            Geelong All-Abilities Sports Club offers programs to meet the needs of all members,
+            Geelong All-Abilities Sports Club offers a range of programs to meet the needs of all members,
             no matter your age or ability. Get active, have fun, and build community through sports!
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {programs.map((program) => (
-            <Link
+            <div
               key={program.id}
-              to={`/programs#${program.id}`}
-              className="group"
+              className="bg-white rounded-2xl shadow-lg overflow-hidden h-full flex flex-col"
             >
-              <div className="bg-white rounded-2xl shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl h-full flex flex-col">
-                {/* Image */}
-                <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={program.image}
-                    alt={program.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className={`absolute inset-0 bg-gradient-to-t ${program.color} opacity-60`} />
-                </div>
-
-                {/* Content */}
-                <div className="p-6 flex-1 flex flex-col">
-                  <h3 className="text-xl font-bold text-navy mb-2 group-hover:text-accent transition-colors">
-                    {program.title}
-                  </h3>
-                  <p className="text-gray-600 flex-1 leading-relaxed">
-                    {program.description}
-                  </p>
-                  <div className="mt-4 flex items-center text-accent font-semibold group-hover:text-accent-dark">
-                    Learn More <ArrowRight size={16} className="ml-2 transition-transform group-hover:translate-x-1" />
-                  </div>
-                </div>
+              {/* Image */}
+              <div className="relative h-64 overflow-hidden">
+                <img
+                  src={program.image}
+                  alt={program.title}
+                  className="w-full h-full object-cover"
+                />
+                <div className={`absolute inset-0 bg-gradient-to-t ${program.color} opacity-60`} />
               </div>
-            </Link>
+
+              {/* Content */}
+              <div className="p-6 flex-1 flex flex-col">
+                <h3 className="text-xl font-bold text-navy mb-2">
+                  {program.title}
+                </h3>
+                <p className="text-gray-600 flex-1 leading-relaxed">
+                  {program.description}
+                </p>
+              </div>
+            </div>
           ))}
         </div>
 

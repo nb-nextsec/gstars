@@ -102,9 +102,9 @@ export function OurClub() {
                   together, build confidence, and create lasting friendships.
                 </p>
                 <p>
-                  Whether you're young or young at heart, a beginner or experienced player,
-                  looking for social fun or friendly competition - there's a place for you here.
-                  Come join our family!
+                  No matter your age, ability, or experience level — everyone is welcome at
+                  Geelong Stars. Whether you're here to try something new, build confidence,
+                  make friends, or just have fun, there's a place for you here. Come join our family!
                 </p>
               </div>
 
@@ -271,6 +271,11 @@ export function OurClub() {
               <Link to="/programs">
                 <Button size="lg" variant="outline" className="border-navy text-navy hover:bg-navy hover:text-white">
                   View Programs
+                </Button>
+              </Link>
+              <Link to="/membership">
+                <Button size="lg" variant="outline" className="border-navy text-navy hover:bg-navy hover:text-white">
+                  Become a Member
                 </Button>
               </Link>
             </div>

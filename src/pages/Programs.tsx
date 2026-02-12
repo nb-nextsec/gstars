@@ -17,6 +17,7 @@ function AFLFootballIcon({ className }: { className?: string }) {
 const HERO_IMAGE = 'https://static.wixstatic.com/media/c23ea9_6f77b1dc166242098bc394d398c3deb2~mv2.jpg/v1/fill/w_1200,h_600,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Youth%20Basketball_edited.jpg';
 
 const programs = [
+  // Currently running
   {
     id: 'minis-basketball',
     title: "Mini's Basketball",
@@ -28,6 +29,7 @@ const programs = [
     image: '/images/basketball minis 1.jpg',
     schedule: 'Mondays, 5:15 PM - 6:00 PM',
     location: 'Geelong Stars Clubrooms',
+    link: 'https://www.cognitoforms.com/GEELONGALLABILITIESSPORTSCLUB/TERM12026MINIBASKETBALL?fbclid=IwY2xjawP59mVleHRuA2FlbQIxMABicmlkETF6Uk80dHNTYnZwM3BWcEFoc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHqjZro-kpp37GhTuvQSoaI_-4PcBO2lOsnTtngZprRoGI20tIE-K41VmUt88_aem_qv7zroye0TEOlpApMFAQ_w',
   },
   {
     id: 'youth-football',
@@ -39,6 +41,72 @@ const programs = [
     gradientColor: 'from-blue-400 to-indigo-500',
     image: '/images/Football 3.jpg',
     schedule: 'Tuesdays 5:00 PM - 6:30 PM',
+    location: 'Geelong Stars Clubrooms',
+    link: 'https://www.cognitoforms.com/GEELONGALLABILITIESSPORTSCLUB/TERM12026YOUTHFOOTBALL?fbclid=IwY2xjawP5-FJleHRuA2FlbQIxMABicmlkETF6Uk80dHNTYnZwM3BWcEFoc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHjRKfjJyVyJOMGuJ87ysGx9Bmzliv0-ftJd7WXQ3zekq9MvS-zVhINLgUXVb_aem_K6xGLpel_eN2c2Fb8rzYQQ',
+  },
+  {
+    id: 'minis-golf',
+    title: "Mini's Golf",
+    subtitle: 'Ages 5-12',
+    description: 'A fun introduction to golf for young children of all abilities. Learn the basics in a supportive, low-pressure environment where every swing is celebrated!',
+    icon: Trophy,
+    color: 'bg-green-500',
+    gradientColor: 'from-emerald-400 to-green-500',
+    image: '/images/Golf 1.jpg',
+    schedule: 'Wednesdays 5:15 PM - 6:00 PM',
+    location: 'Curlewis Golf Club',
+    link: 'https://www.cognitoforms.com/GEELONGALLABILITIESSPORTSCLUB/TERM12026MINISGOLF?fbclid=IwY2xjawP596ZleHRuA2FlbQIxMABicmlkETF6Uk80dHNTYnZwM3BWcEFoc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHljwinRmQT7u9xlVFPIbYG2T7fKvpuvB2JP6VvOQMWvQo40uw59VQ8iU7gxE_aem_y-2bBcUnjXfOzUxSWB7GMQ',
+  },
+  {
+    id: 'running-walking-group',
+    title: 'Running/Walking Group',
+    subtitle: 'All Ages',
+    description: 'Lace up and join us for a friendly, inclusive walk or run! Open to all ages and abilities, our group meets weekly for a relaxed session where everyone goes at their own pace. Whether you walk, jog, or roll — everyone is welcome!',
+    icon: Heart,
+    color: 'bg-pink-500',
+    gradientColor: 'from-pink-400 to-rose-500',
+    image: '/images/Run & walk club 1.jpg',
+    schedule: 'Every Sunday, 9 AM - 10:00 AM',
+    location: 'Geelong Stars Clubrooms',
+  },
+  // Beginning Feb
+  {
+    id: 'learn-to-ride',
+    title: 'Learn to Ride',
+    subtitle: 'All Ages',
+    description: 'A fun, inclusive program for people of all ages and abilities to experience the joy of riding! Using adaptive and standard bikes, our friendly coaches provide hands-on support so everyone can get rolling at their own pace.',
+    icon: Bike,
+    color: 'bg-teal-500',
+    gradientColor: 'from-teal-400 to-cyan-500',
+    image: '/images/Adaptive bike 1.jpg',
+    schedule: 'Sunday 15th Feb, 10:00 AM - 11:00 AM',
+    location: 'Stars HQ, St Albans Reserve',
+    link: 'https://www.cognitoforms.com/GEELONGALLABILITIESSPORTSCLUB/GEELONGALLABILITIESLEARNTORIDEDAY?fbclid=IwY2xjawP59Y5leHRuA2FlbQIxMABicmlkETF6Uk80dHNTYnZwM3BWcEFoc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHsJobcd0KK8FwA9IumgYaW0pLpGOXQbQlLem1ebRN6ltQOdfvVwwtp7Qlbzq_aem_vvKYASu-nduoEFx3EmeQKg',
+  },
+  {
+    id: 'youth-golf',
+    title: 'Youth Golf',
+    subtitle: 'Ages 12-18',
+    description: 'Build on your golfing skills in a fun, inclusive setting! Our youth golf program helps participants develop technique, confidence, and a love for the game.',
+    icon: Trophy,
+    color: 'bg-lime-500',
+    gradientColor: 'from-lime-400 to-green-500',
+    image: '/images/Golf Open 7.jpg',
+    schedule: 'Tuesdays 5:00 PM - 6:30 PM beginning Feb 24th',
+    location: 'Curlewis Golf Club',
+    link: 'https://www.cognitoforms.com/GEELONGALLABILITIESSPORTSCLUB/TERM12026YOUTHGOLF?fbclid=IwY2xjawP58-tleHRuA2FlbQIxMABicmlkETF6Uk80dHNTYnZwM3BWcEFoc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHsJobcd0KK8FwA9IumgYaW0pLpGOXQbQlLem1ebRN6ltQOdfvVwwtp7Qlbzq_aem_vvKYASu-nduoEFx3EmeQKg',
+  },
+  // Beginning March
+  {
+    id: 'minis-cricket',
+    title: 'Minis Cricket',
+    subtitle: 'Ages 5-12',
+    description: 'A fantastic introduction to cricket for young stars! Kids develop hand-eye coordination, teamwork, and confidence through fun cricket activities in a supportive, inclusive environment.',
+    icon: Trophy,
+    color: 'bg-sky-500',
+    gradientColor: 'from-sky-400 to-blue-500',
+    image: '/images/Cricket 1.jpg',
+    schedule: 'Wednesdays 5:15 PM - 6PM beginning March 4th',
     location: 'Geelong Stars Clubrooms',
   },
   {
@@ -54,22 +122,10 @@ const programs = [
     location: 'Geelong Stars Clubrooms',
   },
   {
-    id: 'minis-golf',
-    title: "Mini's Golf",
-    subtitle: 'Ages 5-12',
-    description: 'Take your game to the next level! Develop advanced skills, compete in local leagues, and be part of a passionate golf community.',
-    icon: Trophy,
-    color: 'bg-green-500',
-    gradientColor: 'from-emerald-400 to-green-500',
-    image: '/images/Golf 1.jpg',
-    schedule: 'Wednesdays 5:15 PM - 6:00 PM',
-    location: 'Curlewis Golf Club',
-  },
-  {
     id: 'youth-basketball',
     title: 'Youth Basketball',
     subtitle: 'Ages 12-18',
-    description: 'Take your basketball skills to the next level! Our youth program focuses on skill development, teamwork, and friendly competition in an inclusive and supportive environment.',
+    description: 'A welcoming basketball program for young people of all abilities! Have fun, make friends, and build confidence on the court. No experience needed — just bring your energy and we will bring the good times!',
     icon: Users,
     color: 'bg-amber-500',
     gradientColor: 'from-amber-400 to-orange-500',
@@ -77,54 +133,7 @@ const programs = [
     schedule: 'Tuesdays beginning March 17th',
     location: 'Geelong Stars Clubrooms',
   },
-  {
-    id: 'running-walking-group',
-    title: 'Running/Walking Group',
-    subtitle: 'All Ages',
-    description: 'Relaxed, fun-focused activities perfect for those who want to get active without pressure. Great for beginners, families, or anyone who just wants to have a good time!',
-    icon: Heart,
-    color: 'bg-pink-500',
-    gradientColor: 'from-pink-400 to-rose-500',
-    image: '/images/Run & walk club 1.jpg',
-    schedule: 'Every Sunday, 9 AM - 10:00 AM',
-    location: 'Geelong Stars Clubrooms',
-  },
-  {
-    id: 'youth-golf',
-    title: 'Youth Golf',
-    subtitle: 'Ages 12-18',
-    description: 'Build on your golfing skills in a fun, inclusive setting! Our youth golf program helps participants develop technique, confidence, and a love for the game.',
-    icon: Trophy,
-    color: 'bg-lime-500',
-    gradientColor: 'from-lime-400 to-green-500',
-    image: '/images/Golf Open 7.jpg',
-    schedule: 'Tuesdays 5:00 PM - 6:30 PM beginning Feb 24th',
-    location: 'Curlewis Golf Club',
-  },
-  {
-    id: 'minis-cricket',
-    title: 'Minis Cricket',
-    subtitle: 'Ages 5-12',
-    description: 'A fantastic introduction to cricket for young stars! Kids develop hand-eye coordination, teamwork, and confidence through fun cricket activities in a supportive, inclusive environment.',
-    icon: Trophy,
-    color: 'bg-sky-500',
-    gradientColor: 'from-sky-400 to-blue-500',
-    image: '/images/Cricket 1.jpg',
-    schedule: 'Wednesdays 5:15 PM - 6PM beginning March 4th',
-    location: 'Geelong Stars Clubrooms',
-  },
-  {
-    id: 'learn-to-ride',
-    title: 'Learn to Ride',
-    subtitle: 'All Ages',
-    description: 'Learn to ride a bike in a safe, supportive setting! Whether you are just starting out or building confidence on two wheels, our patient coaches will help you every step of the way.',
-    icon: Bike,
-    color: 'bg-teal-500',
-    gradientColor: 'from-teal-400 to-cyan-500',
-    image: '/images/Adaptive bike 1.jpg',
-    schedule: 'TBA',
-    location: 'TBA',
-  },
+  // TBA
   {
     id: 'minis-little-athletics',
     title: 'Minis Little Athletics',
@@ -191,27 +200,14 @@ export function Programs() {
       </section>
 
       {/* Programs Grid */}
-      <section className="py-16 lg:py-24">
+      <section className="pt-8 pb-16 lg:pt-12 lg:pb-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-              Find Your Perfect Program
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              We offer a range of programs to suit every age and ability. Click on any program to get in touch!
-            </p>
-          </div>
-
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {programs.map((program) => (
-              <Link
-                key={program.id}
-                to="/contact"
-                className="group"
-              >
+            {programs.map((program) => {
+              const card = (
                 <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 h-full flex flex-col">
                   {/* Image */}
-                  <div className="relative h-48 overflow-hidden">
+                  <div className="relative h-64 overflow-hidden">
                     <img
                       src={program.image}
                       alt={program.title}
@@ -244,8 +240,28 @@ export function Programs() {
                     </div>
                   </div>
                 </div>
-              </Link>
-            ))}
+              );
+
+              return program.link ? (
+                <a
+                  key={program.id}
+                  href={program.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group"
+                >
+                  {card}
+                </a>
+              ) : (
+                <Link
+                  key={program.id}
+                  to="/contact"
+                  className="group"
+                >
+                  {card}
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -270,6 +286,11 @@ export function Programs() {
               <Link to="/our-club">
                 <Button size="lg" variant="outline" className="border-navy text-navy hover:bg-navy hover:text-white">
                   Learn More About Us
+                </Button>
+              </Link>
+              <Link to="/membership">
+                <Button size="lg" variant="outline" className="border-navy text-navy hover:bg-navy hover:text-white">
+                  Sign Up
                 </Button>
               </Link>
             </div>

@@ -55,6 +55,11 @@ export function HeroSection({
                   Get In Touch
                 </Button>
               </Link>
+              <Link to="/membership">
+                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-navy font-semibold">
+                  Sign Up
+                </Button>
+              </Link>
             </div>
           </div>
 

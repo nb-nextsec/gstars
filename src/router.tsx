@@ -3,7 +3,7 @@ import { MainLayout } from './components/layout';
 import { AdminLayout } from './components/admin';
 
 // Public Pages
-import { Home, OurClub, Programs, Social, PhotoGallery, Sponsors, Contact, TermsOfService, CookiePolicy, PrivacyPolicy } from './pages';
+import { Home, OurClub, Programs, Social, PhotoGallery, Sponsors, Membership, ThursdayMeals, ShopApparel, PartnerWithUs, Contact, TermsOfService, CookiePolicy, PrivacyPolicy } from './pages';
 
 // Admin Pages
 import {
@@ -26,6 +26,10 @@ export const router = createBrowserRouter([
       { path: 'social', element: <Social /> },
       { path: 'photo-gallery', element: <PhotoGallery /> },
       { path: 'sponsors', element: <Sponsors /> },
+      { path: 'membership', element: <Membership /> },
+      { path: 'thursday-meals', element: <ThursdayMeals /> },
+      { path: 'shop-apparel', element: <ShopApparel /> },
+      { path: 'partner-with-us', element: <PartnerWithUs /> },
       { path: 'contact', element: <Contact /> },
       { path: 'terms-of-service', element: <TermsOfService /> },
       { path: 'cookie-policy', element: <CookiePolicy /> },

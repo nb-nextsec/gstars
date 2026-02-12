@@ -37,7 +37,7 @@ const sponsors = [
     id: 4,
     name: 'Bellarine Village',
     description: 'A welcoming shopping destination on the Bellarine Peninsula. Supporting local sport and the Geelong Stars community.',
-    logo_url: '/images/ballarine-village-footer-logo_edited_edi.avif',
+    logo_url: '/images/Ballarine Village.jpg',
     website_url: 'https://bellarinevillage.com.au/',
   },
   {
