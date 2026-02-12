@@ -12,7 +12,7 @@ const sponsors = [
   { name: "McHarry's Bus Lines", logo: '/images/McHarry\'s Bus Lines logo_edited_edited_p.avif', url: 'https://mcharrys.com.au/' },
   { name: 'Repco', logo: '/images/repco.avif', url: 'https://www.repco.com.au/' },
   { name: 'Rotary Club', logo: '/images/rotary club_edited.avif', url: 'https://geelongrotary.org.au/' },
-  { name: 'Winston', logo: '/images/WINSTON.avif', url: null },
+  { name: 'Winston & Co Cafe and Takeaway', logo: '/images/Winston logo.jpg', url: 'https://www.facebook.com/winstonandcocafe/about' },
 ];
 
 export function SponsorsCarousel() {

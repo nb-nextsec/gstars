@@ -84,10 +84,10 @@ const sponsors = [
   },
   {
     id: 12,
-    name: 'Winston',
-    description: 'Quality products and services for the Geelong community. Winston is a valued supporter of Geelong Stars and inclusive sport.',
-    logo_url: '/images/WINSTON.avif',
-    website_url: null,
+    name: 'Winston & Co Cafe and Takeaway',
+    description: 'A local cafe and takeaway serving delicious food and coffee to the Geelong community. Winston & Co is a proud supporter of Geelong Stars and inclusive sport.',
+    logo_url: '/images/Winston logo.jpg',
+    website_url: 'https://www.facebook.com/winstonandcocafe/about',
   },
 ];
 
