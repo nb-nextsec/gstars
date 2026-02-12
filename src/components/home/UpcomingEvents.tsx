@@ -20,6 +20,7 @@ const events: CalendarEvent[] = [
   { day: 11, label: 'Minis Golf', color: 'bg-emerald-500', time: '5:15 PM - 6:00 PM', location: 'Curlewis Golf Club' },
   { day: 12, label: 'Stars Meals', color: 'bg-yellow-500', time: '5:00 PM doors open, 6:00 PM meals served', location: 'Stars HQ, St Albans Reserve' },
   { day: 15, label: 'Running/Walking Group', color: 'bg-pink-500', time: '9:00 AM - 10:00 AM', location: 'Stars HQ, St Albans Reserve' },
+  { day: 15, label: 'Learn to Ride', color: 'bg-teal-500', time: '10:00 AM - 11:00 AM', location: 'Stars HQ, St Albans Reserve' },
   { day: 16, label: 'Minis Basketball', color: 'bg-orange-500', time: '5:15 PM - 6:00 PM', location: 'Geelong Stars HQ, St Albans Reserve' },
   { day: 17, label: 'Youth Football', color: 'bg-blue-500', time: '5:00 PM - 6:30 PM', location: "Stars HQ, St Alban's Reserve" },
   { day: 18, label: 'Minis Golf', color: 'bg-emerald-500', time: '5:15 PM - 6:00 PM', location: 'Curlewis Golf Club' },

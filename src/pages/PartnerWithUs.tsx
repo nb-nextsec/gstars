@@ -1,4 +1,4 @@
-import { ArrowRight, Handshake, Heart } from 'lucide-react';
+import { ArrowRight, Users, Heart } from 'lucide-react';
 import { Button } from '../components/common';
 
 const HERO_IMAGE = 'https://static.wixstatic.com/media/c23ea9_1071a90c20b044f4bb98e30faed73a2c~mv2.jpg/v1/fill/w_1200,h_600,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/c23ea9_1071a90c20b044f4bb98e30faed73a2c~mv2.jpg';
@@ -36,7 +36,7 @@ export function PartnerWithUs() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="mb-10">
             <div className="w-16 h-16 bg-navy/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-              <Handshake className="w-8 h-8 text-navy" />
+              <Users className="w-8 h-8 text-navy" />
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               Become a Partner

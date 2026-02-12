@@ -1,4 +1,4 @@
-import { Star, Users, Award, Heart, Accessibility, Sparkles, ArrowRight, HeartHandshake, Target, Smile } from 'lucide-react';
+import { Star, Users, Award, Heart, Accessibility, ArrowRight, HeartHandshake, Target, Smile } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Card, Button } from '../components/common';
 
