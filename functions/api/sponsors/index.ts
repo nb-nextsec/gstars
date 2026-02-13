@@ -33,15 +33,17 @@ export async function onRequestGet(context: PagesContext): Promise<Response> {
   const { request, env } = context;
 
   try {
-    // Serve from edge cache if available
     const cfCaches = caches as unknown as { default: Cache };
     const cache = cfCaches.default;
-    const cacheKey = new Request(request.url, { method: 'GET' });
-    const cached = await cache.match(cacheKey);
-    if (cached) return cached;
-
     const url = new URL(request.url);
     const activeOnly = url.searchParams.get('active') === 'true';
+
+    // Only serve from edge cache for public (active-only) requests
+    if (activeOnly) {
+      const cacheKey = new Request(request.url, { method: 'GET' });
+      const cached = await cache.match(cacheKey);
+      if (cached) return cached;
+    }
 
     let query = 'SELECT * FROM sponsors';
 
@@ -54,12 +56,18 @@ export async function onRequestGet(context: PagesContext): Promise<Response> {
     const result = await env.DB.prepare(query).all<Sponsor>();
 
     const response = successResponse(result.results);
-    // Browser caches 5 min; edge cache managed via Cache API (purged on mutation)
-    response.headers.set('Cache-Control', 'public, max-age=300');
-    // Store in edge cache for up to 24 hours (purged on any sponsor mutation)
-    const cacheResponse = response.clone();
-    cacheResponse.headers.set('Cache-Control', 'public, max-age=86400');
-    context.env && cache.put(cacheKey, cacheResponse);
+
+    if (activeOnly) {
+      // Public requests: browser caches 5 min, edge cache 24hr (purged on mutation)
+      response.headers.set('Cache-Control', 'public, max-age=300');
+      const cacheResponse = response.clone();
+      cacheResponse.headers.set('Cache-Control', 'public, max-age=86400');
+      cache.put(new Request(request.url, { method: 'GET' }), cacheResponse);
+    } else {
+      // Admin requests: no browser cache so reorder/edits are always fresh
+      response.headers.set('Cache-Control', 'no-cache');
+    }
+
     return response;
   } catch (error) {
     console.error('Get sponsors error:', error);

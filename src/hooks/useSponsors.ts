@@ -127,8 +127,38 @@ export function useReorderSponsors() {
       const response = await sponsorsApi.reorder(sponsorIds);
       if (!response.success) throw new Error(response.error);
     },
-    onSuccess: () => {
+    onMutate: async (sponsorIds: number[]) => {
+      // Cancel outgoing refetches so they don't overwrite our optimistic update
+      await queryClient.cancelQueries({ queryKey: sponsorKeys.all });
+
+      // Snapshot all sponsor list queries for rollback
+      const previousQueries = queryClient.getQueriesData<Sponsor[]>({ queryKey: sponsorKeys.lists() });
+
+      // Optimistically update every cached sponsor list
+      queryClient.setQueriesData<Sponsor[]>(
+        { queryKey: sponsorKeys.lists() },
+        (old) => {
+          if (!old) return old;
+          return old.map(s => ({
+            ...s,
+            display_order: sponsorIds.indexOf(s.id) + 1,
+          }));
+        }
+      );
+
+      return { previousQueries };
+    },
+    onError: (_err, _vars, context) => {
+      // Rollback on error
+      if (context?.previousQueries) {
+        for (const [key, data] of context.previousQueries) {
+          queryClient.setQueryData(key, data);
+        }
+      }
       queryClient.invalidateQueries({ queryKey: sponsorKeys.all });
     },
+    // No onSettled refetch — the optimistic update is the source of truth.
+    // D1 read replicas may lag behind the write, so an immediate refetch
+    // could return stale order and overwrite the correct optimistic state.
   });
 }
