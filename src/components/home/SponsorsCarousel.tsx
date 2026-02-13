@@ -2,17 +2,22 @@
 // Sponsor logos from refs folder
 const sponsors = [
   { name: 'Sipcam', logo: 'https://cdn.prod.website-files.com/68a52a259620521f4aec8c70/68a6f3dbea4151d7018b48e2_Sipcam-Logo-Full-Clr-removebg-preview.png', url: 'https://sipcam.com.au/' },
-  { name: 'Breakwater Hotel', logo: '/images/breakwater.avif', url: 'https://www.facebook.com/breakwaterhotelgeelong/' },
+  { name: 'Breakwater Hotel', logo: '/images/breakwater.avif', url: 'https://www.facebook.com/groups/21807272626' },
   { name: 'Meys Meats', logo: '/images/Meys-Logo-web_png.avif', url: 'https://meysmeats.com.au/' },
   { name: 'Bunnings', logo: '/images/Bunnings-logo_edited.avif', url: 'https://www.bunnings.com.au/' },
-  { name: 'Bellarine Village', logo: '/images/Ballarine Village.jpg', url: 'https://bellarinevillage.com.au/' },
-  { name: 'Fruit Biz', logo: '/images/fruit biz.avif', url: null },
+  { name: 'Bellarine Village', logo: '/images/ballarine-lotto.jpg', url: 'https://bellarinevillage.com.au/stores/bellarine-village-lotto/' },
+  { name: 'Fruit Biz', logo: '/images/fruit biz.avif', url: 'https://www.facebook.com/FruitBiz/' },
   { name: 'Geelong Plaster Cartage', logo: '/images/Geelong Plaster Cartage_edited_edited_ed.avif', url: null },
   { name: 'Lektrix', logo: '/images/Lektrix_edited_edited.avif', url: 'https://lektrix.com.au/' },
   { name: "McHarry's Bus Lines", logo: '/images/McHarry\'s Bus Lines logo_edited_edited_p.avif', url: 'https://mcharrys.com.au/' },
   { name: 'Repco', logo: '/images/repco.avif', url: 'https://www.repco.com.au/' },
   { name: 'Rotary Club', logo: '/images/rotary club_edited.avif', url: 'https://geelongrotary.org.au/' },
-  { name: 'Winston & Co Cafe and Takeaway', logo: '/images/Winston logo.jpg', url: 'https://www.facebook.com/winstonandcocafe/about' },
+  { name: 'Hawk & Co', logo: '/images/hawk-and-co.jpg', url: 'https://www.facebook.com/hawkcohandyman/' },
+  { name: 'Wade 2 Go', logo: '/images/wade-2-go.jpg', url: 'https://www.facebook.com/Wade2GoHandyman/' },
+  { name: 'Winston & Co Cafe and Takeaway', logo: '/images/winston-logo.jpg', url: 'https://www.facebook.com/winstonandcocafe/about' },
+  { name: 'Phoenix Truck Bodies', logo: '/images/phoenix.jpg', url: 'https://phoenixtruckbodies.com.au/' },
+  { name: "Jim's Building Inspections", logo: '/images/jims-building.jpg', url: 'https://jimsbuildinginspections.com.au/local/vic/geelong/' },
+  { name: 'Geelong Connected Communities', logo: '/images/geelong-connected-communities.jpg', url: 'https://www.geelongconnectedcommunities.com.au/' },
 ];
 
 export function SponsorsCarousel() {

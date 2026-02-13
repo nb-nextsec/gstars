@@ -99,10 +99,10 @@ export function Contact() {
                     <div>
                       <p className="font-medium text-navy">Email Us</p>
                       <a
-                        href="mailto:info@geelongstars.com.au"
+                        href="mailto:contact@geelongstars.com.au"
                         className="text-gray-600 text-sm hover:text-navy transition-colors"
                       >
-                        info@geelongstars.com.au
+                        contact@geelongstars.com.au
                       </a>
                     </div>
                   </div>

@@ -44,6 +44,7 @@ export function ThursdayMeals() {
               Every Thursday night, the Geelong Stars community comes together to
               share a meal at Stars HQ. It's a chance to catch up with friends,
               meet new faces, and enjoy a delicious feed in a welcoming environment.
+              Remember to order your meals via the below link each Wednesday before 5:00 PM.
             </p>
           </div>
 

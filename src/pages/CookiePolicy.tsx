@@ -77,8 +77,8 @@ export function CookiePolicy() {
           <h2 className="text-2xl font-bold text-navy mb-4">Contact Us</h2>
           <p className="text-gray-600 mb-6">
             If you have any questions about our use of cookies, please contact us at{' '}
-            <a href="mailto:info@geelongstars.com.au" className="text-accent hover:text-accent-dark">
-              info@geelongstars.com.au
+            <a href="mailto:contact@geelongstars.com.au" className="text-accent hover:text-accent-dark">
+              contact@geelongstars.com.au
             </a>.
           </p>
         </div>

@@ -8,7 +8,7 @@ const mainNavItems: NavItem[] = [
   { label: 'Our Club', href: '/our-club' },
   { label: 'Our Programs', href: '/programs' },
   { label: 'Sponsors', href: '/sponsors' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Club Policies', href: '/club-policies' },
 ];
 
 const moreNavItems: NavItem[] = [
@@ -18,6 +18,7 @@ const moreNavItems: NavItem[] = [
   { label: 'Thursday Meals', href: '/thursday-meals' },
   { label: 'Shop Apparel', href: '/shop-apparel' },
   { label: 'Partner With Us', href: '/partner-with-us' },
+  { label: 'Contact', href: '/contact' },
 ];
 
 const allNavItems: NavItem[] = [

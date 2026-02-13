@@ -17,7 +17,7 @@ const sponsors = [
     name: 'Breakwater Hotel',
     description: 'A proud Geelong hospitality venue supporting local sport and community. The Breakwater Hotel is a valued partner of Geelong Stars.',
     logo_url: '/images/breakwater.avif',
-    website_url: 'https://www.facebook.com/breakwaterhotelgeelong/',
+    website_url: 'https://www.facebook.com/groups/21807272626',
   },
   {
     id: 2,
@@ -37,15 +37,15 @@ const sponsors = [
     id: 4,
     name: 'Bellarine Village',
     description: 'A welcoming shopping destination on the Bellarine Peninsula. Supporting local sport and the Geelong Stars community.',
-    logo_url: '/images/Ballarine Village.jpg',
-    website_url: 'https://bellarinevillage.com.au/',
+    logo_url: '/images/ballarine-lotto.jpg',
+    website_url: 'https://bellarinevillage.com.au/stores/bellarine-village-lotto/',
   },
   {
     id: 5,
     name: 'Fruit Biz',
     description: 'Fresh fruit and produce supplier in the Geelong region. Keeping our athletes fuelled with healthy, quality produce.',
     logo_url: '/images/fruit biz.avif',
-    website_url: null,
+    website_url: 'https://www.facebook.com/FruitBiz/',
   },
   {
     id: 6,
@@ -83,11 +83,46 @@ const sponsors = [
     website_url: 'https://geelongrotary.org.au/',
   },
   {
+    id: 13,
+    name: 'Hawk & Co',
+    description: 'A trusted local handyman service in Geelong. Hawk & Co is a proud supporter of Geelong Stars and all-abilities sport in the community.',
+    logo_url: '/images/hawk-and-co.jpg',
+    website_url: 'https://www.facebook.com/hawkcohandyman/',
+  },
+  {
+    id: 14,
+    name: 'Wade 2 Go',
+    description: 'A reliable local handyman service in the Geelong region. Wade 2 Go is a proud supporter of Geelong Stars and inclusive sport in the community.',
+    logo_url: '/images/wade-2-go.jpg',
+    website_url: 'https://www.facebook.com/Wade2GoHandyman/',
+  },
+  {
     id: 12,
     name: 'Winston & Co Cafe and Takeaway',
     description: 'A local cafe and takeaway serving delicious food and coffee to the Geelong community. Winston & Co is a proud supporter of Geelong Stars and inclusive sport.',
-    logo_url: '/images/Winston logo.jpg',
+    logo_url: '/images/winston-logo.jpg',
     website_url: 'https://www.facebook.com/winstonandcocafe/about',
+  },
+  {
+    id: 16,
+    name: 'Phoenix Truck Bodies',
+    description: 'Specialist truck body builders based in Geelong. Phoenix Truck Bodies is a proud supporter of Geelong Stars and all-abilities sport in the community.',
+    logo_url: '/images/phoenix.jpg',
+    website_url: 'https://phoenixtruckbodies.com.au/',
+  },
+  {
+    id: 17,
+    name: "Jim's Building Inspections",
+    description: "Professional building and pest inspections in the Geelong region. Jim's Building Inspections is a proud supporter of Geelong Stars and all-abilities sport in the community.",
+    logo_url: '/images/jims-building.jpg',
+    website_url: 'https://jimsbuildinginspections.com.au/local/vic/geelong/',
+  },
+  {
+    id: 15,
+    name: 'Geelong Connected Communities',
+    description: 'Geelong Connected Communities provides grants to help Not for Profit organisations fund programs that strengthen and enrich the Geelong community. We are grateful for their support in helping Geelong Stars deliver inclusive, all-abilities sport.',
+    logo_url: '/images/geelong-connected-communities.jpg',
+    website_url: 'https://www.geelongconnectedcommunities.com.au/',
   },
 ];
 
@@ -124,12 +159,12 @@ export function Sponsors() {
             {sponsors.map((sponsor) => {
               const cardContent = (
                 <>
-                  <div className="h-48 bg-gray-50 flex items-center justify-center p-8">
+                  <div className="h-56 bg-gray-50 flex items-center justify-center p-4">
                     {sponsor.logo_url ? (
                       <img
                         src={sponsor.logo_url}
                         alt={sponsor.name}
-                        className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
+                        className="h-44 w-auto max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
                       />
                     ) : (
                       <span className="text-2xl font-bold text-navy/70 text-center">
@@ -187,12 +222,12 @@ export function Sponsors() {
               <p className="text-white/90 mb-8">
                 As a sponsor, you'll receive brand exposure, community recognition,
                 and the satisfaction of knowing you're making a real difference in
-                the lives of many local children and teenagers, by helping to make
-                sport and recreation activities accessible for them.
+                the lives of many local families, by helping to make sport and
+                recreation activities accessible for them.
               </p>
-              <Link to="/contact">
+              <Link to="/partner-with-us">
                 <Button className="bg-yellow-400 text-navy hover:bg-yellow-300 font-bold" rightIcon={<ArrowRight size={18} />}>
-                  Enquire About Sponsorship
+                  Partner With Us
                 </Button>
               </Link>
             </div>

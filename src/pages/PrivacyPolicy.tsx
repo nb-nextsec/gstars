@@ -110,8 +110,8 @@ export function PrivacyPolicy() {
           </p>
           <ul className="list-none text-gray-600 mb-4 space-y-1">
             <li><strong>Email:</strong>{' '}
-              <a href="mailto:info@geelongstars.com.au" className="text-accent hover:text-accent-dark">
-                info@geelongstars.com.au
+              <a href="mailto:contact@geelongstars.com.au" className="text-accent hover:text-accent-dark">
+                contact@geelongstars.com.au
               </a>
             </li>
             <li><strong>Address:</strong> 203 St Albans Road, Thomson VIC 3219</li>

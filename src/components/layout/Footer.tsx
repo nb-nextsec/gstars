@@ -100,6 +100,11 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link to="/club-policies" className="text-white/70 hover:text-white transition-colors text-sm">
+                  Club Policies
+                </Link>
+              </li>
+              <li>
                 <Link to="/contact" className="text-white/70 hover:text-white transition-colors text-sm">
                   Contact
                 </Link>
@@ -126,8 +131,8 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-3 text-sm">
                 <Mail size={18} className="text-white/70 flex-shrink-0" />
-                <a href="mailto:info@geelongstars.com.au" className="text-white/70 hover:text-white transition-colors">
-                  info@geelongstars.com.au
+                <a href="mailto:contact@geelongstars.com.au" className="text-white/70 hover:text-white transition-colors">
+                  contact@geelongstars.com.au
                 </a>
               </li>
             </ul>

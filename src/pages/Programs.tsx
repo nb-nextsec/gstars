@@ -1,6 +1,21 @@
 import { Users, Trophy, Heart, Calendar, MapPin, ArrowRight, Zap, Shield, Bike } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import type { ReactNode } from 'react';
 import { Button } from '../components/common';
+
+interface Program {
+  id: string;
+  title: string;
+  subtitle: string;
+  description: ReactNode;
+  icon: React.ComponentType<{ className?: string }>;
+  color: string;
+  gradientColor: string;
+  image: string;
+  schedule: string;
+  location: string;
+  link?: string;
+}
 
 // Custom AFL Football icon
 function AFLFootballIcon({ className }: { className?: string }) {
@@ -14,10 +29,9 @@ function AFLFootballIcon({ className }: { className?: string }) {
   );
 }
 
-const HERO_IMAGE = 'https://static.wixstatic.com/media/c23ea9_6f77b1dc166242098bc394d398c3deb2~mv2.jpg/v1/fill/w_1200,h_600,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Youth%20Basketball_edited.jpg';
+const HERO_IMAGE = '/images/BMX Day 7.jpg';
 
-const programs = [
-  // Currently running
+const currentlyRunning: Program[] = [
   {
     id: 'minis-basketball',
     title: "Mini's Basketball",
@@ -65,11 +79,10 @@ const programs = [
     icon: Heart,
     color: 'bg-pink-500',
     gradientColor: 'from-pink-400 to-rose-500',
-    image: '/images/Run & walk club 1.jpg',
+    image: '/images/run & walk club 2.jpg',
     schedule: 'Every Sunday, 9 AM - 10:00 AM',
     location: 'Stars HQ, St Albans Reserve',
   },
-  // Beginning Feb
   {
     id: 'learn-to-ride',
     title: 'Learn to Ride',
@@ -78,11 +91,14 @@ const programs = [
     icon: Bike,
     color: 'bg-teal-500',
     gradientColor: 'from-teal-400 to-cyan-500',
-    image: '/images/Adaptive bike 1.jpg',
+    image: '/images/Learn to Ride.jpg',
     schedule: 'Sunday 15th Feb, 10:00 AM - 11:00 AM',
     location: 'Stars HQ, St Albans Reserve',
     link: 'https://www.cognitoforms.com/GEELONGALLABILITIESSPORTSCLUB/GEELONGALLABILITIESLEARNTORIDEDAY?fbclid=IwY2xjawP59Y5leHRuA2FlbQIxMABicmlkETF6Uk80dHNTYnZwM3BWcEFoc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHsJobcd0KK8FwA9IumgYaW0pLpGOXQbQlLem1ebRN6ltQOdfvVwwtp7Qlbzq_aem_vvKYASu-nduoEFx3EmeQKg',
   },
+];
+
+const scheduled: Program[] = [
   {
     id: 'youth-golf',
     title: 'Youth Golf',
@@ -96,7 +112,6 @@ const programs = [
     location: 'Curlewis Golf Club',
     link: 'https://www.cognitoforms.com/GEELONGALLABILITIESSPORTSCLUB/TERM12026YOUTHGOLF?fbclid=IwY2xjawP58-tleHRuA2FlbQIxMABicmlkETF6Uk80dHNTYnZwM3BWcEFoc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHsJobcd0KK8FwA9IumgYaW0pLpGOXQbQlLem1ebRN6ltQOdfvVwwtp7Qlbzq_aem_vvKYASu-nduoEFx3EmeQKg',
   },
-  // Beginning March
   {
     id: 'minis-cricket',
     title: 'Minis Cricket',
@@ -105,7 +120,7 @@ const programs = [
     icon: Trophy,
     color: 'bg-sky-500',
     gradientColor: 'from-sky-400 to-blue-500',
-    image: '/images/Cricket 1.jpg',
+    image: '/images/Cricket 13.jpg',
     schedule: 'Wednesdays 5:15 PM - 6PM beginning March 4th',
     location: 'Geelong Stars Clubrooms',
   },
@@ -117,7 +132,7 @@ const programs = [
     icon: AFLFootballIcon,
     color: 'bg-green-500',
     gradientColor: 'from-green-400 to-teal-500',
-    image: '/images/Football 1.jpg',
+    image: '/images/Football 2.jpg',
     schedule: 'Mondays beginning March 16th',
     location: 'Geelong Stars Clubrooms',
   },
@@ -133,7 +148,9 @@ const programs = [
     schedule: 'Tuesdays beginning March 17th',
     location: 'Geelong Stars Clubrooms',
   },
-  // TBA
+];
+
+const upcoming: Program[] = [
   {
     id: 'minis-little-athletics',
     title: 'Minis Little Athletics',
@@ -154,7 +171,7 @@ const programs = [
     icon: Shield,
     color: 'bg-purple-500',
     gradientColor: 'from-purple-400 to-violet-500',
-    image: 'https://static.wixstatic.com/media/c23ea9_1071a90c20b044f4bb98e30faed73a2c~mv2.jpg/v1/fill/w_600,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/c23ea9_1071a90c20b044f4bb98e30faed73a2c~mv2.jpg',
+    image: '/images/Ninjas 3.jpg',
     schedule: 'TBA',
     location: 'TBA',
   },
@@ -166,11 +183,77 @@ const programs = [
     icon: Shield,
     color: 'bg-red-500',
     gradientColor: 'from-red-400 to-orange-500',
-    image: '/images/boxing 7.jpg',
+    image: '/images/boxing 11.jpg',
     schedule: 'TBA',
     location: 'TBA',
   },
 ];
+
+function ProgramGrid({ programs }: { programs: Program[] }) {
+  return (
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {programs.map((program) => {
+        const card = (
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 h-full flex flex-col">
+            {/* Image */}
+            <div className="relative h-64 overflow-hidden">
+              <img
+                src={program.image}
+                alt={program.title}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className={`absolute inset-0 bg-gradient-to-t ${program.gradientColor} opacity-40`} />
+              <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 text-xs font-semibold text-navy">
+                {program.subtitle}
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className="p-6 flex-1 flex flex-col">
+              <h3 className="text-xl font-bold text-navy mb-2 group-hover:text-accent transition-colors">
+                {program.title}
+              </h3>
+              <p className="text-gray-600 flex-1 leading-relaxed text-sm">
+                {program.description}
+              </p>
+              <div className="mt-4 flex items-center gap-2 text-sm text-gray-500">
+                <Calendar size={14} className="text-accent" />
+                <span>{program.schedule}</span>
+              </div>
+              <div className="mt-1 flex items-center gap-2 text-sm text-gray-500">
+                <MapPin size={14} className="text-accent" />
+                <span>{program.location}</span>
+              </div>
+              <div className="mt-3 flex items-center text-accent font-semibold group-hover:text-accent-dark">
+                Join This Program <ArrowRight size={16} className="ml-2 transition-transform group-hover:translate-x-1" />
+              </div>
+            </div>
+          </div>
+        );
+
+        return program.link ? (
+          <a
+            key={program.id}
+            href={program.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group"
+          >
+            {card}
+          </a>
+        ) : (
+          <Link
+            key={program.id}
+            to="/contact"
+            className="group"
+          >
+            {card}
+          </Link>
+        );
+      })}
+    </div>
+  );
+}
 
 export function Programs() {
   return (
@@ -199,69 +282,28 @@ export function Programs() {
         </div>
       </section>
 
-      {/* Programs Grid */}
+      {/* Programs Sections */}
       <section className="pt-8 pb-16 lg:pt-12 lg:pb-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {programs.map((program) => {
-              const card = (
-                <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 h-full flex flex-col">
-                  {/* Image */}
-                  <div className="relative h-64 overflow-hidden">
-                    <img
-                      src={program.image}
-                      alt={program.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div className={`absolute inset-0 bg-gradient-to-t ${program.gradientColor} opacity-40`} />
-                    <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 text-xs font-semibold text-navy">
-                      {program.subtitle}
-                    </div>
-                  </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+          {/* Currently Running */}
+          <div>
+            <h2 className="text-2xl md:text-3xl font-bold text-navy mb-2">Currently Running</h2>
+            <p className="text-gray-600 mb-8">Programs that are currently active and taking registrations.</p>
+            <ProgramGrid programs={currentlyRunning} />
+          </div>
 
-                  {/* Content */}
-                  <div className="p-6 flex-1 flex flex-col">
-                    <h3 className="text-xl font-bold text-navy mb-2 group-hover:text-accent transition-colors">
-                      {program.title}
-                    </h3>
-                    <p className="text-gray-600 flex-1 leading-relaxed text-sm">
-                      {program.description}
-                    </p>
-                    <div className="mt-4 flex items-center gap-2 text-sm text-gray-500">
-                      <Calendar size={14} className="text-accent" />
-                      <span>{program.schedule}</span>
-                    </div>
-                    <div className="mt-1 flex items-center gap-2 text-sm text-gray-500">
-                      <MapPin size={14} className="text-accent" />
-                      <span>{program.location}</span>
-                    </div>
-                    <div className="mt-3 flex items-center text-accent font-semibold group-hover:text-accent-dark">
-                      Join This Program <ArrowRight size={16} className="ml-2 transition-transform group-hover:translate-x-1" />
-                    </div>
-                  </div>
-                </div>
-              );
+          {/* Scheduled */}
+          <div>
+            <h2 className="text-2xl md:text-3xl font-bold text-navy mb-2">Scheduled</h2>
+            <p className="text-gray-600 mb-8">Programs starting soon — register now to secure your spot!</p>
+            <ProgramGrid programs={scheduled} />
+          </div>
 
-              return program.link ? (
-                <a
-                  key={program.id}
-                  href={program.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group"
-                >
-                  {card}
-                </a>
-              ) : (
-                <Link
-                  key={program.id}
-                  to="/contact"
-                  className="group"
-                >
-                  {card}
-                </Link>
-              );
-            })}
+          {/* Upcoming */}
+          <div>
+            <h2 className="text-2xl md:text-3xl font-bold text-navy mb-2">Upcoming</h2>
+            <p className="text-gray-600 mb-8">Programs in the works — dates to be announced. Stay tuned!</p>
+            <ProgramGrid programs={upcoming} />
           </div>
         </div>
       </section>

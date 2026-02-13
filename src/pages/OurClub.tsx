@@ -106,6 +106,14 @@ export function OurClub() {
                   Geelong Stars. Whether you're here to try something new, build confidence,
                   make friends, or just have fun, there's a place for you here. Come join our family!
                 </p>
+                <p className="font-semibold text-navy">Programs:</p>
+                <ul className="list-disc list-inside space-y-1">
+                  <li>Minis – 5 to 12</li>
+                  <li>Youth – 12 to 18</li>
+                  <li>Learn to Ride</li>
+                  <li>Outdoor Adventures</li>
+                  <li>Achilles Running/Walking</li>
+                </ul>
               </div>
 
               <div className="mt-8">

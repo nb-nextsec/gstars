@@ -8,6 +8,7 @@ export { Membership } from './Membership';
 export { ThursdayMeals } from './ThursdayMeals';
 export { ShopApparel } from './ShopApparel';
 export { PartnerWithUs } from './PartnerWithUs';
+export { ClubPolicies } from './ClubPolicies';
 export { Contact } from './Contact';
 export { TermsOfService } from './TermsOfService';
 export { CookiePolicy } from './CookiePolicy';
