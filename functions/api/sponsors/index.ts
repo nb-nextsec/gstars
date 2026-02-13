@@ -1,6 +1,7 @@
 import type { Env } from '../../types';
 import { successResponse, errorResponse } from '../../types';
 import { verifyToken, getTokenFromRequest } from '../../jwt';
+import { purgeSponsorCache } from './cache';
 
 interface PagesContext {
   request: Request;
@@ -12,7 +13,7 @@ interface Sponsor {
   name: string;
   logo_url: string | null;
   website_url: string | null;
-  tier: string;
+  description: string | null;
   display_order: number;
   is_active: boolean;
   created_at: string;
@@ -22,7 +23,7 @@ interface SponsorInput {
   name: string;
   logo_url?: string;
   website_url?: string;
-  tier?: string;
+  description?: string;
   display_order?: number;
   is_active?: boolean;
 }
@@ -32,36 +33,34 @@ export async function onRequestGet(context: PagesContext): Promise<Response> {
   const { request, env } = context;
 
   try {
+    // Serve from edge cache if available
+    const cfCaches = caches as unknown as { default: Cache };
+    const cache = cfCaches.default;
+    const cacheKey = new Request(request.url, { method: 'GET' });
+    const cached = await cache.match(cacheKey);
+    if (cached) return cached;
+
     const url = new URL(request.url);
     const activeOnly = url.searchParams.get('active') === 'true';
-    const tier = url.searchParams.get('tier');
 
     let query = 'SELECT * FROM sponsors';
-    const conditions: string[] = [];
-    const params: string[] = [];
 
     if (activeOnly) {
-      conditions.push('is_active = 1');
-    }
-
-    if (tier) {
-      conditions.push('tier = ?');
-      params.push(tier);
-    }
-
-    if (conditions.length > 0) {
-      query += ' WHERE ' + conditions.join(' AND ');
+      query += ' WHERE is_active = 1';
     }
 
     query += ' ORDER BY display_order ASC, name ASC';
 
-    const stmt = params.length > 0
-      ? env.DB.prepare(query).bind(...params)
-      : env.DB.prepare(query);
+    const result = await env.DB.prepare(query).all<Sponsor>();
 
-    const result = await stmt.all<Sponsor>();
-
-    return successResponse(result.results);
+    const response = successResponse(result.results);
+    // Browser caches 5 min; edge cache managed via Cache API (purged on mutation)
+    response.headers.set('Cache-Control', 'public, max-age=300');
+    // Store in edge cache for up to 24 hours (purged on any sponsor mutation)
+    const cacheResponse = response.clone();
+    cacheResponse.headers.set('Cache-Control', 'public, max-age=86400');
+    context.env && cache.put(cacheKey, cacheResponse);
+    return response;
   } catch (error) {
     console.error('Get sponsors error:', error);
     return errorResponse('Failed to fetch sponsors', 500);
@@ -91,14 +90,14 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
     }
 
     const result = await env.DB.prepare(`
-      INSERT INTO sponsors (name, logo_url, website_url, tier, display_order, is_active)
-      VALUES (?, ?, ?, ?, ?, ?)
+      INSERT INTO sponsors (name, logo_url, website_url, description, tier, display_order, is_active)
+      VALUES (?, ?, ?, ?, 'bronze', ?, ?)
     `)
       .bind(
         body.name,
         body.logo_url || null,
         body.website_url || null,
-        body.tier || 'bronze',
+        body.description || null,
         body.display_order || 0,
         body.is_active !== false ? 1 : 0
       )
@@ -112,6 +111,8 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
     const sponsor = await env.DB.prepare('SELECT * FROM sponsors WHERE id = ?')
       .bind(result.meta.last_row_id)
       .first<Sponsor>();
+
+    await purgeSponsorCache(request.url);
 
     return successResponse(sponsor, 'Sponsor created successfully');
   } catch (error) {

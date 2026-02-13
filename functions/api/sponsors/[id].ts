@@ -1,6 +1,7 @@
 import type { Env } from '../../types';
 import { successResponse, errorResponse } from '../../types';
 import { verifyToken, getTokenFromRequest } from '../../jwt';
+import { purgeSponsorCache } from './cache';
 
 interface PagesContext {
   request: Request;
@@ -15,7 +16,7 @@ interface Sponsor {
   name: string;
   logo_url: string | null;
   website_url: string | null;
-  tier: string;
+  description: string | null;
   display_order: number;
   is_active: boolean;
   created_at: string;
@@ -25,7 +26,7 @@ interface SponsorInput {
   name?: string;
   logo_url?: string;
   website_url?: string;
-  tier?: string;
+  description?: string;
   display_order?: number;
   is_active?: boolean | string;
 }
@@ -103,9 +104,9 @@ export async function onRequestPut(context: PagesContext): Promise<Response> {
       updates.push('website_url = ?');
       values.push(body.website_url || null);
     }
-    if (body.tier !== undefined) {
-      updates.push('tier = ?');
-      values.push(body.tier);
+    if (body.description !== undefined) {
+      updates.push('description = ?');
+      values.push(body.description || null);
     }
     if (body.display_order !== undefined) {
       updates.push('display_order = ?');
@@ -131,6 +132,8 @@ export async function onRequestPut(context: PagesContext): Promise<Response> {
     const sponsor = await env.DB.prepare('SELECT * FROM sponsors WHERE id = ?')
       .bind(id)
       .first<Sponsor>();
+
+    await purgeSponsorCache(request.url);
 
     return successResponse(sponsor, 'Sponsor updated successfully');
   } catch (error) {
@@ -170,6 +173,8 @@ export async function onRequestDelete(context: PagesContext): Promise<Response> 
     }
 
     await env.DB.prepare('DELETE FROM sponsors WHERE id = ?').bind(id).run();
+
+    await purgeSponsorCache(request.url);
 
     return successResponse(null, 'Sponsor deleted successfully');
   } catch (error) {

@@ -1,5 +1,5 @@
 import { apiClient } from './client';
-import type { Sponsor, SponsorFormData, SponsorTier, ApiResponse } from '../types';
+import type { Sponsor, SponsorFormData, ApiResponse } from '../types';
 
 export const sponsorsApi = {
   getAll: async (activeOnly: boolean = false): Promise<ApiResponse<Sponsor[]>> => {
@@ -9,10 +9,6 @@ export const sponsorsApi = {
 
   getById: async (id: number): Promise<ApiResponse<Sponsor>> => {
     return apiClient.get<Sponsor>(`/sponsors/${id}`);
-  },
-
-  getByTier: async (tier: SponsorTier): Promise<ApiResponse<Sponsor[]>> => {
-    return apiClient.get<Sponsor[]>(`/sponsors?tier=${tier}&active=true`);
   },
 
   create: async (data: SponsorFormData): Promise<ApiResponse<Sponsor>> => {

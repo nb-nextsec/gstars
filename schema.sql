@@ -22,11 +22,13 @@ CREATE TABLE IF NOT EXISTS events (
 );
 
 -- Sponsors
+-- Note: tier column is deprecated but retained for CHECK constraint compatibility
 CREATE TABLE IF NOT EXISTS sponsors (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   name TEXT NOT NULL,
   logo_url TEXT,
   website_url TEXT,
+  description TEXT,
   tier TEXT DEFAULT 'bronze' CHECK(tier IN ('gold', 'silver', 'bronze')),
   display_order INTEGER DEFAULT 0,
   is_active BOOLEAN DEFAULT 1,
@@ -78,3 +80,23 @@ INSERT OR IGNORE INTO content (page, section, content) VALUES
   ('contact', 'address', 'Geelong, Victoria, Australia'),
   ('contact', 'email', 'info@geelongstars.com.au'),
   ('contact', 'phone', '(03) 5XXX XXXX');
+
+-- Seed sponsors
+INSERT OR IGNORE INTO sponsors (name, logo_url, website_url, description, tier, display_order, is_active) VALUES
+  ('Sipcam', 'https://cdn.prod.website-files.com/68a52a259620521f4aec8c70/68a6f3dbea4151d7018b48e2_Sipcam-Logo-Full-Clr-removebg-preview.png', 'https://sipcam.com.au/', 'A leading crop protection and specialty chemicals company. Proud to invest in community wellbeing and all-abilities sport.', 'bronze', 1, 1),
+  ('Breakwater Hotel', '/images/breakwater.avif', 'https://www.facebook.com/groups/21807272626', 'A proud Geelong hospitality venue supporting local sport and community. The Breakwater Hotel is a valued partner of Geelong Stars.', 'bronze', 2, 1),
+  ('Meys Meats', '/images/Meys-Logo-web_png.avif', 'https://meysmeats.com.au/', 'Quality local butcher providing the finest meats in Geelong. Proud supporters of community sport and all-abilities inclusion.', 'bronze', 3, 1),
+  ('Bunnings', '/images/Bunnings-logo_edited.avif', 'https://www.bunnings.com.au/', 'Australia''s leading home improvement and outdoor living retailer. Bunnings is proud to support local community clubs and organisations.', 'bronze', 4, 1),
+  ('Bellarine Village', '/images/ballarine-lotto.jpg', 'https://bellarinevillage.com.au/stores/bellarine-village-lotto/', 'A welcoming shopping destination on the Bellarine Peninsula. Supporting local sport and the Geelong Stars community.', 'bronze', 5, 1),
+  ('Fruit Biz', '/images/fruit biz.avif', 'https://www.facebook.com/FruitBiz/', 'Fresh fruit and produce supplier in the Geelong region. Keeping our athletes fuelled with healthy, quality produce.', 'bronze', 6, 1),
+  ('Geelong Plaster Cartage', '/images/Geelong Plaster Cartage_edited_edited_ed.avif', NULL, 'Reliable plaster and building materials cartage across the Geelong region. Proud to support all-abilities sport in the community.', 'bronze', 7, 1),
+  ('Lektrix', '/images/Lektrix_edited_edited.avif', 'https://lektrix.com.au/', 'Professional electrical services for homes and businesses in Geelong. Powering our community on and off the field.', 'bronze', 8, 1),
+  ('McHarry''s Bus Lines', '/images/McHarry''s Bus Lines logo_edited_edited_p.avif', 'https://mcharrys.com.au/', 'Geelong''s trusted public transport provider. Helping our community get where they need to go, including to training and game days!', 'bronze', 9, 1),
+  ('Repco', '/images/repco.avif', 'https://www.repco.com.au/', 'Australia''s leading auto parts and accessories retailer. Supporting the Geelong Stars community and keeping everyone on the road.', 'bronze', 10, 1),
+  ('Rotary Club', '/images/rotary club_edited.avif', 'https://geelongrotary.org.au/', 'A global network of community leaders dedicated to service above self. The Rotary Club proudly supports inclusive sport in Geelong.', 'bronze', 11, 1),
+  ('Hawk & Co', '/images/hawk-and-co.jpg', 'https://www.facebook.com/hawkcohandyman/', 'A trusted local handyman service in Geelong. Hawk & Co is a proud supporter of Geelong Stars and all-abilities sport in the community.', 'bronze', 12, 1),
+  ('Wade 2 Go', '/images/wade-2-go.jpg', 'https://www.facebook.com/Wade2GoHandyman/', 'A reliable local handyman service in the Geelong region. Wade 2 Go is a proud supporter of Geelong Stars and inclusive sport in the community.', 'bronze', 13, 1),
+  ('Winston & Co Cafe and Takeaway', '/images/winston-logo.jpg', 'https://www.facebook.com/winstonandcocafe/about', 'A local cafe and takeaway serving delicious food and coffee to the Geelong community. Winston & Co is a proud supporter of Geelong Stars and inclusive sport.', 'bronze', 14, 1),
+  ('Phoenix Truck Bodies', '/images/phoenix.jpg', 'https://phoenixtruckbodies.com.au/', 'Specialist truck body builders based in Geelong. Phoenix Truck Bodies is a proud supporter of Geelong Stars and all-abilities sport in the community.', 'bronze', 15, 1),
+  ('Jim''s Building Inspections', '/images/jims-building.jpg', 'https://jimsbuildinginspections.com.au/local/vic/geelong/', 'Professional building and pest inspections in the Geelong region. Jim''s Building Inspections is a proud supporter of Geelong Stars and all-abilities sport in the community.', 'bronze', 16, 1),
+  ('Geelong Connected Communities', '/images/geelong-connected-communities.jpg', 'https://www.geelongconnectedcommunities.com.au/', 'Geelong Connected Communities provides grants to help Not for Profit organisations fund programs that strengthen and enrich the Geelong community. We are grateful for their support in helping Geelong Stars deliver inclusive, all-abilities sport.', 'bronze', 17, 1);

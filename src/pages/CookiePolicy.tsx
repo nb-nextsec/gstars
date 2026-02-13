@@ -18,7 +18,7 @@ export function CookiePolicy() {
       {/* Content */}
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 prose prose-lg max-w-none">
-          <p className="text-gray-500 text-sm mb-8">Last updated: February 2025</p>
+          <p className="text-gray-500 text-sm mb-8">Last updated: February 2026</p>
 
           <h2 className="text-2xl font-bold text-navy mb-4">What Are Cookies?</h2>
           <p className="text-gray-600 mb-6">

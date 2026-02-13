@@ -40,14 +40,12 @@ export interface EventFormData {
 }
 
 // Sponsor types
-export type SponsorTier = 'gold' | 'silver' | 'bronze';
-
 export interface Sponsor {
   id: number;
   name: string;
   logo_url: string | null;
   website_url: string | null;
-  tier: SponsorTier;
+  description: string | null;
   display_order: number;
   is_active: boolean;
   created_at: string;
@@ -57,7 +55,7 @@ export interface SponsorFormData {
   name: string;
   logo_url?: string;
   website_url?: string;
-  tier?: SponsorTier;
+  description?: string;
   display_order?: number;
   is_active?: boolean;
 }

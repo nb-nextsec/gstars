@@ -1,25 +1,24 @@
 import { useState } from 'react';
-import { Plus, Edit2, Trash2, ExternalLink, Award } from 'lucide-react';
+import { Plus, Edit2, Trash2, ExternalLink, Award, ChevronUp, ChevronDown } from 'lucide-react';
 import { Card, Button, Loading, ConfirmModal } from '../../components/common';
 import { SponsorEditor } from '../../components/admin';
-import { useSponsors, useCreateSponsor, useUpdateSponsor, useDeleteSponsor } from '../../hooks';
-import type { Sponsor, SponsorFormData, SponsorTier } from '../../types';
-
-const tierStyles: Record<SponsorTier, string> = {
-  gold: 'bg-amber-100 text-amber-800',
-  silver: 'bg-gray-200 text-gray-700',
-  bronze: 'bg-orange-100 text-orange-800',
-};
+import { useSponsors, useCreateSponsor, useUpdateSponsor, useDeleteSponsor, useReorderSponsors } from '../../hooks';
+import type { Sponsor, SponsorFormData } from '../../types';
 
 export function Sponsors() {
   const { data: sponsors, isLoading, error } = useSponsors();
   const createSponsor = useCreateSponsor();
   const updateSponsor = useUpdateSponsor();
   const deleteSponsor = useDeleteSponsor();
+  const reorderSponsors = useReorderSponsors();
 
   const [isEditorOpen, setIsEditorOpen] = useState(false);
   const [editingSponsor, setEditingSponsor] = useState<Sponsor | null>(null);
   const [deletingSponsor, setDeletingSponsor] = useState<Sponsor | null>(null);
+
+  const sortedSponsors = sponsors
+    ? [...sponsors].sort((a, b) => a.display_order - b.display_order)
+    : [];
 
   const handleCreate = () => {
     setEditingSponsor(null);
@@ -46,19 +45,19 @@ export function Sponsors() {
     }
   };
 
-  // Group sponsors by tier
-  const groupedSponsors = sponsors?.reduce(
-    (acc, sponsor) => {
-      if (!acc[sponsor.tier]) {
-        acc[sponsor.tier] = [];
-      }
-      acc[sponsor.tier].push(sponsor);
-      return acc;
-    },
-    {} as Record<SponsorTier, Sponsor[]>
-  );
+  const handleMoveUp = async (index: number) => {
+    if (index === 0 || sortedSponsors.length < 2) return;
+    const newOrder = sortedSponsors.map(s => s.id);
+    [newOrder[index - 1], newOrder[index]] = [newOrder[index], newOrder[index - 1]];
+    await reorderSponsors.mutateAsync(newOrder);
+  };
 
-  const tierOrder: SponsorTier[] = ['gold', 'silver', 'bronze'];
+  const handleMoveDown = async (index: number) => {
+    if (index >= sortedSponsors.length - 1) return;
+    const newOrder = sortedSponsors.map(s => s.id);
+    [newOrder[index], newOrder[index + 1]] = [newOrder[index + 1], newOrder[index]];
+    await reorderSponsors.mutateAsync(newOrder);
+  };
 
   return (
     <div className="space-y-6">
@@ -80,87 +79,93 @@ export function Sponsors() {
         <Card className="text-center py-8">
           <p className="text-red-600">Error loading sponsors. Please try again.</p>
         </Card>
-      ) : sponsors && sponsors.length > 0 ? (
-        <div className="space-y-8">
-          {tierOrder.map((tier) => {
-            const tierSponsors = groupedSponsors?.[tier];
-            if (!tierSponsors || tierSponsors.length === 0) return null;
-
-            return (
-              <div key={tier}>
-                <h2 className="text-lg font-semibold text-navy mb-4 capitalize flex items-center gap-2">
-                  <Award size={20} className={tier === 'gold' ? 'text-amber-500' : tier === 'silver' ? 'text-gray-500' : 'text-orange-500'} />
-                  {tier} Sponsors
-                </h2>
-                <div className="grid md:grid-cols-2 gap-4">
-                  {tierSponsors
-                    .sort((a, b) => a.display_order - b.display_order)
-                    .map((sponsor) => (
-                      <Card key={sponsor.id} className="flex items-center gap-4">
-                        <div className="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0 overflow-hidden">
-                          {sponsor.logo_url ? (
-                            <img
-                              src={sponsor.logo_url}
-                              alt={sponsor.name}
-                              className="max-w-full max-h-full object-contain"
-                            />
-                          ) : (
-                            <span className="text-gray-400 text-xl font-bold">
-                              {sponsor.name[0]}
-                            </span>
-                          )}
-                        </div>
-
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center gap-2">
-                            <h3 className="font-semibold text-navy truncate">{sponsor.name}</h3>
-                            <span className={`px-2 py-0.5 text-xs rounded capitalize ${tierStyles[sponsor.tier]}`}>
-                              {sponsor.tier}
-                            </span>
-                            {!sponsor.is_active && (
-                              <span className="px-2 py-0.5 text-xs bg-gray-200 text-gray-600 rounded">
-                                Inactive
-                              </span>
-                            )}
-                          </div>
-                          {sponsor.website_url && (
-                            <a
-                              href={sponsor.website_url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-sm text-accent hover:underline flex items-center gap-1 mt-1"
-                            >
-                              <ExternalLink size={12} />
-                              Visit Website
-                            </a>
-                          )}
-                        </div>
-
-                        <div className="flex gap-2 flex-shrink-0">
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            onClick={() => handleEdit(sponsor)}
-                            leftIcon={<Edit2 size={16} />}
-                          >
-                            Edit
-                          </Button>
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            onClick={() => setDeletingSponsor(sponsor)}
-                            className="text-red-600 hover:bg-red-50"
-                            leftIcon={<Trash2 size={16} />}
-                          >
-                            Delete
-                          </Button>
-                        </div>
-                      </Card>
-                    ))}
-                </div>
+      ) : sortedSponsors.length > 0 ? (
+        <div className="space-y-3">
+          {sortedSponsors.map((sponsor, index) => (
+            <Card key={sponsor.id} className="flex items-center gap-4">
+              {/* Reorder arrows */}
+              <div className="flex flex-col gap-1 flex-shrink-0">
+                <button
+                  onClick={() => handleMoveUp(index)}
+                  disabled={index === 0 || reorderSponsors.isPending}
+                  className="p-1 text-gray-400 hover:text-navy hover:bg-gray-100 rounded disabled:opacity-30 disabled:cursor-not-allowed"
+                  title="Move up"
+                >
+                  <ChevronUp size={16} />
+                </button>
+                <button
+                  onClick={() => handleMoveDown(index)}
+                  disabled={index === sortedSponsors.length - 1 || reorderSponsors.isPending}
+                  className="p-1 text-gray-400 hover:text-navy hover:bg-gray-100 rounded disabled:opacity-30 disabled:cursor-not-allowed"
+                  title="Move down"
+                >
+                  <ChevronDown size={16} />
+                </button>
               </div>
-            );
-          })}
+
+              {/* Logo thumbnail */}
+              <div className="w-20 h-20 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0 overflow-hidden">
+                {sponsor.logo_url ? (
+                  <img
+                    src={sponsor.logo_url}
+                    alt={sponsor.name}
+                    className="max-w-full max-h-full object-contain p-1"
+                  />
+                ) : (
+                  <span className="text-gray-400 text-xl font-bold">
+                    {sponsor.name[0]}
+                  </span>
+                )}
+              </div>
+
+              {/* Details */}
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2">
+                  <h3 className="font-semibold text-navy truncate">{sponsor.name}</h3>
+                  {!sponsor.is_active && (
+                    <span className="px-2 py-0.5 text-xs bg-gray-200 text-gray-600 rounded">
+                      Inactive
+                    </span>
+                  )}
+                </div>
+                {sponsor.description && (
+                  <p className="text-sm text-gray-500 mt-0.5 truncate">{sponsor.description}</p>
+                )}
+                {sponsor.website_url && (
+                  <a
+                    href={sponsor.website_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-accent hover:underline flex items-center gap-1 mt-1"
+                  >
+                    <ExternalLink size={12} />
+                    Visit Website
+                  </a>
+                )}
+              </div>
+
+              {/* Actions */}
+              <div className="flex gap-2 flex-shrink-0">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => handleEdit(sponsor)}
+                  leftIcon={<Edit2 size={16} />}
+                >
+                  Edit
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setDeletingSponsor(sponsor)}
+                  className="text-red-600 hover:bg-red-50"
+                  leftIcon={<Trash2 size={16} />}
+                >
+                  Delete
+                </Button>
+              </div>
+            </Card>
+          ))}
         </div>
       ) : (
         <Card className="text-center py-12">
@@ -173,8 +178,9 @@ export function Sponsors() {
         </Card>
       )}
 
-      {/* Sponsor Editor Modal */}
+      {/* Sponsor Editor Modal — key forces remount so useForm gets fresh defaultValues */}
       <SponsorEditor
+        key={editingSponsor ? editingSponsor.id : 'new'}
         isOpen={isEditorOpen}
         onClose={() => setIsEditorOpen(false)}
         onSave={handleSave}
