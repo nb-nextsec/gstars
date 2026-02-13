@@ -64,7 +64,7 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
     });
 
     // Build the URL for the image
-    const imageUrl = `/images/${filename}`;
+    const imageUrl = `/uploads/${filename}`;
 
     // Save to database
     const result = await env.DB.prepare(`

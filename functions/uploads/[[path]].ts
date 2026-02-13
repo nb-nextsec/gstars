@@ -8,7 +8,7 @@ interface PagesContext {
   };
 }
 
-// Serve images from R2
+// Serve uploaded images from R2
 export async function onRequestGet(context: PagesContext): Promise<Response> {
   const { env, params } = context;
 

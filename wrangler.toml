@@ -12,5 +12,4 @@ binding = "IMAGES"
 bucket_name = "geelong-stars-images"
 
 [vars]
-JWT_SECRET = "change-this-in-production-to-a-secure-secret"
 SITE_URL = "https://geelong-stars.pages.dev"
