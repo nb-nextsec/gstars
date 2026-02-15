@@ -1,6 +1,9 @@
 export interface Env {
   DB: D1Database;
   IMAGES: R2Bucket;
+  EMAIL: {
+    send: (msg: unknown) => Promise<void>;
+  };
   JWT_SECRET: string;
   SITE_URL: string;
 }

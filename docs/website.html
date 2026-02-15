@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geelong Stars Website Guide</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: #333; line-height: 1.7; background: #f8f9fa; }
+    header { background: #1e3a5f; color: #fff; padding: 3rem 2rem; text-align: center; }
+    header h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+    header p { opacity: 0.85; font-size: 1rem; }
+    main { max-width: 800px; margin: 2rem auto; padding: 0 1.5rem 4rem; }
+    section { background: #fff; border-radius: 10px; padding: 2rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+    h2 { color: #1e3a5f; font-size: 1.25rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e9ecef; }
+    p { margin-bottom: 0.75rem; }
+    ul { margin: 0.75rem 0 0.75rem 1.5rem; }
+    li { margin-bottom: 0.5rem; }
+    .highlight { background: #e8f4f8; border-left: 4px solid #1e3a5f; padding: 1rem 1.25rem; border-radius: 0 6px 6px 0; margin: 1rem 0; }
+    .highlight strong { color: #1e3a5f; }
+    footer { text-align: center; color: #888; font-size: 0.85rem; padding: 2rem; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Geelong Stars &mdash; Website Guide</h1>
+  <p>A plain-English overview of how your website works</p>
+</header>
+
+<main>
+
+  <section>
+    <h2>Where is the website hosted?</h2>
+    <p>Your website is hosted on <strong>Cloudflare</strong>, one of the world's largest and most reliable internet platforms. Cloudflare serves your website from data centres all around the world, which means visitors get fast load times no matter where they are.</p>
+    <p>There are no traditional servers to maintain, and the hosting is included as part of Cloudflare's platform &mdash; so there are no separate hosting bills.</p>
+    <div class="highlight">
+      <strong>Your web address:</strong> www.geelongstars.com.au
+    </div>
+  </section>
+
+  <section>
+    <h2>The contact form</h2>
+    <p>When someone fills out the contact form on the website, their message is sent directly as an email. This happens instantly and automatically &mdash; no third-party email service is involved.</p>
+    <div class="highlight">
+      <strong>Contact form emails currently go to:</strong> contact@geelongstars.com.au
+    </div>
+    <p>Each email includes the person's name, email address, phone number (if provided), the subject they selected, and their message. You can reply directly to the sender from your inbox because the email is set up with a "reply-to" pointing back to whoever filled out the form.</p>
+  </section>
+
+  <section>
+    <h2>The admin panel</h2>
+    <p>Your website has a built-in admin area that allows authorised users to manage certain parts of the site without needing a developer. Through the admin panel you can:</p>
+    <ul>
+      <li><strong>Manage sponsors</strong> &mdash; add, remove, reorder, or update sponsor logos and details</li>
+      <li><strong>Manage events</strong> &mdash; create, edit, or remove upcoming events</li>
+      <li><strong>Upload images</strong> &mdash; add new photos to the site's image library</li>
+      <li><strong>Edit page content</strong> &mdash; update text on various pages</li>
+    </ul>
+    <p>You log into the admin panel with a username and password. If you need login details or a password reset, contact your website administrator.</p>
+  </section>
+
+  <section>
+    <h2>Where is everything stored?</h2>
+    <p>All your website's data is stored securely on Cloudflare's platform:</p>
+    <ul>
+      <li><strong>Text content, events, and sponsors</strong> are stored in a database managed by Cloudflare (called D1). This is like a digital filing cabinet for all the information displayed on the site.</li>
+      <li><strong>Uploaded images</strong> (such as sponsor logos and event photos) are stored in Cloudflare's file storage (called R2). These are served quickly to visitors from Cloudflare's global network.</li>
+      <li><strong>Static images</strong> (such as program photos and the club logo) are bundled directly with the website files and don't need a database.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>How updates are made</h2>
+    <p>There are two ways the website gets updated:</p>
+    <ul>
+      <li><strong>Content changes</strong> (sponsors, events, images, text) can be made by anyone with admin access through the admin panel. These changes appear on the website immediately.</li>
+      <li><strong>Design or structural changes</strong> (new pages, layout changes, new features) require a developer. The website's source code is stored in a version-controlled repository, and changes are deployed to Cloudflare when ready.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Domain name</h2>
+    <p>Your domain <strong>geelongstars.com.au</strong> is managed through Cloudflare's DNS. This means Cloudflare handles pointing your web address to the correct place. If the domain registration needs renewing, that is handled separately through the domain registrar (the company the domain was originally purchased from).</p>
+  </section>
+
+  <section>
+    <h2>Good to know</h2>
+    <ul>
+      <li>The website is a <strong>single-page application</strong>, which means it feels fast and smooth &mdash; pages load without the full screen going blank between clicks.</li>
+      <li>The site is served over <strong>HTTPS</strong> (the padlock in your browser), so all traffic between visitors and the website is encrypted.</li>
+      <li>Cloudflare automatically provides <strong>protection against common internet attacks</strong> such as spam bots and denial-of-service attempts.</li>
+      <li>The site works well on <strong>mobile phones, tablets, and desktops</strong>.</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  Last updated: February 2026
+</footer>
+
+</body>
+</html>

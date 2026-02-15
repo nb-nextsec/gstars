@@ -1,3 +1,4 @@
+import { EmailMessage } from 'cloudflare:email';
 import type { Env } from '../../types';
 import { successResponse, errorResponse } from '../../types';
 
@@ -14,7 +15,18 @@ interface ContactForm {
   message: string;
 }
 
-// Simple email validation
+const TO = 'nb@securedynamics.com.au';
+const FROM = 'noreply@geelongstars.com.au';
+
+const SUBJECT_LABELS: Record<string, string> = {
+  general: 'General Inquiry',
+  programs: 'Program Information',
+  registration: 'Registration',
+  sponsorship: 'Sponsorship Opportunities',
+  volunteer: 'Volunteering',
+  other: 'Other',
+};
+
 function isValidEmail(email: string): boolean {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
@@ -22,7 +34,7 @@ function isValidEmail(email: string): boolean {
 
 // POST /api/contact/send
 export async function onRequestPost(context: PagesContext): Promise<Response> {
-  const { request, env: _env } = context;
+  const { request, env } = context;
 
   try {
     const body: ContactForm = await request.json();
@@ -32,45 +44,40 @@ export async function onRequestPost(context: PagesContext): Promise<Response> {
       return errorResponse('Name, email, subject, and message are required', 400);
     }
 
-    // Validate email format
     if (!isValidEmail(body.email)) {
       return errorResponse('Invalid email address', 400);
     }
 
-    // Validate message length
     if (body.message.length < 10) {
       return errorResponse('Message must be at least 10 characters', 400);
     }
 
-    // In a production environment, you would send an email here
-    // using Cloudflare Email Workers or an external service.
-    // For now, we'll just log the contact form submission.
-    console.log('Contact form submission:', {
-      name: body.name,
-      email: body.email,
-      phone: body.phone,
-      subject: body.subject,
-      message: body.message,
-      timestamp: new Date().toISOString(),
-    });
+    const subjectLabel = SUBJECT_LABELS[body.subject] || body.subject;
+    const msgId = `<${crypto.randomUUID()}@geelongstars.com.au>`;
+    const dateHeader = new Date().toUTCString();
 
-    // TODO: Implement actual email sending using Cloudflare Email Workers
-    // or integrate with an email service like SendGrid, Mailgun, etc.
-    //
-    // Example with Cloudflare Email Workers:
-    // await env.EMAIL.send({
-    //   to: 'info@geelongstars.com.au',
-    //   from: 'noreply@geelongstars.com.au',
-    //   subject: `Contact Form: ${body.subject}`,
-    //   text: `
-    //     Name: ${body.name}
-    //     Email: ${body.email}
-    //     Phone: ${body.phone || 'Not provided'}
-    //
-    //     Message:
-    //     ${body.message}
-    //   `,
-    // });
+    const raw = [
+      `From: "Geelong Stars Website" <${FROM}>`,
+      `To: <${TO}>`,
+      `Reply-To: <${body.email}>`,
+      `Subject: New enquiry: ${subjectLabel} - from ${body.name}`,
+      `Date: ${dateHeader}`,
+      `Message-ID: ${msgId}`,
+      `MIME-Version: 1.0`,
+      `Content-Type: text/plain; charset="utf-8"`,
+      ``,
+      `New contact form submission from geelongstars.com.au`,
+      ``,
+      `Name: ${body.name}`,
+      `Email: ${body.email}`,
+      `Phone: ${body.phone || 'Not provided'}`,
+      `Subject: ${subjectLabel}`,
+      ``,
+      `Message:`,
+      `${body.message}`,
+    ].join('\r\n');
+
+    await env.EMAIL.send(new EmailMessage(FROM, TO, raw));
 
     return successResponse(null, 'Message sent successfully! We will get back to you soon.');
   } catch (error) {
