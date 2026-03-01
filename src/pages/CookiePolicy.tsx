@@ -1,6 +1,13 @@
+import { SEOHead } from '../components/common/SEOHead';
+
 export function CookiePolicy() {
   return (
     <>
+      <SEOHead
+        title="Cookie Policy | Geelong Stars"
+        description="Learn about how Geelong Stars uses cookies on our website."
+        url="/cookie-policy"
+      />
       {/* Hero Section */}
       <section className="relative min-h-[300px] flex items-center bg-navy">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">

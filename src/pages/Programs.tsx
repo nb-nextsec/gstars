@@ -2,6 +2,7 @@ import { Users, Trophy, Heart, Calendar, MapPin, ArrowRight, Zap, Shield, Bike }
 import { Link } from 'react-router-dom';
 import type { ReactNode } from 'react';
 import { Button } from '../components/common';
+import { SEOHead } from '../components/common/SEOHead';
 
 interface Program {
   id: string;
@@ -258,6 +259,11 @@ function ProgramGrid({ programs }: { programs: Program[] }) {
 export function Programs() {
   return (
     <>
+      <SEOHead
+        title="Our Programs | Basketball, Football, Golf & More | Geelong Stars"
+        description="Explore our range of inclusive sports programs: basketball, football, golf, athletics, and more. Programs for all ages and abilities in Geelong."
+        url="/programs"
+      />
       {/* Hero Section */}
       <section className="relative min-h-[400px] flex items-center">
         <div className="absolute inset-0">

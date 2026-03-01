@@ -14,3 +14,8 @@ createRoot(container).render(
     <App />
   </StrictMode>
 );
+
+// Signal to prerender plugin that app is ready
+if (typeof window !== 'undefined') {
+  document.dispatchEvent(new Event('app-rendered'));
+}

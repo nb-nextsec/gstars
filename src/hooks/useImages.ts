@@ -11,6 +11,12 @@ export const imageKeys = {
 };
 
 export function useImages(category?: ImageCategory) {
+  // Check for preloaded data from server-side rendering
+  const preloadedData = typeof window !== 'undefined' ? window.__PRELOADED_DATA__?.images : undefined;
+  const initialData = preloadedData && category
+    ? preloadedData.filter(img => img.category === category)
+    : preloadedData;
+
   return useQuery({
     queryKey: imageKeys.list(category),
     queryFn: async () => {
@@ -18,6 +24,7 @@ export function useImages(category?: ImageCategory) {
       if (!response.success) throw new Error(response.error);
       return response.data!;
     },
+    initialData,
   });
 }
 

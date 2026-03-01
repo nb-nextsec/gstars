@@ -1,4 +1,5 @@
 import { Image as ImageIcon } from 'lucide-react';
+import { SEOHead } from '../components/common/SEOHead';
 
 const HERO_IMAGE = 'https://static.wixstatic.com/media/c23ea9_1071a90c20b044f4bb98e30faed73a2c~mv2.jpg/v1/fill/w_1200,h_600,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/c23ea9_1071a90c20b044f4bb98e30faed73a2c~mv2.jpg';
 
@@ -110,6 +111,11 @@ const GALLERY_IMAGES = [
 export function PhotoGallery() {
   return (
     <>
+      <SEOHead
+        title="Photo Gallery | Geelong Stars in Action"
+        description="See Geelong Stars in action! Browse photos from our programs, events, and community activities."
+        url="/photo-gallery"
+      />
       {/* Hero Section */}
       <section className="relative min-h-[400px] flex items-center">
         <div className="absolute inset-0">

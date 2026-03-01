@@ -1,11 +1,6 @@
 import { createContext, useContext, useState, useEffect, useCallback, type ReactNode } from 'react';
 import { authApi } from '../api';
-import type { User, AuthState, LoginCredentials } from '../types';
-
-// Dev mode credentials for local testing (when API is not available)
-const DEV_MODE = import.meta.env.DEV;
-const DEV_CREDENTIALS = { username: 'admin', password: 'admin123' };
-const DEV_USER: User = { id: 1, username: 'admin', created_at: new Date().toISOString() };
+import type { AuthState, LoginCredentials } from '../types';
 
 interface AuthContextType extends AuthState {
   login: (credentials: LoginCredentials) => Promise<boolean>;
@@ -23,19 +18,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   });
 
   const checkAuth = useCallback(async () => {
-    // In dev mode, check localStorage for auth state
-    if (DEV_MODE) {
-      const devAuth = localStorage.getItem('dev_auth');
-      if (devAuth === 'true') {
-        setState({
-          user: DEV_USER,
-          isAuthenticated: true,
-          isLoading: false,
-        });
-        return;
-      }
-    }
-
     try {
       const response = await authApi.me();
       if (response.success && response.data) {
@@ -63,21 +45,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const login = async (credentials: LoginCredentials): Promise<boolean> => {
     setState(prev => ({ ...prev, isLoading: true }));
 
-    // Dev mode: allow login with dev credentials without API
-    if (DEV_MODE) {
-      if (credentials.username === DEV_CREDENTIALS.username &&
-          credentials.password === DEV_CREDENTIALS.password) {
-        localStorage.setItem('dev_auth', 'true');
-        setState({
-          user: DEV_USER,
-          isAuthenticated: true,
-          isLoading: false,
-        });
-        return true;
-      }
-    }
-
-    // Try the actual API
     try {
       const response = await authApi.login(credentials);
 
@@ -89,8 +56,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         });
         return true;
       }
-    } catch {
-      // API not available, already handled dev mode above
+    } catch (error) {
+      console.error('Login failed:', error);
     }
 
     setState(prev => ({ ...prev, isLoading: false }));
@@ -98,10 +65,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   const logout = async () => {
-    if (DEV_MODE) {
-      localStorage.removeItem('dev_auth');
-    }
-
     try {
       await authApi.logout();
     } catch {

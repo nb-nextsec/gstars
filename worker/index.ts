@@ -349,16 +349,29 @@ app.post('/api/images/upload', async (c) => {
 // ---------------------------------------------------------------------------
 // Sponsors
 // ---------------------------------------------------------------------------
-async function purgeSponsorCache(requestUrl: string) {
+async function purgeSponsorCache() {
   try {
     const cfCaches = caches as unknown as { default: Cache };
     const cache = cfCaches.default;
-    const origin = new URL(requestUrl).origin;
-    await Promise.all([
-      cache.delete(new Request(`${origin}/api/sponsors`)),
-      cache.delete(new Request(`${origin}/api/sponsors?active=true`)),
+
+    // Purge all possible origins/domains
+    const origins = [
+      'https://geelong-stars.pages.dev',
+      'https://www.geelongstars.com.au',
+      'https://geelongstars.com.au',
+      'https://geelong-stars.secure-dynamics.workers.dev'
+    ];
+
+    const purgePromises = origins.flatMap(origin => [
+      cache.delete(new Request(`${origin}/api/sponsors`, { method: 'GET' })),
+      cache.delete(new Request(`${origin}/api/sponsors?active=true`, { method: 'GET' })),
     ]);
-  } catch (e) { console.error('Cache purge failed:', e); }
+
+    await Promise.all(purgePromises);
+    console.log('Cache purged successfully');
+  } catch (e) {
+    console.error('Cache purge failed:', e);
+  }
 }
 
 app.get('/api/sponsors', async (c) => {
@@ -382,9 +395,10 @@ app.get('/api/sponsors', async (c) => {
     const response = ok(r.results);
 
     if (activeOnly) {
-      response.headers.set('Cache-Control', 'public, max-age=300');
+      // Short browser cache, longer CDN cache
+      response.headers.set('Cache-Control', 'public, max-age=60, s-maxage=3600');
       const cacheResponse = response.clone();
-      cacheResponse.headers.set('Cache-Control', 'public, max-age=86400');
+      cacheResponse.headers.set('Cache-Control', 'public, max-age=3600');
       cache.put(new Request(c.req.url, { method: 'GET' }), cacheResponse);
     } else {
       response.headers.set('Cache-Control', 'no-cache');
@@ -409,7 +423,7 @@ app.post('/api/sponsors', async (c) => {
 
     if (!r.success) return err('Failed to create sponsor', 500);
     const sponsor = await c.env.DB.prepare('SELECT * FROM sponsors WHERE id = ?').bind(r.meta.last_row_id).first();
-    await purgeSponsorCache(c.req.url);
+    await purgeSponsorCache();
     return ok(sponsor, 'Sponsor created successfully');
   } catch (e) { console.error('Create sponsor error:', e); return err('Failed to create sponsor', 500); }
 });
@@ -452,7 +466,7 @@ app.put('/api/sponsors/:id', async (c) => {
 
     await c.env.DB.prepare(`UPDATE sponsors SET ${updates.join(', ')} WHERE id = ?`).bind(...values).run();
     const sponsor = await c.env.DB.prepare('SELECT * FROM sponsors WHERE id = ?').bind(id).first();
-    await purgeSponsorCache(c.req.url);
+    await purgeSponsorCache();
     return ok(sponsor, 'Sponsor updated successfully');
   } catch (e) { console.error('Update sponsor error:', e); return err('Failed to update sponsor', 500); }
 });
@@ -470,7 +484,7 @@ app.delete('/api/sponsors/:id', async (c) => {
     if (!existing) return err('Sponsor not found', 404);
 
     await c.env.DB.prepare('DELETE FROM sponsors WHERE id = ?').bind(id).run();
-    await purgeSponsorCache(c.req.url);
+    await purgeSponsorCache();
     return ok(null, 'Sponsor deleted successfully');
   } catch (e) { console.error('Delete sponsor error:', e); return err('Failed to delete sponsor', 500); }
 });
@@ -489,7 +503,7 @@ app.post('/api/sponsors/reorder', async (c) => {
       c.env.DB.prepare('UPDATE sponsors SET display_order = ? WHERE id = ?').bind(index + 1, id)
     );
     await c.env.DB.batch(statements);
-    await purgeSponsorCache(c.req.url);
+    await purgeSponsorCache();
     return ok(null, 'Sponsors reordered successfully');
   } catch (e) { console.error('Reorder sponsors error:', e); return err('Failed to reorder sponsors', 500); }
 });
@@ -581,10 +595,28 @@ app.onError((e) => { console.error('[ERROR]', e); return json({ success: false, 
 export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext) {
     const url = new URL(request.url);
+
+    // Handle API and upload routes
     if (url.pathname.startsWith('/api/') || url.pathname.startsWith('/uploads/')) {
       return app.fetch(request, env, ctx);
     }
+
     // Serve static assets (SPA not_found_handling returns index.html for client routes)
-    return env.ASSETS.fetch(request);
+    const response = await env.ASSETS.fetch(request);
+
+    // Add cache headers for HTML pages (prerendered content)
+    const contentType = response.headers.get('content-type');
+    if (contentType?.includes('text/html')) {
+      const headers = new Headers(response.headers);
+      // Cache HTML for 1 hour in browser, 24 hours in CDN
+      headers.set('Cache-Control', 'public, max-age=3600, s-maxage=86400');
+      return new Response(response.body, {
+        status: response.status,
+        statusText: response.statusText,
+        headers,
+      });
+    }
+
+    return response;
   },
 };

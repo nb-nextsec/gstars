@@ -1,6 +1,7 @@
 import { Star, Users, Award, Heart, Accessibility, ArrowRight, HeartHandshake, Target, Smile } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Card, Button } from '../components/common';
+import { SEOHead } from '../components/common/SEOHead';
 
 const HERO_IMAGE = 'https://static.wixstatic.com/media/c23ea9_1071a90c20b044f4bb98e30faed73a2c~mv2.jpg/v1/fill/w_1200,h_600,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/c23ea9_1071a90c20b044f4bb98e30faed73a2c~mv2.jpg';
 const TEAM_IMAGE = 'https://static.wixstatic.com/media/c23ea9_6f77b1dc166242098bc394d398c3deb2~mv2.jpg/v1/fill/w_800,h_500,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Youth%20Basketball_edited.jpg';
@@ -58,6 +59,11 @@ const whyJoin = [
 export function OurClub() {
   return (
     <>
+      <SEOHead
+        title="About Geelong Stars | All-Abilities Sports Club"
+        description="Learn about Geelong All-Abilities Sports Club. We offer inclusive programs for participants of all ages and abilities. Everyone belongs here!"
+        url="/our-club"
+      />
       {/* Hero Section */}
       <section className="relative min-h-[400px] flex items-center">
         <div className="absolute inset-0">

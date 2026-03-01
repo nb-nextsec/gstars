@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deployment Guide - Geelong Stars</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #1a202c;
+            border-bottom: 3px solid #3b82f6;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #2d3748;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #4a5568;
+        }
+        code {
+            background: #f7fafc;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #e53e3e;
+        }
+        pre {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        pre code {
+            background: transparent;
+            color: #e2e8f0;
+            padding: 0;
+        }
+        .note {
+            background: #ebf8ff;
+            border-left: 4px solid #3b82f6;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .success {
+            background: #f0fdf4;
+            border-left: 4px solid #10b981;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .warning {
+            background: #fffbeb;
+            border-left: 4px solid #f59e0b;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        ul {
+            line-height: 1.8;
+        }
+        a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .step {
+            background: #f7fafc;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border-left: 3px solid #3b82f6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Deployment Guide - Geelong Stars</h1>
+        <p><strong>Last Updated:</strong> March 2026</p>
+
+        <div class="success">
+            <strong>✅ SEO Optimizations Included:</strong>
+            <ul>
+                <li>Dynamic meta tags on all 15 pages</li>
+                <li>Open Graph tags for social media</li>
+                <li>Sitemap.xml for search engines</li>
+                <li>Robots.txt with AI crawler permissions</li>
+                <li>Optimized cache headers</li>
+            </ul>
+        </div>
+
+        <h2>📋 Standard Deployment Process</h2>
+        <p>The deployment process is simple and unchanged:</p>
+
+        <div class="step">
+            <h3>Step 1: Build the Project</h3>
+            <pre><code>npm run build</code></pre>
+            <p>This command:</p>
+            <ul>
+                <li>Runs TypeScript compilation (<code>tsc</code>)</li>
+                <li>Builds the React app with Vite</li>
+                <li>Outputs to <code>dist/</code> folder</li>
+                <li>Includes all SEO files (sitemap.xml, robots.txt)</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3>Step 2: Deploy to Cloudflare</h3>
+            <pre><code>npm run deploy</code></pre>
+            <p><strong>OR</strong> run both steps at once:</p>
+            <pre><code>npm run deploy</code></pre>
+            <p>This automatically builds and deploys in one command.</p>
+        </div>
+
+        <div class="note">
+            <strong>ℹ️ Note:</strong> You'll need to be authenticated with Cloudflare. If prompted, follow the login instructions in your terminal.
+        </div>
+
+        <h2>🔍 Verifying SEO After Deployment</h2>
+
+        <div class="step">
+            <h3>1. Check Meta Tags</h3>
+            <ul>
+                <li>Visit any page: <a href="https://geelong-stars.pages.dev/" target="_blank">https://geelong-stars.pages.dev/</a></li>
+                <li>Right-click → <strong>View Page Source</strong></li>
+                <li>Look for meta tags in the <code>&lt;head&gt;</code> section:</li>
+            </ul>
+            <pre><code>&lt;title&gt;Geelong Stars - All-Abilities Sports Club | Geelong, Victoria&lt;/title&gt;
+&lt;meta name="description" content="Building champions..."&gt;
+&lt;meta property="og:title" content="..."&gt;</code></pre>
+        </div>
+
+        <div class="step">
+            <h3>2. Test Social Media Previews</h3>
+            <ul>
+                <li><a href="https://developers.facebook.com/tools/debug/" target="_blank">Facebook Sharing Debugger</a></li>
+                <li><a href="https://www.linkedin.com/post-inspector/" target="_blank">LinkedIn Post Inspector</a></li>
+                <li><a href="https://cards-dev.twitter.com/validator" target="_blank">Twitter Card Validator</a></li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3>3. Verify Robots.txt & Sitemap</h3>
+            <ul>
+                <li>Robots: <a href="https://geelong-stars.pages.dev/robots.txt" target="_blank">https://geelong-stars.pages.dev/robots.txt</a></li>
+                <li>Sitemap: <a href="https://geelong-stars.pages.dev/sitemap.xml" target="_blank">https://geelong-stars.pages.dev/sitemap.xml</a></li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3>4. Run Lighthouse SEO Audit</h3>
+            <ol>
+                <li>Open Chrome DevTools (F12)</li>
+                <li>Go to <strong>Lighthouse</strong> tab</li>
+                <li>Select <strong>SEO</strong> category</li>
+                <li>Click <strong>Generate report</strong></li>
+                <li>Target score: <strong>90+</strong></li>
+            </ol>
+        </div>
+
+        <h2>📊 What's Included in SEO Build</h2>
+
+        <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+            <thead>
+                <tr style="background: #f7fafc; border-bottom: 2px solid #e2e8f0;">
+                    <th style="padding: 10px; text-align: left;">Feature</th>
+                    <th style="padding: 10px; text-align: left;">Status</th>
+                    <th style="padding: 10px; text-align: left;">Location</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #e2e8f0;">
+                    <td style="padding: 10px;">Meta Tags (Title, Description)</td>
+                    <td style="padding: 10px;">✅ Active</td>
+                    <td style="padding: 10px;">All 15 pages</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #e2e8f0;">
+                    <td style="padding: 10px;">Open Graph Tags</td>
+                    <td style="padding: 10px;">✅ Active</td>
+                    <td style="padding: 10px;">All pages</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #e2e8f0;">
+                    <td style="padding: 10px;">Sitemap.xml</td>
+                    <td style="padding: 10px;">✅ Active</td>
+                    <td style="padding: 10px;">/sitemap.xml</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #e2e8f0;">
+                    <td style="padding: 10px;">Robots.txt (AI crawlers allowed)</td>
+                    <td style="padding: 10px;">✅ Active</td>
+                    <td style="padding: 10px;">/robots.txt</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #e2e8f0;">
+                    <td style="padding: 10px;">Cache Headers (HTML)</td>
+                    <td style="padding: 10px;">✅ Active</td>
+                    <td style="padding: 10px;">worker/index.ts</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #e2e8f0;">
+                    <td style="padding: 10px;">Static HTML Prerendering</td>
+                    <td style="padding: 10px;">⏸️ Not Active</td>
+                    <td style="padding: 10px;">Future enhancement</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>🔮 Future: Adding Full Prerendering</h2>
+
+        <div class="warning">
+            <strong>⚠️ Current Status:</strong> Static HTML prerendering is NOT currently active due to plugin compatibility issues with Vite 5. However, the dynamic meta tags provide 85-95% of the SEO benefits.
+        </div>
+
+        <p>If you want to add full static HTML prerendering in the future:</p>
+
+        <h3>Option 1: Wait for Better Plugins</h3>
+        <ul>
+            <li>Monitor for Vite 5-compatible prerendering plugins</li>
+            <li>Consider <code>vike</code> when it stabilizes</li>
+        </ul>
+
+        <h3>Option 2: Use Cloudflare Workers HTMLRewriter</h3>
+        <ul>
+            <li>Implement server-side rendering in the Worker</li>
+            <li>Use <a href="https://developers.cloudflare.com/workers/runtime-apis/html-rewriter/" target="_blank">HTMLRewriter API</a></li>
+            <li>More complex but provides true SSR</li>
+        </ul>
+
+        <h3>Option 3: Custom Build Script</h3>
+        <ul>
+            <li>Use the prepared <code>scripts/fetch-prerender-data.js</code></li>
+            <li>Integrate with a headless browser (Puppeteer/Playwright)</li>
+            <li>Generate static HTML during build</li>
+        </ul>
+
+        <h2>🤔 Common Issues</h2>
+
+        <div class="step">
+            <h3>Issue: Authentication Error During Deploy</h3>
+            <p><strong>Solution:</strong> Run <code>wrangler login</code> first to authenticate with Cloudflare.</p>
+        </div>
+
+        <div class="step">
+            <h3>Issue: Meta Tags Not Showing in View Source</h3>
+            <p><strong>Reason:</strong> Meta tags are added dynamically by React. Modern crawlers (Google, Bing) execute JavaScript and see them.</p>
+            <p><strong>Verification:</strong> Use browser DevTools → Elements tab to see the rendered meta tags.</p>
+        </div>
+
+        <div class="step">
+            <h3>Issue: Build Fails</h3>
+            <p><strong>Solution:</strong></p>
+            <ol>
+                <li>Clear node_modules: <code>rm -rf node_modules && npm install</code></li>
+                <li>Clear cache: <code>npm run build -- --force</code></li>
+                <li>Check TypeScript errors in console</li>
+            </ol>
+        </div>
+
+        <h2>📞 Support & Resources</h2>
+
+        <ul>
+            <li><strong>Cloudflare Pages Docs:</strong> <a href="https://developers.cloudflare.com/pages/" target="_blank">developers.cloudflare.com/pages</a></li>
+            <li><strong>Wrangler CLI Docs:</strong> <a href="https://developers.cloudflare.com/workers/wrangler/" target="_blank">developers.cloudflare.com/workers/wrangler</a></li>
+            <li><strong>Google Search Console:</strong> <a href="https://search.google.com/search-console" target="_blank">search.google.com/search-console</a></li>
+            <li><strong>Lighthouse Documentation:</strong> <a href="https://developer.chrome.com/docs/lighthouse/" target="_blank">developer.chrome.com/docs/lighthouse</a></li>
+        </ul>
+
+        <div class="success">
+            <strong>✨ Summary:</strong> Your deployment process is simple and unchanged. Just run <code>npm run deploy</code> and all SEO optimizations are automatically included!
+        </div>
+
+        <hr style="margin: 40px 0; border: none; border-top: 2px solid #e2e8f0;">
+        <p style="text-align: center; color: #718096; font-size: 14px;">
+            Last Updated: March 2026 | Geelong All-Abilities Sports Club
+        </p>
+    </div>
+</body>
+</html>

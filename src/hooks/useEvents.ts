@@ -12,6 +12,12 @@ export const eventKeys = {
 };
 
 export function useEvents(activeOnly: boolean = false) {
+  // Check for preloaded data from server-side rendering
+  const preloadedData = typeof window !== 'undefined' ? window.__PRELOADED_DATA__?.events : undefined;
+  const initialData = preloadedData && activeOnly
+    ? preloadedData.filter(e => e.is_active)
+    : preloadedData;
+
   return useQuery({
     queryKey: eventKeys.list({ activeOnly }),
     queryFn: async () => {
@@ -19,6 +25,7 @@ export function useEvents(activeOnly: boolean = false) {
       if (!response.success) throw new Error(response.error);
       return response.data!;
     },
+    initialData,
   });
 }
 
@@ -35,6 +42,15 @@ export function useEvent(id: number) {
 }
 
 export function useUpcomingEvents(limit: number = 5) {
+  // Check for preloaded data from server-side rendering
+  const preloadedData = typeof window !== 'undefined' ? window.__PRELOADED_DATA__?.events : undefined;
+  const initialData = preloadedData
+    ? preloadedData
+        .filter(e => e.is_active && new Date(e.date) >= new Date())
+        .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+        .slice(0, limit)
+    : undefined;
+
   return useQuery({
     queryKey: eventKeys.upcoming(limit),
     queryFn: async () => {
@@ -42,6 +58,7 @@ export function useUpcomingEvents(limit: number = 5) {
       if (!response.success) throw new Error(response.error);
       return response.data!;
     },
+    initialData,
   });
 }
 

@@ -1,5 +1,6 @@
 import { ArrowRight, Users, Heart } from 'lucide-react';
 import { Button } from '../components/common';
+import { SEOHead } from '../components/common/SEOHead';
 
 const HERO_IMAGE = 'https://static.wixstatic.com/media/c23ea9_1071a90c20b044f4bb98e30faed73a2c~mv2.jpg/v1/fill/w_1200,h_600,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/c23ea9_1071a90c20b044f4bb98e30faed73a2c~mv2.jpg';
 
@@ -8,6 +9,11 @@ const PARTNERSHIP_URL = 'https://geelong-all-abilities-sports-club.square.site/s
 export function PartnerWithUs() {
   return (
     <>
+      <SEOHead
+        title="Partner With Us | Sponsor Geelong Stars"
+        description="Partner with Geelong Stars and support inclusive sports in our community. Explore sponsorship opportunities and benefits."
+        url="/partner-with-us"
+      />
       {/* Hero Section */}
       <section className="relative min-h-[400px] flex items-center">
         <div className="absolute inset-0">

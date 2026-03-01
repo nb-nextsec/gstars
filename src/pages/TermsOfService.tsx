@@ -1,6 +1,13 @@
+import { SEOHead } from '../components/common/SEOHead';
+
 export function TermsOfService() {
   return (
     <>
+      <SEOHead
+        title="Terms of Service | Geelong Stars"
+        description="Read our terms of service for using the Geelong Stars website and services."
+        url="/terms-of-service"
+      />
       {/* Hero Section */}
       <section className="relative min-h-[300px] flex items-center bg-navy">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">

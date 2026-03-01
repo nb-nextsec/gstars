@@ -1,6 +1,13 @@
+import { SEOHead } from '../components/common/SEOHead';
+
 export function PrivacyPolicy() {
   return (
     <>
+      <SEOHead
+        title="Privacy Policy | Geelong Stars"
+        description="Read our privacy policy to understand how we collect, use, and protect your personal information."
+        url="/privacy-policy"
+      />
       {/* Hero Section */}
       <section className="relative min-h-[300px] flex items-center bg-navy">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">

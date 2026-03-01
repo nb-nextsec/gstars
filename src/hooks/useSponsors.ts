@@ -23,6 +23,12 @@ export const sponsorKeys = {
 };
 
 export function useSponsors(activeOnly: boolean = false) {
+  // Check for preloaded data from server-side rendering
+  const preloadedData = typeof window !== 'undefined' ? window.__PRELOADED_DATA__?.sponsors : undefined;
+  const initialData = preloadedData && activeOnly
+    ? preloadedData.filter(s => s.is_active)
+    : preloadedData;
+
   return useQuery({
     queryKey: sponsorKeys.list({ activeOnly }),
     queryFn: async () => {
@@ -35,6 +41,7 @@ export function useSponsors(activeOnly: boolean = false) {
         throw new Error('Failed to load sponsors');
       }
     },
+    initialData,
   });
 }
 
