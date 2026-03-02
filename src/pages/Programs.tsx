@@ -47,34 +47,8 @@ const currentlyRunning: Program[] = [
     link: 'https://www.cognitoforms.com/GEELONGALLABILITIESSPORTSCLUB/TERM12026MINIBASKETBALL?fbclid=IwY2xjawP59mVleHRuA2FlbQIxMABicmlkETF6Uk80dHNTYnZwM3BWcEFoc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHqjZro-kpp37GhTuvQSoaI_-4PcBO2lOsnTtngZprRoGI20tIE-K41VmUt88_aem_qv7zroye0TEOlpApMFAQ_w',
   },
   {
-    id: 'youth-football',
-    title: 'Youth Football',
-    subtitle: 'Ages 12-18',
-    description: 'Our flagship program! Inclusive football designed for participants of all abilities. Get active, have fun, and be part of our welcoming community where everyone belongs!',
-    icon: AFLFootballIcon,
-    color: 'bg-blue-500',
-    gradientColor: 'from-blue-400 to-indigo-500',
-    image: '/images/Football 3.jpg',
-    schedule: 'Tuesdays 5:00 PM - 6:30 PM',
-    location: 'Geelong Stars Clubrooms',
-    link: 'https://www.cognitoforms.com/GEELONGALLABILITIESSPORTSCLUB/TERM12026YOUTHFOOTBALL?fbclid=IwY2xjawP5-FJleHRuA2FlbQIxMABicmlkETF6Uk80dHNTYnZwM3BWcEFoc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHjRKfjJyVyJOMGuJ87ysGx9Bmzliv0-ftJd7WXQ3zekq9MvS-zVhINLgUXVb_aem_K6xGLpel_eN2c2Fb8rzYQQ',
-  },
-  {
-    id: 'minis-golf',
-    title: "Mini's Golf",
-    subtitle: 'Ages 5-12',
-    description: 'A fun introduction to golf for young children of all abilities. Learn the basics in a supportive, low-pressure environment where every swing is celebrated!',
-    icon: Trophy,
-    color: 'bg-green-500',
-    gradientColor: 'from-emerald-400 to-green-500',
-    image: '/images/Golf 1.jpg',
-    schedule: 'Wednesdays 5:15 PM - 6:00 PM',
-    location: 'Curlewis Golf Club',
-    link: 'https://www.cognitoforms.com/GEELONGALLABILITIESSPORTSCLUB/TERM12026MINISGOLF?fbclid=IwY2xjawP596ZleHRuA2FlbQIxMABicmlkETF6Uk80dHNTYnZwM3BWcEFoc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHljwinRmQT7u9xlVFPIbYG2T7fKvpuvB2JP6VvOQMWvQo40uw59VQ8iU7gxE_aem_y-2bBcUnjXfOzUxSWB7GMQ',
-  },
-  {
     id: 'running-walking-group',
-    title: 'Running/Walking Group',
+    title: 'Achilles Running/Walking Group',
     subtitle: 'All Ages',
     description: <>Lace up and join us for a friendly, inclusive, guided walk or run around a 1km track! Geelong All-Abilities Sports Club and Achilles International Geelong have partnered together to bring a new running and walking group option every Sunday morning. Our mission is to make running and walking more accessible to people with disabilities, and we welcome new members and participants to come down and join in! For more details, contact: <a href="mailto:geelongachillesaustralia@gmail.com" className="underline text-accent hover:text-accent-dark" onClick={(e) => e.stopPropagation()}>geelongachillesaustralia@gmail.com</a></>,
     icon: Heart,
@@ -97,9 +71,18 @@ const currentlyRunning: Program[] = [
     location: 'Stars HQ, St Albans Reserve',
     link: 'https://www.cognitoforms.com/GEELONGALLABILITIESSPORTSCLUB/GEELONGALLABILITIESLEARNTORIDEDAY?fbclid=IwY2xjawP59Y5leHRuA2FlbQIxMABicmlkETF6Uk80dHNTYnZwM3BWcEFoc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHsJobcd0KK8FwA9IumgYaW0pLpGOXQbQlLem1ebRN6ltQOdfvVwwtp7Qlbzq_aem_vvKYASu-nduoEFx3EmeQKg',
   },
-];
-
-const scheduled: Program[] = [
+  {
+    id: 'karate',
+    title: 'Karate',
+    subtitle: 'All Ages',
+    description: 'Join us for an exciting and inclusive Karate program! Learn martial arts fundamentals, build confidence, and develop discipline in a supportive environment. All abilities welcome!',
+    icon: Shield,
+    color: 'bg-purple-500',
+    gradientColor: 'from-purple-400 to-violet-500',
+    image: '/images/Ninjas 3.jpg',
+    schedule: 'Monday 2nd March, 5:15 PM - 6:00 PM',
+    location: 'Hendy Street Hall, Corio',
+  },
   {
     id: 'youth-golf',
     title: 'Youth Golf',
@@ -109,10 +92,13 @@ const scheduled: Program[] = [
     color: 'bg-lime-500',
     gradientColor: 'from-lime-400 to-green-500',
     image: '/images/Golf Open 7.jpg',
-    schedule: 'Tuesdays 5:00 PM - 6:30 PM beginning Feb 24th',
-    location: 'Curlewis Golf Club',
+    schedule: 'Tuesdays 5:00PM - 6:00PM',
+    location: 'Curlewis Range',
     link: 'https://www.cognitoforms.com/GEELONGALLABILITIESSPORTSCLUB/TERM12026YOUTHGOLF?fbclid=IwY2xjawP58-tleHRuA2FlbQIxMABicmlkETF6Uk80dHNTYnZwM3BWcEFoc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHsJobcd0KK8FwA9IumgYaW0pLpGOXQbQlLem1ebRN6ltQOdfvVwwtp7Qlbzq_aem_vvKYASu-nduoEFx3EmeQKg',
   },
+];
+
+const scheduled: Program[] = [
   {
     id: 'minis-cricket',
     title: 'Minis Cricket',
@@ -152,6 +138,31 @@ const scheduled: Program[] = [
 ];
 
 const upcoming: Program[] = [
+  {
+    id: 'youth-football',
+    title: 'Youth Football',
+    subtitle: 'Ages 12-18',
+    description: 'Our flagship program! Inclusive football designed for participants of all abilities. Get active, have fun, and be part of our welcoming community where everyone belongs!',
+    icon: AFLFootballIcon,
+    color: 'bg-blue-500',
+    gradientColor: 'from-blue-400 to-indigo-500',
+    image: '/images/Football 3.jpg',
+    schedule: 'TBA',
+    location: 'TBA',
+    link: 'https://www.cognitoforms.com/GEELONGALLABILITIESSPORTSCLUB/TERM12026YOUTHFOOTBALL?fbclid=IwY2xjawP5-FJleHRuA2FlbQIxMABicmlkETF6Uk80dHNTYnZwM3BWcEFoc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHjRKfjJyVyJOMGuJ87ysGx9Bmzliv0-ftJd7WXQ3zekq9MvS-zVhINLgUXVb_aem_K6xGLpel_eN2c2Fb8rzYQQ',
+  },
+  {
+    id: 'minis-golf',
+    title: "Mini's Golf",
+    subtitle: 'Ages 5-12',
+    description: 'A fun introduction to golf for young children of all abilities. Learn the basics in a supportive, low-pressure environment where every swing is celebrated!',
+    icon: Trophy,
+    color: 'bg-green-500',
+    gradientColor: 'from-emerald-400 to-green-500',
+    image: '/images/Golf 1.jpg',
+    schedule: 'TBA',
+    location: 'TBA',
+  },
   {
     id: 'minis-little-athletics',
     title: 'Minis Little Athletics',

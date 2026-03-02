@@ -30,9 +30,9 @@ const GALLERY_IMAGES = [
   // Adaptive Bike
   { id: 20, url: '/images/Adaptive bike 1.jpg', name: 'Adaptive Bike' },
   { id: 21, url: '/images/Adaptive bike 2.jpg', name: 'Adaptive Bike' },
-  // Running/Walking Group
-  { id: 22, url: '/images/Run & walk club 1.jpg', name: 'Running/Walking Group' },
-  { id: 23, url: '/images/run & walk club 2.jpg', name: 'Running/Walking Group' },
+  // Achilles Running/Walking Group
+  { id: 22, url: '/images/Run & walk club 1.jpg', name: 'Achilles Running/Walking Group' },
+  { id: 23, url: '/images/run & walk club 2.jpg', name: 'Achilles Running/Walking Group' },
   // Boxing
   { id: 24, url: '/images/boxing 1.jpg', name: 'Stars Boxing' },
   // Cricket

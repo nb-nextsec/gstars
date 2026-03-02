@@ -26,4 +26,4 @@ User-agent: *
 Disallow: /admin/
 
 # Sitemap
-Sitemap: https://geelong-stars.pages.dev/sitemap.xml
+Sitemap: https://www.geelongstars.com.au/sitemap.xml
