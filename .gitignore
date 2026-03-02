@@ -9,6 +9,9 @@ dist/
 .wrangler/
 .dev.vars
 
+# Claude Code
+.claude/
+
 # IDE
 .idea/
 .vscode/
