@@ -1,0 +1,388 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+
+const HERO_IMAGE = '/images/BMX Day 7.jpg';
+
+const currentlyRunning = [
+  {
+    id: 'minis-basketball',
+    title: "Mini's Basketball",
+    subtitle: 'Ages 5-12',
+    description: 'A fun, supportive environment where kids learn basketball fundamentals, teamwork, and sportsmanship. Every child is encouraged to participate and have a blast!',
+    color: 'from-orange-400 to-pink-500',
+    image: '/images/basketball minis 1.jpg',
+    schedule: 'Mondays, 5:15 PM - 6:00 PM',
+    location: 'Geelong Stars Clubrooms',
+    link: 'https://www.cognitoforms.com/GEELONGALLABILITIESSPORTSCLUB/TERM12026MINIBASKETBALL?fbclid=IwY2xjawP59mVleHRuA2FlbQIxMABicmlkETF6Uk80dHNTYnZwM3BWcEFoc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHqjZro-kpp37GhTuvQSoaI_-4PcBO2lOsnTtngZprRoGI20tIE-K41VmUt88_aem_qv7zroye0TEOlpApMFAQ_w',
+  },
+  {
+    id: 'running-walking-group',
+    title: 'Achilles Running/Walking Group',
+    subtitle: 'All Ages',
+    description: 'running-walking', // special marker for custom HTML
+    color: 'from-pink-400 to-rose-500',
+    image: '/images/run & walk club 2.jpg',
+    schedule: 'Every Sunday, 9 AM - 10:00 AM',
+    location: 'Stars HQ, St Albans Reserve',
+    link: undefined,
+  },
+  {
+    id: 'learn-to-ride',
+    title: 'Learn to Ride',
+    subtitle: 'All Ages',
+    description: 'A fun and inclusive program for people of all ages and abilities to experience the joy of riding! The program is about riding with no expectations and most importantly having fun. The Geelong Stars has a range of trikes, bikes with stabilisers and BMX bikes for all levels, or members are welcome to bring their own. If you have a bike and helmet bring it along and join in!',
+    color: 'from-teal-400 to-cyan-500',
+    image: '/images/Learn to Ride.jpg',
+    schedule: 'Sunday 15th Feb, 10:00 AM - 11:00 AM',
+    location: 'Stars HQ, St Albans Reserve',
+    link: 'https://www.cognitoforms.com/GEELONGALLABILITIESSPORTSCLUB/GEELONGALLABILITIESLEARNTORIDEDAY?fbclid=IwY2xjawP59Y5leHRuA2FlbQIxMABicmlkETF6Uk80dHNTYnZwM3BWcEFoc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHsJobcd0KK8FwA9IumgYaW0pLpGOXQbQlLem1ebRN6ltQOdfvVwwtp7Qlbzq_aem_vvKYASu-nduoEFx3EmeQKg',
+  },
+  {
+    id: 'karate',
+    title: 'Karate',
+    subtitle: 'All Ages',
+    description: 'Join us for an exciting and inclusive Karate program! Learn martial arts fundamentals, build confidence, and develop discipline in a supportive environment. All abilities welcome!',
+    color: 'from-purple-400 to-violet-500',
+    image: '/images/Ninjas 3.jpg',
+    schedule: 'Monday 2nd March, 5:15 PM - 6:00 PM',
+    location: 'Hendy Street Hall, Corio',
+    link: undefined,
+  },
+  {
+    id: 'youth-golf',
+    title: 'Youth Golf',
+    subtitle: 'Ages 12-18',
+    description: 'Come and join Geelong Stars FREE All-Abilities Golf Program proudly supported by our friends at McHarrys Buslines. The 3 week program for children 12 - 18 with disabilities, is a great introduction into golf with fun activities and qualified coaches. Build on your golfing skills in a fun, inclusive setting!',
+    color: 'from-lime-400 to-green-500',
+    image: '/images/Golf Open 7.jpg',
+    schedule: 'Tuesdays 5:00PM - 6:00PM',
+    location: 'Curlewis Range',
+    link: 'https://www.cognitoforms.com/GEELONGALLABILITIESSPORTSCLUB/TERM12026YOUTHGOLF?fbclid=IwY2xjawP58-tleHRuA2FlbQIxMABicmlkETF6Uk80dHNTYnZwM3BWcEFoc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHsJobcd0KK8FwA9IumgYaW0pLpGOXQbQlLem1ebRN6ltQOdfvVwwtp7Qlbzq_aem_vvKYASu-nduoEFx3EmeQKg',
+  },
+];
+
+const scheduled = [
+  {
+    id: 'minis-cricket',
+    title: 'Minis Cricket',
+    subtitle: 'Ages 5-12',
+    description: 'A fantastic introduction to cricket for young stars! Kids develop hand-eye coordination, teamwork, and confidence through fun cricket activities in a supportive, inclusive environment.',
+    color: 'from-sky-400 to-blue-500',
+    image: '/images/Cricket 13.jpg',
+    schedule: 'Wednesdays 5:15 PM - 6PM beginning March 4th',
+    location: 'Geelong Stars Clubrooms',
+    link: undefined,
+  },
+  {
+    id: 'minis-football',
+    title: 'Minis Football',
+    subtitle: 'Ages 5-12',
+    description: 'A fun introduction to football for our youngest stars! Kids develop coordination, teamwork, and confidence through age-appropriate activities in a supportive, inclusive environment.',
+    color: 'from-green-400 to-teal-500',
+    image: '/images/Football 2.jpg',
+    schedule: 'Mondays beginning March 16th',
+    location: 'Geelong Stars Clubrooms',
+    link: undefined,
+  },
+  {
+    id: 'youth-basketball',
+    title: 'Youth Basketball',
+    subtitle: 'Ages 12-18',
+    description: 'A welcoming basketball program for young people of all abilities! Have fun, make friends, and build confidence on the court. No experience needed — just bring your energy and we will bring the good times!',
+    color: 'from-amber-400 to-orange-500',
+    image: '/images/Basketball 1.jpg',
+    schedule: 'Tuesdays beginning March 17th',
+    location: 'Geelong Stars Clubrooms',
+    link: undefined,
+  },
+];
+
+const upcoming = [
+  {
+    id: 'youth-football',
+    title: 'Youth Football',
+    subtitle: 'Ages 12-18',
+    description: 'Our flagship program! Inclusive football designed for participants of all abilities. Get active, have fun, and be part of our welcoming community where everyone belongs!',
+    color: 'from-blue-400 to-indigo-500',
+    image: '/images/Football 3.jpg',
+    schedule: 'TBA',
+    location: 'TBA',
+    link: 'https://www.cognitoforms.com/GEELONGALLABILITIESSPORTSCLUB/TERM12026YOUTHFOOTBALL?fbclid=IwY2xjawP5-FJleHRuA2FlbQIxMABicmlkETF6Uk80dHNTYnZwM3BWcEFoc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHjRKfjJyVyJOMGuJ87ysGx9Bmzliv0-ftJd7WXQ3zekq9MvS-zVhINLgUXVb_aem_K6xGLpel_eN2c2Fb8rzYQQ',
+  },
+  {
+    id: 'minis-golf',
+    title: "Mini's Golf",
+    subtitle: 'Ages 5-12',
+    description: 'A fun introduction to golf for young children of all abilities. Learn the basics in a supportive, low-pressure environment where every swing is celebrated!',
+    color: 'from-emerald-400 to-green-500',
+    image: '/images/Golf 1.jpg',
+    schedule: 'TBA',
+    location: 'TBA',
+    link: undefined,
+  },
+  {
+    id: 'minis-little-athletics',
+    title: 'Minis Little Athletics',
+    subtitle: 'Ages 5-12',
+    description: 'An exciting introduction to athletics for young stars! Kids develop coordination, speed, and confidence through fun track and field activities in a supportive, inclusive environment.',
+    color: 'from-yellow-400 to-amber-500',
+    image: '/images/Minis Aths 10.jpg',
+    schedule: 'TBA',
+    location: 'TBA',
+    link: undefined,
+  },
+  {
+    id: 'minis-ninjas',
+    title: 'Minis Ninjas',
+    subtitle: 'Ages 5-12',
+    description: 'An action-packed program where kids build strength, agility, and coordination through ninja-inspired obstacle courses and challenges. Every session is an adventure!',
+    color: 'from-purple-400 to-violet-500',
+    image: '/images/Ninjas 3.jpg',
+    schedule: 'TBA',
+    location: 'TBA',
+    link: undefined,
+  },
+  {
+    id: 'minis-boxing',
+    title: 'Minis Boxing',
+    subtitle: 'Ages 5-12',
+    description: 'Build strength, confidence, and fitness in a supportive environment. Learn boxing fundamentals and have fun while getting a great workout!',
+    color: 'from-red-400 to-orange-500',
+    image: '/images/boxing 11.jpg',
+    schedule: 'TBA',
+    location: 'TBA',
+    link: undefined,
+  },
+];
+---
+
+<MainLayout
+  title="Our Programs | Basketball, Football, Golf & More | Geelong Stars"
+  description="Explore our range of inclusive sports programs: basketball, football, golf, athletics, and more. Programs for all ages and abilities in Geelong."
+  url="/programs"
+>
+  <!-- Hero Section -->
+  <section class="relative min-h-[400px] flex items-center">
+    <div class="absolute inset-0">
+      <img
+        src={HERO_IMAGE}
+        alt="Geelong Stars Programs"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-navy/95 via-navy/80 to-navy/50"></div>
+    </div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">
+          Our Programs
+        </h1>
+        <p class="text-xl text-white/90">
+          Geelong All-Abilities Sports Club offers a range of programs to meet the needs
+          of all of our members, no matter your age or ability. Get active, have fun,
+          and build community through sports!
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Programs Sections -->
+  <section class="pt-8 pb-16 lg:pt-12 lg:pb-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      <!-- Currently Running -->
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold text-navy mb-2">Currently Running</h2>
+        <p class="text-gray-600 mb-8">Programs that are currently active and taking registrations.</p>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {currentlyRunning.map((program) => (
+            <a
+              href={program.link || '/contact'}
+              target={program.link ? '_blank' : undefined}
+              rel={program.link ? 'noopener noreferrer' : undefined}
+              class="group"
+            >
+              <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 h-full flex flex-col">
+                <div class="relative h-64 overflow-hidden">
+                  <img
+                    src={program.image}
+                    alt={program.title}
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div class={`absolute inset-0 bg-gradient-to-t ${program.color} opacity-40`}></div>
+                  <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 text-xs font-semibold text-navy">
+                    {program.subtitle}
+                  </div>
+                </div>
+                <div class="p-6 flex-1 flex flex-col">
+                  <h3 class="text-xl font-bold text-navy mb-2 group-hover:text-accent transition-colors">
+                    {program.title}
+                  </h3>
+                  {program.id === 'running-walking' ? (
+                    <p class="text-gray-600 flex-1 leading-relaxed text-sm">
+                      {program.description}
+                    </p>
+                  ) : program.id === 'running-walking-group' ? (
+                    <p class="text-gray-600 flex-1 leading-relaxed text-sm">
+                      Lace up and join us for a friendly, inclusive, guided walk or run around a 1km track! Geelong All-Abilities Sports Club and Achilles International Geelong have partnered together to bring a new running and walking group option every Sunday morning. Our mission is to make running and walking more accessible to people with disabilities, and we welcome new members and participants to come down and join in! For more details, contact: <a href="mailto:geelongachillesaustralia@gmail.com" class="underline text-accent hover:text-accent-dark" onclick="event.stopPropagation()">geelongachillesaustralia@gmail.com</a>
+                    </p>
+                  ) : (
+                    <p class="text-gray-600 flex-1 leading-relaxed text-sm">
+                      {program.description}
+                    </p>
+                  )}
+                  <div class="mt-4 flex items-center gap-2 text-sm text-gray-500">
+                    <svg class="w-3.5 h-3.5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"/></svg>
+                    <span>{program.schedule}</span>
+                  </div>
+                  <div class="mt-1 flex items-center gap-2 text-sm text-gray-500">
+                    <svg class="w-3.5 h-3.5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+                    <span>{program.location}</span>
+                  </div>
+                  <div class="mt-3 flex items-center text-accent font-semibold group-hover:text-accent-dark">
+                    Join This Program
+                    <svg class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+                  </div>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Scheduled -->
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold text-navy mb-2">Scheduled</h2>
+        <p class="text-gray-600 mb-8">Programs starting soon — register now to secure your spot!</p>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {scheduled.map((program) => (
+            <a
+              href={program.link || '/contact'}
+              target={program.link ? '_blank' : undefined}
+              rel={program.link ? 'noopener noreferrer' : undefined}
+              class="group"
+            >
+              <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 h-full flex flex-col">
+                <div class="relative h-64 overflow-hidden">
+                  <img
+                    src={program.image}
+                    alt={program.title}
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div class={`absolute inset-0 bg-gradient-to-t ${program.color} opacity-40`}></div>
+                  <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 text-xs font-semibold text-navy">
+                    {program.subtitle}
+                  </div>
+                </div>
+                <div class="p-6 flex-1 flex flex-col">
+                  <h3 class="text-xl font-bold text-navy mb-2 group-hover:text-accent transition-colors">
+                    {program.title}
+                  </h3>
+                  <p class="text-gray-600 flex-1 leading-relaxed text-sm">
+                    {program.description}
+                  </p>
+                  <div class="mt-4 flex items-center gap-2 text-sm text-gray-500">
+                    <svg class="w-3.5 h-3.5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"/></svg>
+                    <span>{program.schedule}</span>
+                  </div>
+                  <div class="mt-1 flex items-center gap-2 text-sm text-gray-500">
+                    <svg class="w-3.5 h-3.5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+                    <span>{program.location}</span>
+                  </div>
+                  <div class="mt-3 flex items-center text-accent font-semibold group-hover:text-accent-dark">
+                    Join This Program
+                    <svg class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+                  </div>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Upcoming -->
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold text-navy mb-2">Upcoming</h2>
+        <p class="text-gray-600 mb-8">Programs in the works — dates to be announced. Stay tuned!</p>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {upcoming.map((program) => (
+            <a
+              href={program.link || '/contact'}
+              target={program.link ? '_blank' : undefined}
+              rel={program.link ? 'noopener noreferrer' : undefined}
+              class="group"
+            >
+              <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 h-full flex flex-col">
+                <div class="relative h-64 overflow-hidden">
+                  <img
+                    src={program.image}
+                    alt={program.title}
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div class={`absolute inset-0 bg-gradient-to-t ${program.color} opacity-40`}></div>
+                  <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 text-xs font-semibold text-navy">
+                    {program.subtitle}
+                  </div>
+                </div>
+                <div class="p-6 flex-1 flex flex-col">
+                  <h3 class="text-xl font-bold text-navy mb-2 group-hover:text-accent transition-colors">
+                    {program.title}
+                  </h3>
+                  <p class="text-gray-600 flex-1 leading-relaxed text-sm">
+                    {program.description}
+                  </p>
+                  <div class="mt-4 flex items-center gap-2 text-sm text-gray-500">
+                    <svg class="w-3.5 h-3.5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"/></svg>
+                    <span>{program.schedule}</span>
+                  </div>
+                  <div class="mt-1 flex items-center gap-2 text-sm text-gray-500">
+                    <svg class="w-3.5 h-3.5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+                    <span>{program.location}</span>
+                  </div>
+                  <div class="mt-3 flex items-center text-accent font-semibold group-hover:text-accent-dark">
+                    Join This Program
+                    <svg class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+                  </div>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-3xl p-8 md:p-12 text-center relative overflow-hidden">
+        <h2 class="text-3xl md:text-4xl font-bold text-navy mb-4">
+          Ready to Join the Stars?
+        </h2>
+        <p class="text-xl text-navy/80 mb-8 max-w-2xl mx-auto">
+          We'd love to welcome you to our community! Get in touch to learn more,
+          arrange a visit, or sign up for a program. Everyone is welcome!
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center gap-2 font-medium rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 bg-navy text-white hover:bg-navy-600 focus:ring-navy-300 px-6 py-3 text-base"
+          >
+            Contact Us Today
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+          </a>
+          <a
+            href="/our-club"
+            class="inline-flex items-center justify-center gap-2 font-medium rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 border-2 border-navy text-navy hover:bg-navy hover:text-white focus:ring-navy-300 px-6 py-3 text-base"
+          >
+            Learn More About Us
+          </a>
+          <a
+            href="/membership"
+            class="inline-flex items-center justify-center gap-2 font-medium rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 border-2 border-navy text-navy hover:bg-navy hover:text-white focus:ring-navy-300 px-6 py-3 text-base"
+          >
+            Sign Up
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>

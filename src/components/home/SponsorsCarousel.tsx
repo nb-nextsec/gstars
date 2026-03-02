@@ -1,11 +1,11 @@
-import { useSponsors } from '../../hooks';
+import type { Sponsor } from '../../types';
 
-export function SponsorsCarousel() {
-  const { data: sponsors } = useSponsors(true);
+interface SponsorsCarouselProps {
+  sponsors: Sponsor[];
+}
 
-  const sortedSponsors = sponsors
-    ? [...sponsors].sort((a, b) => a.display_order - b.display_order)
-    : [];
+export function SponsorsCarousel({ sponsors }: SponsorsCarouselProps) {
+  const sortedSponsors = [...sponsors].sort((a, b) => a.display_order - b.display_order);
 
   // Double the sponsors for seamless infinite scroll
   const allSponsors = [...sortedSponsors, ...sortedSponsors];
@@ -14,13 +14,9 @@ export function SponsorsCarousel() {
 
   return (
     <section className="py-[12px] bg-navy overflow-hidden">
-      {/* Scrolling banner */}
       <div className="relative">
-        {/* Gradient overlays for smooth fade effect */}
         <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-navy to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-navy to-transparent z-10 pointer-events-none" />
-
-        {/* Scrolling container */}
         <div className="flex animate-scroll-left">
           {allSponsors.map((sponsor, index) => (
             <div

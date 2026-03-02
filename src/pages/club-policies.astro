@@ -1,0 +1,193 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+
+const HERO_IMAGE = 'https://static.wixstatic.com/media/c23ea9_1071a90c20b044f4bb98e30faed73a2c~mv2.jpg/v1/fill/w_1200,h_600,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/c23ea9_1071a90c20b044f4bb98e30faed73a2c~mv2.jpg';
+---
+
+<MainLayout
+  title="Club Policies | Geelong Stars All-Abilities Sports Club"
+  description="Read our club policies including code of conduct, safety guidelines, and member responsibilities."
+  url="/club-policies"
+>
+  <!-- Hero Section -->
+  <section class="relative min-h-[400px] flex items-center">
+    <div class="absolute inset-0">
+      <img
+        src={HERO_IMAGE}
+        alt="Geelong Stars Club Policies"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-navy/95 via-navy/80 to-navy/50"></div>
+    </div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">
+          Club Policies
+        </h1>
+        <p class="text-xl text-white/90">
+          Geelong Stars is committed to providing a safe, inclusive, and enjoyable
+          environment for all members, volunteers, and families.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Policy Manual -->
+  <section class="pt-16 pb-8 lg:pt-24 lg:pb-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl md:text-4xl font-bold text-navy mb-4">
+          Policy Manual
+        </h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          For full details on all of our club policies, please refer to the official
+          Geelong All-Abilities Sports Club Policy Manual.
+        </p>
+      </div>
+
+      <div class="max-w-3xl mx-auto">
+        <a
+          href="/Geelong All-Abilities Sports Club - Policy Manual.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-5 bg-white rounded-2xl border border-gray-100 shadow-sm p-6 md:p-8 hover:shadow-lg transition-all duration-300 group"
+        >
+          <div class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center flex-shrink-0">
+            <!-- FileText icon -->
+            <svg class="w-7 h-7 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"/></svg>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-xl font-bold text-navy mb-1 group-hover:text-accent transition-colors">
+              Geelong All-Abilities Sports Club - Policy Manual
+            </h3>
+            <p class="text-gray-500 text-sm">PDF Document</p>
+          </div>
+          <div class="flex-shrink-0">
+            <!-- Download icon -->
+            <svg class="w-6 h-6 text-navy/50 group-hover:text-accent transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Policies -->
+  <section class="pt-8 pb-16 lg:pt-12 lg:pb-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="space-y-8">
+        <!-- Child Safety Policy -->
+        <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 md:p-8 flex items-start gap-5">
+          <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
+            <!-- Shield icon -->
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"/></svg>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-navy mb-2">Child Safety Policy</h3>
+            <p class="text-gray-600 leading-relaxed">
+              Geelong Stars is committed to the safety and wellbeing of all children and young people involved in our programs. All volunteers and coaches hold valid Working With Children Checks. We have zero tolerance for child abuse and follow strict safeguarding procedures in line with Victorian legislation.
+            </p>
+          </div>
+        </div>
+
+        <!-- Code of Conduct -->
+        <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 md:p-8 flex items-start gap-5">
+          <div class="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center flex-shrink-0">
+            <!-- Users icon -->
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z"/></svg>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-navy mb-2">Code of Conduct</h3>
+            <p class="text-gray-600 leading-relaxed">
+              All members, volunteers, coaches, and spectators are expected to behave respectfully and inclusively at all times. We promote fair play, good sportsmanship, and positive attitudes. Discrimination, bullying, or harassment of any kind will not be tolerated.
+            </p>
+          </div>
+        </div>
+
+        <!-- Inclusion & Accessibility -->
+        <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 md:p-8 flex items-start gap-5">
+          <div class="w-12 h-12 bg-pink-100 text-pink-600 rounded-lg flex items-center justify-center flex-shrink-0">
+            <!-- Heart icon -->
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-navy mb-2">Inclusion & Accessibility</h3>
+            <p class="text-gray-600 leading-relaxed">
+              We welcome participants of all abilities, backgrounds, and experience levels. Our programs are adapted to ensure everyone can participate meaningfully. We are committed to removing barriers and creating a welcoming environment for all.
+            </p>
+          </div>
+        </div>
+
+        <!-- Health & Safety -->
+        <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 md:p-8 flex items-start gap-5">
+          <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-lg flex items-center justify-center flex-shrink-0">
+            <!-- AlertTriangle icon -->
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z"/></svg>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-navy mb-2">Health & Safety</h3>
+            <p class="text-gray-600 leading-relaxed">
+              The safety of our members is our top priority. We maintain first aid supplies and trained personnel at all sessions. Members are encouraged to disclose any medical conditions or needs so we can provide appropriate support. All incidents are reported and reviewed.
+            </p>
+          </div>
+        </div>
+
+        <!-- Photography & Social Media -->
+        <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 md:p-8 flex items-start gap-5">
+          <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center flex-shrink-0">
+            <!-- Camera icon -->
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM18.75 10.5h.008v.008h-.008V10.5Z"/></svg>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-navy mb-2">Photography & Social Media</h3>
+            <p class="text-gray-600 leading-relaxed">
+              Photos and videos may be taken during sessions and events for promotional purposes. We obtain consent from members (or their guardians) before publishing any images. Members may opt out of photography at any time by notifying a club official.
+            </p>
+          </div>
+        </div>
+
+        <!-- Privacy Policy -->
+        <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 md:p-8 flex items-start gap-5">
+          <div class="w-12 h-12 bg-teal-100 text-teal-600 rounded-lg flex items-center justify-center flex-shrink-0">
+            <!-- FileText icon -->
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"/></svg>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-navy mb-2">Privacy Policy</h3>
+            <p class="text-gray-600 leading-relaxed">
+              We collect and store personal information in accordance with the Australian Privacy Principles. Member data is used solely for club administration and communication purposes. We do not share personal information with third parties without consent.
+            </p>
+          </div>
+        </div>
+
+        <!-- Sun Safety -->
+        <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 md:p-8 flex items-start gap-5">
+          <div class="w-12 h-12 bg-yellow-100 text-yellow-600 rounded-lg flex items-center justify-center flex-shrink-0">
+            <!-- Sun icon -->
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"/></svg>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-navy mb-2">Sun Safety</h3>
+            <p class="text-gray-600 leading-relaxed">
+              During outdoor programs, we encourage all participants to slip on sun-protective clothing, slop on SPF 30+ sunscreen, slap on a hat, seek shade, and slide on sunglasses. Sessions may be modified or cancelled during extreme heat conditions for the safety of all participants.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact CTA -->
+  <section class="py-16 lg:py-24 bg-gradient-to-r from-navy to-navy-600">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+          Questions About Our Policies?
+        </h2>
+        <p class="text-xl text-white/90">
+          If you have any questions about our club policies or would like more
+          information, please don't hesitate to get in touch with us.
+        </p>
+      </div>
+    </div>
+  </section>
+</MainLayout>

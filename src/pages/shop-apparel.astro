@@ -1,0 +1,97 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+
+const HERO_IMAGE = 'https://static.wixstatic.com/media/c23ea9_1071a90c20b044f4bb98e30faed73a2c~mv2.jpg/v1/fill/w_1200,h_600,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/c23ea9_1071a90c20b044f4bb98e30faed73a2c~mv2.jpg';
+const SHOP_URL = 'https://geelong-all-abilities-sports-club.square.site/shop/apparel/O2EOSHH2WQPHMCCWJJLYN6BM?page=1&limit=30&sort_by=category_order&sort_order=asc';
+---
+
+<MainLayout
+  title="Shop Apparel | Geelong Stars Merchandise"
+  description="Shop Geelong Stars apparel and merchandise. Show your support with official club gear!"
+  url="/shop-apparel"
+>
+  <!-- Hero Section -->
+  <section class="relative min-h-[400px] flex items-center">
+    <div class="absolute inset-0">
+      <img
+        src={HERO_IMAGE}
+        alt="Geelong Stars Apparel"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-navy/95 via-navy/80 to-navy/50"></div>
+    </div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">
+          Shop Apparel
+        </h1>
+        <p class="text-xl text-white/90">
+          Wear your Stars pride — grab official Geelong Stars gear!
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="py-16 lg:py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="mb-10">
+        <div class="w-16 h-16 bg-navy/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+          <!-- Shirt icon -->
+          <svg class="w-8 h-8 text-navy" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+          </svg>
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold text-navy mb-4">
+          Geelong Stars Apparel
+        </h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Show your support for the Geelong Stars with our official club
+          apparel. Whether you're on the field, on the sideline, or out and
+          about, rep the Stars and let everyone know you're part of
+          something special.
+        </p>
+      </div>
+
+      <a
+        href={SHOP_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center gap-2 font-medium rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 bg-navy text-white hover:bg-navy-600 focus:ring-navy-300 px-6 py-3 text-base"
+      >
+        Shop Now
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 lg:py-24 bg-warm-gray">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-gradient-to-r from-navy to-navy-600 rounded-3xl p-8 md:p-12 text-center relative overflow-hidden">
+        <div class="absolute top-4 left-8 opacity-20">
+          <!-- Star icon -->
+          <svg class="w-10 h-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+          </svg>
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+          Gear Up for the Stars!
+        </h2>
+        <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+          Every purchase helps support our programs and the incredible
+          athletes in our community. Look good, feel good, do good.
+        </p>
+        <a
+          href={SHOP_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center gap-2 font-medium rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 bg-yellow-400 text-navy hover:bg-yellow-300 font-bold focus:ring-navy-300 px-6 py-3 text-base"
+        >
+          Browse Apparel
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</MainLayout>

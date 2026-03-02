@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import type { NavItem } from '../../types';
 
@@ -31,18 +30,19 @@ export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
   const moreRef = useRef<HTMLLIElement>(null);
-  const location = useLocation();
+
+  // Get current path from window.location (works without React Router)
+  const pathname = typeof window !== 'undefined' ? window.location.pathname : '/';
 
   const isActive = (href: string) => {
     if (href === '/') {
-      return location.pathname === '/';
+      return pathname === '/';
     }
-    return location.pathname.startsWith(href);
+    return pathname.startsWith(href);
   };
 
   const isMoreActive = moreNavItems.some((item) => isActive(item.href));
 
-  // Close "More" dropdown when clicking outside
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
       if (moreRef.current && !moreRef.current.contains(e.target as Node)) {
@@ -53,19 +53,14 @@ export function Navigation() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Close "More" dropdown on route change
-  useEffect(() => {
-    setMoreOpen(false);
-  }, [location.pathname]);
-
   return (
     <nav className="relative">
       {/* Desktop Navigation */}
       <ul className="hidden md:flex items-center gap-1">
         {mainNavItems.map((item) => (
           <li key={item.href}>
-            <Link
-              to={item.href}
+            <a
+              href={item.href}
               className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
                 isActive(item.href)
                   ? 'bg-white/20 text-white'
@@ -73,7 +68,7 @@ export function Navigation() {
               }`}
             >
               {item.label}
-            </Link>
+            </a>
           </li>
         ))}
 
@@ -93,9 +88,9 @@ export function Navigation() {
           {moreOpen && (
             <div className="absolute top-full right-0 mt-2 w-48 bg-navy-600 rounded-lg shadow-lg py-2 z-50">
               {moreNavItems.map((item) => (
-                <Link
+                <a
                   key={item.href}
-                  to={item.href}
+                  href={item.href}
                   className={`block px-4 py-3 text-sm font-medium transition-colors ${
                     isActive(item.href)
                       ? 'bg-white/20 text-white'
@@ -103,7 +98,7 @@ export function Navigation() {
                   }`}
                 >
                   {item.label}
-                </Link>
+                </a>
               ))}
             </div>
           )}
@@ -119,14 +114,14 @@ export function Navigation() {
         {isOpen ? <X size={24} /> : <Menu size={24} />}
       </button>
 
-      {/* Mobile Navigation — all items shown flat */}
+      {/* Mobile Navigation */}
       {isOpen && (
         <div className="absolute top-full right-0 mt-2 w-56 bg-navy-600 rounded-lg shadow-lg py-2 md:hidden z-50">
           <ul className="flex flex-col">
             {allNavItems.map((item) => (
               <li key={item.href}>
-                <Link
-                  to={item.href}
+                <a
+                  href={item.href}
                   className={`block px-4 py-3 text-sm font-medium transition-colors ${
                     isActive(item.href)
                       ? 'bg-white/20 text-white'
@@ -135,7 +130,7 @@ export function Navigation() {
                   onClick={() => setIsOpen(false)}
                 >
                   {item.label}
-                </Link>
+                </a>
               </li>
             ))}
           </ul>
