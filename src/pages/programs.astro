@@ -5,47 +5,14 @@ const HERO_IMAGE = '/images/BMX Day 7.jpg';
 
 const currentlyRunning = [
   {
-    id: 'minis-basketball',
-    title: "Mini's Basketball",
-    subtitle: 'Ages 5-12',
-    description: 'A fun, supportive environment where kids learn basketball fundamentals, teamwork, and sportsmanship. Every child is encouraged to participate and have a blast!',
-    color: 'from-orange-400 to-pink-500',
-    image: '/images/basketball minis 1.jpg',
-    schedule: 'Mondays, 5:15 PM - 6:00 PM',
-    location: 'Geelong Stars Clubrooms',
-    link: 'https://www.cognitoforms.com/GEELONGALLABILITIESSPORTSCLUB/TERM12026MINIBASKETBALL?fbclid=IwY2xjawP59mVleHRuA2FlbQIxMABicmlkETF6Uk80dHNTYnZwM3BWcEFoc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHqjZro-kpp37GhTuvQSoaI_-4PcBO2lOsnTtngZprRoGI20tIE-K41VmUt88_aem_qv7zroye0TEOlpApMFAQ_w',
-  },
-  {
     id: 'running-walking-group',
     title: 'Achilles Running/Walking Group',
     subtitle: 'All Ages',
     description: 'running-walking', // special marker for custom HTML
     color: 'from-pink-400 to-rose-500',
-    image: '/images/run & walk club 2.jpg',
+    image: '/images/Achilles Walking Group 1.jpg',
     schedule: 'Every Sunday, 9 AM - 10:00 AM',
     location: 'Stars HQ, St Albans Reserve',
-    link: undefined,
-  },
-  {
-    id: 'learn-to-ride',
-    title: 'Learn to Ride',
-    subtitle: 'All Ages',
-    description: 'A fun and inclusive program for people of all ages and abilities to experience the joy of riding! The program is about riding with no expectations and most importantly having fun. The Geelong Stars has a range of trikes, bikes with stabilisers and BMX bikes for all levels, or members are welcome to bring their own. If you have a bike and helmet bring it along and join in!',
-    color: 'from-teal-400 to-cyan-500',
-    image: '/images/Learn to Ride.jpg',
-    schedule: 'Sunday 15th Feb, 10:00 AM - 11:00 AM',
-    location: 'Stars HQ, St Albans Reserve',
-    link: 'https://www.cognitoforms.com/GEELONGALLABILITIESSPORTSCLUB/GEELONGALLABILITIESLEARNTORIDEDAY?fbclid=IwY2xjawP59Y5leHRuA2FlbQIxMABicmlkETF6Uk80dHNTYnZwM3BWcEFoc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHsJobcd0KK8FwA9IumgYaW0pLpGOXQbQlLem1ebRN6ltQOdfvVwwtp7Qlbzq_aem_vvKYASu-nduoEFx3EmeQKg',
-  },
-  {
-    id: 'karate',
-    title: 'Karate',
-    subtitle: 'All Ages',
-    description: 'Join us for an exciting and inclusive Karate program! Learn martial arts fundamentals, build confidence, and develop discipline in a supportive environment. All abilities welcome!',
-    color: 'from-purple-400 to-violet-500',
-    image: '/images/Ninjas 3.jpg',
-    schedule: 'Monday 2nd March, 5:15 PM - 6:00 PM',
-    location: 'Hendy Street Hall, Corio',
     link: undefined,
   },
   {
@@ -59,9 +26,6 @@ const currentlyRunning = [
     location: 'Curlewis Range',
     link: 'https://www.cognitoforms.com/GEELONGALLABILITIESSPORTSCLUB/TERM12026YOUTHGOLF?fbclid=IwY2xjawP58-tleHRuA2FlbQIxMABicmlkETF6Uk80dHNTYnZwM3BWcEFoc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHsJobcd0KK8FwA9IumgYaW0pLpGOXQbQlLem1ebRN6ltQOdfvVwwtp7Qlbzq_aem_vvKYASu-nduoEFx3EmeQKg',
   },
-];
-
-const scheduled = [
   {
     id: 'minis-cricket',
     title: 'Minis Cricket',
@@ -73,6 +37,9 @@ const scheduled = [
     location: 'Geelong Stars Clubrooms',
     link: undefined,
   },
+];
+
+const scheduled = [
   {
     id: 'minis-football',
     title: 'Minis Football',
@@ -98,16 +65,17 @@ const scheduled = [
 ];
 
 const upcoming = [
+  // Minis programs (Ages 5-12)
   {
-    id: 'youth-football',
-    title: 'Youth Football',
-    subtitle: 'Ages 12-18',
-    description: 'Our flagship program! Inclusive football designed for participants of all abilities. Get active, have fun, and be part of our welcoming community where everyone belongs!',
-    color: 'from-blue-400 to-indigo-500',
-    image: '/images/Football 3.jpg',
+    id: 'minis-basketball',
+    title: "Mini's Basketball",
+    subtitle: 'Ages 5-12',
+    description: 'A fun, supportive environment where kids learn basketball fundamentals, teamwork, and sportsmanship. Every child is encouraged to participate and have a blast!',
+    color: 'from-orange-400 to-pink-500',
+    image: '/images/basketball minis 1.jpg',
     schedule: 'TBA',
     location: 'TBA',
-    link: 'https://www.cognitoforms.com/GEELONGALLABILITIESSPORTSCLUB/TERM12026YOUTHFOOTBALL?fbclid=IwY2xjawP5-FJleHRuA2FlbQIxMABicmlkETF6Uk80dHNTYnZwM3BWcEFoc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHjRKfjJyVyJOMGuJ87ysGx9Bmzliv0-ftJd7WXQ3zekq9MvS-zVhINLgUXVb_aem_K6xGLpel_eN2c2Fb8rzYQQ',
+    link: undefined,
   },
   {
     id: 'minis-golf',
@@ -153,6 +121,41 @@ const upcoming = [
     location: 'TBA',
     link: undefined,
   },
+  // Youth programs (Ages 12-18)
+  {
+    id: 'youth-football',
+    title: 'Youth Football',
+    subtitle: 'Ages 12-18',
+    description: 'Our flagship program! Inclusive football designed for participants of all abilities. Get active, have fun, and be part of our welcoming community where everyone belongs!',
+    color: 'from-blue-400 to-indigo-500',
+    image: '/images/Football 3.jpg',
+    schedule: 'TBA',
+    location: 'TBA',
+    link: 'https://www.cognitoforms.com/GEELONGALLABILITIESSPORTSCLUB/TERM12026YOUTHFOOTBALL?fbclid=IwY2xjawP5-FJleHRuA2FlbQIxMABicmlkETF6Uk80dHNTYnZwM3BWcEFoc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHjRKfjJyVyJOMGuJ87ysGx9Bmzliv0-ftJd7WXQ3zekq9MvS-zVhINLgUXVb_aem_K6xGLpel_eN2c2Fb8rzYQQ',
+  },
+  // All Ages programs
+  {
+    id: 'learn-to-ride',
+    title: 'Learn to Ride',
+    subtitle: 'All Ages',
+    description: 'A fun and inclusive program for people of all ages and abilities to experience the joy of riding! The program is about riding with no expectations and most importantly having fun. The Geelong Stars has a range of trikes, bikes with stabilisers and BMX bikes for all levels, or members are welcome to bring their own. If you have a bike and helmet bring it along and join in!',
+    color: 'from-teal-400 to-cyan-500',
+    image: '/images/Learn to Ride.jpg',
+    schedule: 'TBA',
+    location: 'TBA',
+    link: undefined,
+  },
+  {
+    id: 'karate',
+    title: 'Karate',
+    subtitle: 'All Ages',
+    description: 'Join us for an exciting and inclusive Karate program! Learn martial arts fundamentals, build confidence, and develop discipline in a supportive environment. All abilities welcome!',
+    color: 'from-purple-400 to-violet-500',
+    image: '/images/Karate 1.jpg',
+    schedule: 'TBA',
+    location: 'TBA',
+    link: undefined,
+  },
 ];
 ---
 
@@ -192,7 +195,7 @@ const upcoming = [
       <div>
         <h2 class="text-2xl md:text-3xl font-bold text-navy mb-2">Currently Running</h2>
         <p class="text-gray-600 mb-8">Programs that are currently active and taking registrations.</p>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid md:grid-cols-3 gap-8">
           {currentlyRunning.map((program) => (
             <a
               href={program.link || '/contact'}
@@ -222,7 +225,7 @@ const upcoming = [
                     </p>
                   ) : program.id === 'running-walking-group' ? (
                     <p class="text-gray-600 flex-1 leading-relaxed text-sm">
-                      Lace up and join us for a friendly, inclusive, guided walk or run around a 1km track! Geelong All-Abilities Sports Club and Achilles International Geelong have partnered together to bring a new running and walking group option every Sunday morning. Our mission is to make running and walking more accessible to people with disabilities, and we welcome new members and participants to come down and join in! For more details, contact: <a href="mailto:geelongachillesaustralia@gmail.com" class="underline text-accent hover:text-accent-dark" onclick="event.stopPropagation()">geelongachillesaustralia@gmail.com</a>
+                      Lace up and join us for a friendly, inclusive, guided walk or run around a 1km track! Geelong All-Abilities Sports Club and Achilles International Geelong have partnered together to bring a new running and walking group option every Sunday morning. Our mission is to make running and walking more accessible to people with disabilities, and we welcome new members and participants to come down and join in! For more details, contact: <span class="underline text-accent">geelongachillesaustralia@gmail.com</span>
                     </p>
                   ) : (
                     <p class="text-gray-600 flex-1 leading-relaxed text-sm">
@@ -252,7 +255,7 @@ const upcoming = [
       <div>
         <h2 class="text-2xl md:text-3xl font-bold text-navy mb-2">Scheduled</h2>
         <p class="text-gray-600 mb-8">Programs starting soon — register now to secure your spot!</p>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid md:grid-cols-3 gap-8">
           {scheduled.map((program) => (
             <a
               href={program.link || '/contact'}
@@ -302,7 +305,7 @@ const upcoming = [
       <div>
         <h2 class="text-2xl md:text-3xl font-bold text-navy mb-2">Upcoming</h2>
         <p class="text-gray-600 mb-8">Programs in the works — dates to be announced. Stay tuned!</p>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid md:grid-cols-3 gap-8">
           {upcoming.map((program) => (
             <a
               href={program.link || '/contact'}
