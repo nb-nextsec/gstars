@@ -149,3 +149,11 @@ body {
 .animate-scroll-left:hover {
   animation-play-state: paused;
 }
+
+@media (prefers-color-scheme: dark) {
+  /* Protect sponsor logo containers from browser dark mode inversion */
+  .sponsor-logo-container {
+    background-color: #ffffff !important;
+    color: #1a1a1a !important;
+  }
+}

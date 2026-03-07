@@ -45,7 +45,7 @@ const HERO_IMAGE = 'https://static.wixstatic.com/media/c23ea9_1071a90c20b044f4bb
           {sponsors.map((sponsor) => {
             const inner = (
               <>
-                <div class="h-56 bg-gray-50 flex items-center justify-center p-4">
+                <div class="sponsor-logo-container h-56 bg-white flex items-center justify-center p-4">
                   {sponsor.logo_url ? (
                     <img src={sponsor.logo_url} alt={sponsor.name} class="h-44 w-auto max-w-full object-contain group-hover:scale-105 transition-transform duration-300" />
                   ) : (

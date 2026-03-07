@@ -17,7 +17,7 @@ export function SponsorsCarousel({ sponsors }: SponsorsCarouselProps) {
       <div className="relative">
         <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-navy to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-navy to-transparent z-10 pointer-events-none" />
-        <div className="flex animate-scroll-left">
+        <div className="flex w-max animate-scroll-left">
           {allSponsors.map((sponsor, index) => (
             <div
               key={`${sponsor.id}-${index}`}
@@ -28,7 +28,7 @@ export function SponsorsCarousel({ sponsors }: SponsorsCarouselProps) {
                   href={sponsor.website_url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block h-[100px] px-5 bg-white rounded-none shadow-sm flex items-center justify-center border border-gray-100 hover:border-navy/20 hover:shadow-md transition-all duration-300"
+                  className="sponsor-logo-container block h-[100px] px-5 bg-white rounded-none shadow-sm flex items-center justify-center border border-gray-100 hover:border-navy/20 hover:shadow-md transition-all duration-300"
                 >
                   <img
                     src={sponsor.logo_url!}
@@ -37,7 +37,7 @@ export function SponsorsCarousel({ sponsors }: SponsorsCarouselProps) {
                   />
                 </a>
               ) : (
-                <div className="h-[100px] px-5 bg-white rounded-none shadow-sm flex items-center justify-center border border-gray-100 hover:border-navy/20 hover:shadow-md transition-all duration-300">
+                <div className="sponsor-logo-container h-[100px] px-5 bg-white rounded-none shadow-sm flex items-center justify-center border border-gray-100 hover:border-navy/20 hover:shadow-md transition-all duration-300">
                   <img
                     src={sponsor.logo_url!}
                     alt={sponsor.name}
