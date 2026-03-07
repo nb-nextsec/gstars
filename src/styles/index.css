@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+:root {
+  color-scheme: light;
+}
+
 @theme {
   /* Geelong Cats Official Colors - Darker Navy to match header */
   --color-navy-50: #E6EBF2;
